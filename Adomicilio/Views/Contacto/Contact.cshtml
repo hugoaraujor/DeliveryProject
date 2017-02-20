@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Contactanos";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>Queremos saber lo que piensas</h3>
+<div class="row">
+    <div class="col-md-4">
+        <address>
+            La Calle del Comercio<br />
+            Ciudad Ojeda,Zulia 4019<br />
+            <abbr title="Phone">P:</abbr>
+            0265-632055555
+        </address>
+       
+      
+        <p></p>
+        <p></p>
+        <p></p>
+        <address>
+            <strong>Soporte:</strong>   <a href="mailto:Support@deliexpress.com">Soporte@deliexpress.com</a><br />
+            <strong>Marketing:</strong> <a href="mailto:Marketing@deliexpress.com">Marketing@deliexpress.com</a>
+        </address>
+    </div>
+    <div class="col-md-8">
+       @if (ViewBag.Mensaje !=null)
+       {  <p> @ViewBag.Mensaje</p>}
+       else
+       {
+        @Html.Partial("ViewContact")
+       }
+     
+    </div>
+    <div>
+        @Html.ActionLink("Regresar", "Index","Home")
+    </div>
+</div>

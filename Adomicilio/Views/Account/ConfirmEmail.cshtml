@@ -1,0 +1,25 @@
+﻿
+@{ViewBag.UId = Request.QueryString["userId"];
+    
+    ViewBag.Title = "Confirmar correo electrónico";
+    Console.WriteLine(ViewBag.UId);
+}
+
+<h2>@ViewBag.Title.</h2>
+<div>
+  
+    
+        <p>
+            @ViewBag.UId
+    <p>
+        Gracias por confirmar su correo electrónico.
+    </p>
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("ConfirmedEmail", "Account",routeValues: new { userId =  ViewBag.UId})">
+            Continuar
+        </a>
+    </p>
+    <p>
+        @Html.ActionLink("Haga clic aquí para iniciar sesión", "ConfirmedEmail", "Account", routeValues: new { userId = ViewBag.UId }, htmlAttributes: null)
+    </p>
+</div>

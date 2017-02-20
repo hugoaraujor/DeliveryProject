@@ -1,0 +1,121 @@
+﻿@using Adomicilio.Models
+@model Adomicilio.Models.EmpresaCatalog
+    @{ 
+        ApplicationDbContext db = new ApplicationDbContext();
+        string Tipoempresa = db.TipoEmpresa.Where(x => x.Id == Model.CategoriaLocal).FirstOrDefault().TipodeLocal;
+        string Especialidad = db.Especialidad.Where(x => x.IdEspecialidad == Model.TipodeComida).FirstOrDefault().EspecialidadDesc;
+
+    }
+<div class="col-md-6">
+    <table>
+        @Html.HiddenFor(model => model.logo)
+        <tr>
+            <td >
+                @Html.DisplayNameFor(model => model.RIF)
+            </td>
+
+            <td >
+                @Html.DisplayFor(model => model.RIF)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Telefonos)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Telefonos)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Slogan)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Slogan)
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                @Html.DisplayNameFor(model => model.CategoriaLocal)
+            </td>
+
+            <td>
+                @Tipoempresa
+            </td>
+        </tr>
+        <tr><td>
+    @Html.DisplayNameFor(model => model.TipodeComida)
+    </td><td>@Especialidad </td>
+                
+        </tr>
+        <tr>
+
+            <td>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Direccion)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.horario1)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.horario1)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Delivery)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Delivery) <span>Minutos</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Contacto)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Contacto)
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                @Html.DisplayNameFor(model => model.Activa)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Activa)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.DateCreated)
+            </td>
+        </tr>
+
+    </table><br /><br />@Html.ActionLink("Edit", "Edit", new { id = Model.IdEmpresa }) |@Html.ActionLink("Eliminar", "Delete", new { id = Model.IdEmpresa })|
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div class="col-md-6">
+    <img src="@ViewBag.foto" />
+</div>
+<p>
+    <img name="logo" src="" alt="" />
+   
+</p>

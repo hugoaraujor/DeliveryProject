@@ -1,0 +1,341 @@
+﻿@using Adomicilio.Models
+@model IndexViewModel
+    
+@{ 
+   // ViewBag.Title = "Home Page";
+    //ViewBag.estado= Request.QueryString["Estado"];
+    //ViewBag.ciudad =  Request.QueryString["Ciudad"];
+    //ViewBag.sector = Request.QueryString["Sector"];
+    //Model.Estado = Convert.ToInt32(Request.QueryString["Estado"]);
+    //Model.Ciudad = Convert.ToInt32(Request.QueryString["Ciudad"]);
+    //Model.Sector = Convert.ToInt32(Request.QueryString["Sector"]);
+
+
+}
+
+        <div class="span12">
+    <div class="carousel slide row-fluid" id="myCarousel">
+        <div class="carousel-inner ">
+            <div class="item active">
+                <div class="bannerImage">
+                    <a href="#"><img src="~/images/image1.png" alt=""></a>
+                </div>
+            </div><!-- /Slide1 -->
+            <div class="item">
+                <div class="bannerImage">
+                    <a href="#"><img src="~/images/image2.png" alt=""></a>
+                </div>
+            </div><!-- /Slide2 -->
+            <div class="item">
+                <div class="bannerImage">
+                    <a href="#"><img src="~/images/image4.png" alt=""></a>
+                </div>
+            </div><!-- /Slide2 -->
+        </div>
+        <div class="control-box">
+            <a data-slide="prev" href="#myCarousel" class="carousel-control left btn-circle">‹</a>
+            <a data-slide="next" href="#myCarousel" class="carousel-control right btn-circle">›</a>
+        </div><!-- /.control-box -->
+    </div><!-- /#myCarousel -->
+    <div class="row">
+        <form class="navbar-form navbar especial" role="search" onload="Fill()" id="forma" name="forma">
+
+            <div class="form-group">
+                @Html.HiddenFor(m => m.Pais)
+
+                <div class="col-2">
+                    <label class="glyphicon glyphicon-map-marker"></label>
+                    <script>Fill();</script>
+                    @Html.DropDownListFor(m => m.Estado, ListHelper.SelectListItemHelper.GetEstadosList(Model.Pais), new
+               { @class = "form-control required place-holder", @onchange = "FillCity()" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-2">
+                    <label class="glyphicon glyphicon-record"></label>
+                    @Html.DropDownListFor(m => m.Ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(Model.Estado), new
+               {
+                   @class = "form-control required place-holder",
+                   @onchange = "FillSector()",
+                   @onmouseup ="FillSector"
+
+               })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-2">
+                    <label class="glyphicon glyphicon-flag"> </label>
+                    @Html.DropDownListFor(m => m.Sector, ListHelper.SelectListItemHelper.GetSectoresList(Model.Ciudad), new
+               {   @class = "form-control required place-holder" 
+                                })
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-2">
+                    <label>Sector</label>
+                    <input type="text" class="form-control" placeholder="Search" >
+                </div>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-default" onclick="savelocal()">Submit</button>
+
+        </form>
+    </div>
+
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+        <div class="catmenu">
+            <div class="col-md-3 col-lg-3">
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consec</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis</li>
+                  </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+
+
+            <div class="col-sm-6 col-md-4">
+                <a href="../Home/Detail">
+                    <div class="thumbnail">
+                        <img src="~/images/logo-1.png" alt="...">
+                        <div class="caption">
+                            <h3>Mr.DOg</h3>
+                            <h4>Si sitio Ideal</h4>
+                        </div>
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>El Mejicanito</h3>
+                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>Mr.DOg</h3>
+                        <h4>Si sitio Ideal</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>Greeners</h3>
+                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div><div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>El rincon de Daisy</h3>
+                        <h4>Empanadas desayunos en Si sitio Ideal</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>El Mejicanito</h3>
+                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>El Mejicanito</h3>
+                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>El Mejicanito</h3>
+                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/images/logo-1.png" alt="...">
+                    <div class="caption">
+                        <h3>El Mejicanito</h3>
+                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
+                    </div>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+            </div>
+        </div>     
+            <div class="row">
+                <div class="col-md-3 col-lg-3">
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+               
+          @Scripts.Render("~/bundles/jquery")  
+    {
+  <script>
+<!--
+
+      
+    // Carousel Auto-Cycle
+      $(document).ready(function () {
+          leelocal();
+
+
+        $('.carousel').carousel({
+            interval: 3000
+        })
+      
+       
+    });
+
+//-->
+</script>
+<script>
+ <!--
+      var vpais = 1;
+      var vestado = 0;
+      var vciudad = 0;
+      var vsector = 0;
+
+      function leelocal() {
+          $("#Sector").append($('<option>---------Seleccione---------</option>').val(""));
+          $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
+       vpais = localStorage.getItem("pais");
+       vestado = localStorage.getItem("estado");
+       vciudad = localStorage.getItem("ciudad");
+       vsector = localStorage.getItem("sector");
+      
+          document.getElementById("Estado").value = vestado;
+          document.getElementById("Pais").value = vpais;
+          document.getElementById("Ciudad").value = vciudad;
+          document.getElementById("Sector").value = vsector;
+  
+      FillCity();
+      FillSector();
+      
+    }
+    function savelocal() {
+        
+        var CountryId = document.getElementById("Pais").value;
+        localStorage.setItem("pais", CountryId)
+       var stateId = document.getElementById("Estado").value;
+        localStorage.setItem("estado", stateId)
+        var cityId = document.getElementById("Ciudad").value;
+        localStorage.setItem("ciudad", cityId)
+        var sectorId = document.getElementById("Sector").value;
+        localStorage.setItem("sector", sectorId)
+        
+    }
+    function Fill() {
+        FillCity();
+        FillSector();
+      
+    }
+     function FillCity() {
+       
+        
+         var stateId = document.getElementById("Estado").value;
+          $.ajax({
+             url: '/Account/FillCity',
+             type: "GET",
+             dataType: "JSON",
+             data: { id: stateId },
+             success: function (cities) {
+                 $("#Ciudad").html(""); // clear before appending new list
+                 $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
+                 $.each(cities, function (i, city) {
+                     $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
+                 });
+                 $("#Ciudad").val(vciudad); 
+             },
+            
+         });
+          
+      }
+     function FillSector() {
+         ciudadId = document.getElementById("Ciudad").value;
+         if (ciudadId == "")
+             ciudadId = vciudad;
+       
+         $.ajax({
+             url: '/Account/FillSector',
+             type: "GET",
+             dataType: "JSON",
+             data: { Id: ciudadId },
+             success: function (sectores) {
+                 $("#Sector").html(""); // clear before appending new list
+                 //Coloca el mensaje Seleccione si se ha colocado en el atributo 'place-holder' de bootstrap
+                 $("#Sector").append($('<option>---------Seleccione---------</option>').val(""));
+                 $.each(sectores, function (n, sect) {
+                     $("#Sector").append($('<option>' + sect.Nombresector + '</option>').val(sect.Id));
+                 });
+            
+             $("#Sector").val(vsector); 
+             },
+                           
+         });
+        
+         
+     }
+    //-->
+</script>
+}

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Adomicilio.Models.GruposMenu>
+@{
+    ViewBag.Title = "Index";
+    
+}
+<h2>Details</h2>
+<div>
+    <div class="col-md-3"><br></div> <h3><strong>@ViewBag.Empresa</strong></h3>
+    
+        <div class="row">
+            <p>@ViewBag.Number</p>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="" ><a href="@Url.Action("Details", "Empresas",routeValues: new { Id =  ViewBag.Number,status=1})">Detalles</a></li>
+                <li role="presentation" class="active" ><a href="@Url.Action("Index", "Gruposmenus",routeValues: new {Id = ViewBag.Number,status=2})">Categorias</a></li>
+                <li role="presentation" class=""><a href="@Url.Action("Index", "Menus",routeValues: new { Idempresa =  ViewBag.Number})">Productos</a></li>
+
+            </ul>
+        </div>
+    
+    
+</div>
+<br />
+
+@using (Html.BeginForm("Create","Gruposmenus",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+   
+        <table>
+            <tr class=" col-md-12">
+                <td><input type="text" name="GrupoMenuDesc" id="GrupoMenuDesc" class="form-control col-md-6" placeholder="Nuevo Grupo" /></td>
+                <input type="hidden" name="IdEmpresa" id="IdEmpresa" value="@ViewBag.empresaid" />
+                <td class="col-md-4"><input type="submit" value="Agregar" class="btn btn-default" /></td>
+            </tr>
+        </table>
+   
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            @ViewBag.Mensaje
+        </div>
+    </div>
+}
+
+        <div>
+            <table class="table">
+                <tr  >
+                    <th style="border-top:0px;">
+                        <label class="control-label col-md-2">Grupo</label>
+                    </th>
+                    
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-md-1">
+                            @Html.DisplayFor(modelItem => item.Orden)
+                        </td>
+                        <td class="col-md-6">
+                            @Html.DisplayFor(modelItem => item.GrupoMenuDesc)
+                        </td>
+                        <td class="col-md-2">
+                            @Html.ActionLink("Edita", "Edit", new { id = item.Id, idempresa = item.IdEmpresa }) |
+                            @Html.ActionLink("Borra", "Delete", new { id = item.Id, idempresa = item.IdEmpresa })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>

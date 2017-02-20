@@ -1,0 +1,59 @@
+﻿@model IEnumerable< Adomicilio.Models.Emails>
+
+@{
+    ViewBag.Title = "Mensajes del Sistema";
+}
+
+     <ol class="breadcrumb">
+  <li><a href="#">Configuracion</a></li>
+  <li><a href="#">Mensajes</a></li>
+  </ol>
+<h2><span class="glyphicon glyphicon-envelope">&nbsp</span>Mensajes del Sistema</h2>
+
+    <br />
+    
+
+  <br />
+<table class="table">
+    <tr>
+   
+        <th>
+           Mensaje
+        </th>
+         <th>
+           Motivo
+        </th>
+   
+        <th>
+            Fecha
+        </th>
+        <th>
+            Texto
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <span class="glyphicon glyphicon-envelope">&nbsp</span>@Html.DisplayFor(modelItem => item.Message)
+        </td>
+        
+        <th>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </th>
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.Added)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            <span class="glyphicon glyphicon-pencil">&nbsp</span>@Html.ActionLink("Editar ", "Edit", new { id=item.id }) 
+            
+         </td>
+    </tr>
+}
+
+</table>

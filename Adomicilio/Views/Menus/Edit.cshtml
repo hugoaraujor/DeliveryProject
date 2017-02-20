@@ -1,0 +1,136 @@
+﻿@using Adomicilio.Models
+@model Adomicilio.Models.Menu
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Edit</h2>
+<p>
+    @Html.ActionLink("Regresar", "Index",new { idempresa = Model.IdEmpresa })
+</p>
+
+<h3><strong>@ViewBag.Empresa</strong></h3>
+<h4>Producto a la Venta</h4>
+<div class="form-horizontal">
+    @using (Html.BeginForm("Edit", "Menus", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+            <tr>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <td>
+
+                    @Html.HiddenFor(model => model.IdEmpresa)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdGrupoMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.IdGrupoMenu, ListHelper.SelectListItemHelper.GetGruposMenu(Model.IdEmpresa), new { @class = "form-control required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.IdCategory, ListHelper.SelectListItemHelper.GetCategorias(), new
+               {
+                   @class = "form-control required"
+               })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.IdSubCategorias)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Descripcion, 4, 100, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </td>
+                <td><input name="File1" id="File1" type="file" /><img src=@ViewBag.foto name="imagen" id="imagen" /></td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.HiddenFor(model => model.Titulo)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.clase1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+
+                            @Html.EditorFor(model => model.clase1, new { htmlAttributes = new { @class = "form-control  col-md-2" } })
+                            @Html.ValidationMessageFor(model => model.clase1, "", new { @class = "text-danger " })
+                        </div>
+                        @Html.LabelFor(model => model.Precio1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+
+                            @Html.EditorFor(model => model.Precio1, new { htmlAttributes = new { @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.Precio1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.clase2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.clase2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.clase2, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.Precio2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Precio2, new { htmlAttributes = new { @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.Precio2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.clase3, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.clase3, new { htmlAttributes = new { @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.clase3, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.Precio3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Precio3, new { htmlAttributes = new { @class = "form-control  " } })
+                            @Html.ValidationMessageFor(model => model.Precio3, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.IdProducto)
+                    @Html.HiddenFor(model => model.imagen)
+                    @Html.HiddenFor(model => model.imagenname)
+                    @Html.HiddenFor(model => model.nuevo)
+                    @Html.HiddenFor(model => model.Oferta)
+                    @Html.HiddenFor(model => model.Activa)
+                    @Html.HiddenFor(model => model.DateCreated)
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Enviar" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("document").ready(function () {
+                    $("#File1").change(function (e) {
+                        e.preventDefault();
+                        $("#imagen").attr("src", URL.createObjectURL(event.target.files[0]));
+
+                    });
+        });
+    </script>
+
+}

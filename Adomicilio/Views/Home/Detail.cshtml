@@ -1,0 +1,195 @@
+﻿@using Adomicilio.Models
+@model IndexViewModel
+@{
+var visible=false;
+
+}    
+
+
+ <div class="row">
+     <div class="col-sm-12 col-md-12">
+         <div class="thumbnail">
+             <img src="~/images/logo-1.png" alt="...">
+             <div class="caption">
+                 <h3>Mr.DOg</h3>
+                 <h4>Si sitio Ideal</h4>
+             </div>
+       </div>
+     </div>
+</div>
+
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+        <div class="catmenu">
+            <div class="col-md-3 col-lg-3">
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consec</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+
+            <h2>ENSALADAs</h2>
+            <div class="piato">
+                <table id="tabla" name="tabla" class="table-condensed"  cellspacing="0" >
+                    <tr>
+                        <td rowspan="3" class="col-md-3">
+                            @if (!visible){<img src="~/images/image-5.png" alt="...">}
+                        </td>
+                        <td class="col-md-8"  ><h4>ENSALADA CESAR</h4></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                         Delicioso mezclum de Lechugas aderezada con parmesano y mayonesa especial hecha al momento
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                    <td><h5>REGULAR <span class="active"> 3.500,00</span></h5></td>
+                    <td><a href="#" class="btn btn-success btm-xs" role="button">Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+                    </tr>
+                </table>
+            
+            
+            </div>
+            <div class="piato">
+                <table id="tabla" name="tabla" class="table-condensed" cellspacing="0">
+                    <tr>
+                        <td rowspan="3" class="col-md-3">
+                            @if (!visible){<img src="~/images/image-5.png" alt="...">}
+                        </td>
+                        <td class="col-md-8"><h4>ENSALADA CESAR</h4></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Delicioso mezclum de Lechugas aderezada con parmesano y mayonesa especial hecha al momento
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><h5>REGULAR <span class="active"> 3.500,00</span></h5></td>
+                        <td><a href="#" class="btn btn-success btm-xs" role="button">Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <div class="piato">
+                <table id="tabla" name="tabla" class="table-condensed" cellspacing="0">
+                    <tr>
+                        <td rowspan="3" class="col-md-3">
+                            @if (!visible){<img src="~/images/image-5.png" alt="...">}
+                        </td>
+                        <td class="col-md-8"><h4><strong>ENSALADA CESAR</strong></h4></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Delicioso mezclum de Lechugas aderezada con parmesano y mayonesa especial hecha al momento
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><h5>REGULAR <span class="active">Bs. 3.500,00</span></h5></td>
+                        <td><a href="#" class="btn btn-success btm-xs" role="button">Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+                    </tr>
+                </table>
+
+
+            </div> 
+
+                <div class="row">
+                    <div class="col-md-3 col-lg-3">
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+</div>
+
+               
+            
+    
+  <script>
+<!--
+    
+    // Carousel Auto-Cycle
+    $(document).ready(function () {
+        $('.carousel').carousel({
+            interval: 5000
+        })
+        
+    });
+
+//-->
+</script>
+<script>
+ <!--
+    function Fill() {
+        FillCity();
+        FillSector();
+      
+    }
+     function FillCity() {
+       
+         var stateId = $('#Estado').val();
+          $.ajax({
+             url: '/Account/FillCity',
+             type: "GET",
+             dataType: "JSON",
+             data: { id: stateId },
+             success: function (cities) {
+                       $("#Ciudad").html(""); // clear before appending new list
+                 $.each(cities, function (i, city) { $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId)); });
+             }
+         });
+    }
+     function FillSector() {
+               var ciudadId = $('#Ciudad').val();
+         $("#Sector").html(""); // clear before appending new list
+         $.ajax({
+             url: '/Account/FillSector',
+             type: "GET",
+             dataType: "JSON",
+             data: { id: ciudadId },
+             success: function (scities) {
+                  $("#Sector").html(""); // clear before appending new list
+                 $.each(scities, function (i, scity) { $("#Sector").append($('<option>' + scity.Nombresector + '</option>').val(scity.Id)); });
+             }
+         });
+     }
+    //-->
+</script>
+

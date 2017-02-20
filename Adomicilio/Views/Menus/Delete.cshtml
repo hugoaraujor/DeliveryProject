@@ -1,0 +1,150 @@
+﻿@using Adomicilio.Models
+@model Adomicilio.Models.Menu
+@{   ApplicationDbContext db = new ApplicationDbContext();
+    ViewBag.Title = "Borrado de Registros";
+    string cat = db.Categorias.Where(x => x.IdCategory == Model.IdCategory).FirstOrDefault().CategoryName;
+    string grupo = db.GruposMenu.Where(x => x.Id == Model.IdGrupoMenu).FirstOrDefault().GrupoMenuDesc;
+}
+
+<h2>Delete</h2>
+
+<h3>Confirma Borrar este Registro?</h3>
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.IdGrupoMenu)
+        </dt>
+
+        <dd>
+            @grupo
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategory)
+        </dt>
+
+        <dd>
+            @cat
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clase1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clase1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clase2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clase2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clase3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clase3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio3)
+        </dd>
+
+               <dt>
+            @Html.DisplayNameFor(model => model.nuevo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nuevo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oferta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oferta)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index",new { idempresa=Model.IdEmpresa})
+        </div>
+    }
+</div>

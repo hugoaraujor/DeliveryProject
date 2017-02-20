@@ -1,0 +1,91 @@
+﻿@using Adomicilio.Models
+@model PagedList.IPagedList<Adomicilio.Models.Menu>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    var cat = new CategoriesController();
+    var cat2 = cat.getcategoriasproductos();
+    var catg = new GruposMenusController();
+  
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", routeValues: new { idempresa = ViewBag.Number })
+</p>
+<div>
+    <div class="col-md-3"><br></div> <h3><strong>@ViewBag.Empresa</strong></h3>
+
+    <div class="row">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class=""><a href="@Url.Action("Details", "Empresas", routeValues: new { Id = ViewBag.Number, status = 1 })">Detalles</a></li>
+            <li role="presentation" class=""><a href="@Url.Action("Index", "Gruposmenus", routeValues: new { Id = ViewBag.Number, status = 2 })">Categorias</a></li>
+            <li role="presentation" class="active"><a href="@Url.Action("Details", "Empresas", routeValues: new { Idempresa = ViewBag.Number, status = 3 })">Productos</a></li>
+        </ul>
+    </div>
+
+
+</div>
+<br />
+
+<table class="table-striped" name="tabla" id="tabla">
+    <tr >
+        <th style="border-top:0px;">
+            @Html.DisplayNameFor(model => model.Single().IdGrupoMenu)
+        </th>
+        <th >
+            @Html.DisplayNameFor(model => model.Single().IdCategory)
+           
+        </th>
+    
+        <th>
+            @Html.DisplayNameFor(model => model.Single().Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Single().Descripcion)
+        </th>
+      
+      
+     
+        <th>
+            @Html.DisplayNameFor(model => model.Single().Precio1)
+        </th>
+      
+        
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       <td>
+            
+           @(catg.getgrupos(item.IdEmpresa).Find(x => x.Id == item.IdGrupoMenu).GrupoMenuDesc)
+        </td>
+        <td>
+         @(cat2.Find(x => x.IdCategory == item.IdCategory).CategoryName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+   
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio1)
+        </td>
+         
+        <td>
+            @Html.ActionLink("Edita", "Edit", new {  id=item.IdProducto }) |
+            @Html.ActionLink("Detalles", "Details", new { id= item.IdProducto }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdProducto })
+        </td>
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -1,0 +1,171 @@
+﻿@using Adomicilio.Models
+@model Adomicilio.Models.Menu
+
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+
+    string cat = db.Categorias.Where(x => x.IdCategory == Model.IdCategory).FirstOrDefault().CategoryName;
+    string grupo= db.GruposMenu.Where(x => x.Id == Model.IdGrupoMenu).FirstOrDefault().GrupoMenuDesc;
+}
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+    <h4>Menu</h4>
+    <hr />
+    <h3><strong>@ViewBag.Empresa</strong></h3>
+    <h4>Producto a la Venta</h4>
+ 
+
+<div class="col-md-6">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdGrupoMenu)
+        </dt>
+
+        <dd>
+            @grupo
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategory)
+        </dt>
+
+        <dd>
+            @cat
+        </dd>
+
+       
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clase1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clase1)
+        </dd>
+
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.clase2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clase2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.clase3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clase3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nuevo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nuevo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oferta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oferta)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+    </dl>
+
+    @Html.AntiForgeryToken()
+
+
+
+    @Html.HiddenFor(model => model.IdProducto)
+    @Html.HiddenFor(model => model.imagen)
+    @Html.HiddenFor(model => model.imagenname)
+    @Html.HiddenFor(model => model.nuevo)
+    @Html.HiddenFor(model => model.Oferta)
+    @Html.HiddenFor(model => model.Activa)
+    @Html.HiddenFor(model => model.DateCreated)
+
+</div><div class="col-md-6"><img src=@ViewBag.foto name="imagen" id="imagen" /></div>
+<div class="row col-md-12">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdProducto }) |
+        @Html.ActionLink("Regresar", "Index",new  { idempresa=Model.IdEmpresa})
+    </p>
+</div>
+

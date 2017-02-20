@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div id="wrap" name="wrap">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+
+            @Styles.Render("~/Content/css")
+            @Scripts.Render("~/bundles/modernizr")
+
+
+
+        </head>
+
+        <div class="container-fluid">
+            <header>
+                <div class="container clearfix">
+                    <div class="navbar navbar-default navbar-fixed-top header ">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("DeliExpress.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contacto", "Contact", "Contacto")</li>
+                            </ul>
+                            @Html.Partial("_LoginPartial")
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+        </div>
+        <div class="container body-content conta2 container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+        <footer class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded">
+
+            <div class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded">
+                <p>&copy; @DateTime.Now.Year - DeliExpress.com</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul>
+                            <li>@Html.ActionLink("Acerca de Deliexpress.com", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Terminos de Uso", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Politica de Privacidad", "About", "Home")</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Preguntas Frecuentes Usuario", "About", "Home")</li>
+                            <li>@Html.ActionLink("Preguntas Frecuentes Comercio", "Contact", "Home")</li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>@Html.ActionLink("Sugierenos un restaurante o Servicio", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Registrate", "About", "Home")</li>
+
+
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <picture>
+
+                            <img class="social" src="../images/facebook.png" alt="Visitanos en facebook" />
+                        </picture>
+                        <picture>
+
+                            <img class="social" src="../images/twitter.png" alt="Danos un Tweet" />
+                        </picture>
+                        <picture>
+
+                            <img class="social" src="../images/instagram.png" alt="Visitanos en instagram" />
+                        </picture>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+  
+</body>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</html>
