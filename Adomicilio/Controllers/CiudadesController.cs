@@ -117,6 +117,8 @@ namespace Adomicilio.Controllers
         public List<Ciudad> GetCiudadesList(int idestado)
         {
             var query= db.Ciudades.Where(x => x.IdEstado == idestado);
+            Console.WriteLine(idestado);
+            Console.WriteLine(query.Count());
             return query.ToList();
         }
         protected override void Dispose(bool disposing)

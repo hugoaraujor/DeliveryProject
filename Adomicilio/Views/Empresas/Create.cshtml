@@ -15,6 +15,15 @@
     {
         @Html.AntiForgeryToken()
 
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdEmpresa)
+        @Html.HiddenFor(model => model.logo)
+        @Html.HiddenFor(model => model.DateCreated,Model.DateCreated=DateTime.Now)
+        @Html.HiddenFor(model => model.DateEdited)
+        @Html.HiddenFor(model => model.imagenurl)
+        @Html.HiddenFor(model => model.tipodelivery)
+        @Html.HiddenFor(model => model.User)
+        @Html.HiddenFor(model => model.claveuser)
         <div class="form-horizontal ">
             <h2>Empresa</h2>
             <center><h4>Agregue los siguientes detalles.</h4></center>
@@ -79,6 +88,23 @@
                     @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <div class="form-group">
+                <label class="control-label  col-md-5">Estado</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(m => m.idEstado, ListHelper.SelectListItemHelper.GetEstadosList(1), new
+                   {
+                       @class = "form-control required",
+                       @onchange = "FillCity()"
+                   })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label  col-md-5">Ciudad</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(m => m.idCiudad, ListHelper.SelectListItemHelper.GetCiudadesList(Model.idEstado), new
+                   { @class = "form-control required" })
+                </div>
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.horario1, htmlAttributes: new { @class = "control-label col-md-5" })
@@ -123,6 +149,30 @@
                 </div>
             </div>
         </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function FillCity() {
+           var stateId = document.getElementById("idEstado").value;
+            $.ajax({
+                url: '/Account/FillCity',
+                type: "GET",
+                dataType: "JSON",
+                data: { id: stateId },
+                success: function (cities) {
+                    $("#idCiudad").html(""); // clear before appending new list
+                    $("#idCiudad").append($('<option>-------Seleccione-------</option>').val(""));
+                    $.each(cities, function (i, city) {
+                        $("#idCiudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
+                    });
+                    
+                },
+
+            });
+
+        }
+    </script>
 }
 
 

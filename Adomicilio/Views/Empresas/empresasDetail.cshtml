@@ -6,6 +6,8 @@
         string Especialidad = db.Especialidad.Where(x => x.IdEspecialidad == Model.TipodeComida).FirstOrDefault().EspecialidadDesc;
 
     }
+<br />
+<br />
 <div class="col-md-6">
     <table>
         @Html.HiddenFor(model => model.logo)
@@ -106,6 +108,15 @@
 
             <td>
                 @Html.DisplayFor(model => model.DateCreated)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DateEdited)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.DateEdited)
             </td>
         </tr>
 

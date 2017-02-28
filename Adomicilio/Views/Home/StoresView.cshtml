@@ -1,0 +1,29 @@
+﻿@using PagedList.Mvc;
+@{
+
+    var auxmodel = @Model.restaurante;
+
+}
+
+@foreach (var rest in auxmodel)
+{
+    
+            <div class="col-sm-6 col-md-4 pulse">
+
+                <div class="thumbnail">
+                    <a href="../Home/Detail">
+                        <div class="logorestaurante">
+                            <img src="@Model.utiles.bytestoimage(rest.logo)" alt="...">
+                        </div>
+                        <div class="caption">
+
+                            <p class="nombrelocal">@rest.RazonSocial</p>
+                            <p name="slogan" id="slogan">@rest.Slogan</p>
+                            <span class="glyphicon glyphicon-thumbs-up"> &nbsp;0</span>
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+ 
+        }

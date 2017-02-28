@@ -2,21 +2,42 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-
+using Adomicilio.Models;
+using PagedList;
 namespace Adomicilio.Models
 {
     public class IndexViewModel
+    {
+       public IndexViewModel()
+            {
+            ListaEspecialidades = new List<Especialidad>();
+            utiles = new UtilesViews();
+            page = 1;
+            }
+        public string Searchstr { get; set; }
+        public int ciudad { get; set; }
+        public int page { get; set; }
+        public int menuopcion { get; set; }
+        public bool HasPassword { get; set; }
+        public IList<UserLoginInfo> Logins { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool TwoFactor { get; set; }
+        public bool BrowserRemembered { get; set; }
+        public List<Especialidad> ListaEspecialidades { get; set; }
+        public UtilesViews utiles { get; set; }
+        public PagedList.IPagedList<Empresa> restaurante { get; set; }
+        public Contacto contact { get; set; }
+        public bool iscontact { get; set; }
+        public bool added { get; set; }
+
+    }
+    public class Searchlocation
     {
         public string ip { get; set; }
         public int Pais { get; set; }
         public int Sector { get; set; }
         public int Estado { get; set; }
         public int Ciudad { get; set; }
-        public bool HasPassword { get; set; }
-        public IList<UserLoginInfo> Logins { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool TwoFactor { get; set; }
-        public bool BrowserRemembered { get; set; }
     }
 
     public class ManageLoginsViewModel

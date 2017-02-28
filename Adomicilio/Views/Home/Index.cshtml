@@ -1,24 +1,19 @@
 ﻿@using Adomicilio.Models
-@model IndexViewModel
-    
+@model Adomicilio.Models.IndexViewModel
+@using PagedList.Mvc;
 @{ 
-   // ViewBag.Title = "Home Page";
-    //ViewBag.estado= Request.QueryString["Estado"];
-    //ViewBag.ciudad =  Request.QueryString["Ciudad"];
-    //ViewBag.sector = Request.QueryString["Sector"];
-    //Model.Estado = Convert.ToInt32(Request.QueryString["Estado"]);
-    //Model.Ciudad = Convert.ToInt32(Request.QueryString["Ciudad"]);
-    //Model.Sector = Convert.ToInt32(Request.QueryString["Sector"]);
-
+    var auxrestaurantes = Model.restaurante;
 
 }
-
-        <div class="span12">
-    <div class="carousel slide row-fluid" id="myCarousel">
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@Html.AntiForgeryToken()
+ <div class="span12">
+    <div class="carousel slide row-fluidbs-slider"  id="myCarousel"  data-ride="carousel" >
         <div class="carousel-inner ">
             <div class="item active">
                 <div class="bannerImage">
-                    <a href="#"><img src="~/images/image1.png" alt=""></a>
+                   <a href="#"><img src="~/images/image1.png" alt=""></a>
                 </div>
             </div><!-- /Slide1 -->
             <div class="item">
@@ -37,44 +32,31 @@
             <a data-slide="next" href="#myCarousel" class="carousel-control right btn-circle">›</a>
         </div><!-- /.control-box -->
     </div><!-- /#myCarousel -->
+
     <div class="row">
-        <form class="navbar-form navbar especial" role="search" onload="Fill()" id="forma" name="forma">
+        <form class="navbar-form navbar especial" role="search" name="forma" id="forma">
 
-            <div class="form-group">
-                @Html.HiddenFor(m => m.Pais)
-
-                <div class="col-2">
-                    <label class="glyphicon glyphicon-map-marker"></label>
-                    <script>Fill();</script>
-                    @Html.DropDownListFor(m => m.Estado, ListHelper.SelectListItemHelper.GetEstadosList(Model.Pais), new
-               { @class = "form-control required place-holder", @onchange = "FillCity()" })
-                </div>
-            </div>
+            @Html.HiddenFor(m => m.menuopcion)
             <div class="form-group">
                 <div class="col-2">
                     <label class="glyphicon glyphicon-record"></label>
-                    @Html.DropDownListFor(m => m.Ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(Model.Estado), new
+                    @Html.DropDownListFor(m => m.ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(24), new
                {
                    @class = "form-control required place-holder",
                    @onchange = "FillSector()",
-                   @onmouseup ="FillSector"
+                   @onmouseup = "FillSector",
+                   @Model.ciudad
 
                })
-                </div>
-            </div>
-            <div class="form-group">
 
-                <div class="col-2">
-                    <label class="glyphicon glyphicon-flag"> </label>
-                    @Html.DropDownListFor(m => m.Sector, ListHelper.SelectListItemHelper.GetSectoresList(Model.Ciudad), new
-               {   @class = "form-control required place-holder" 
-                                })
+
                 </div>
             </div>
+
             <div class="form-group ">
                 <div class="col-2">
-                    <label>Sector</label>
-                    <input type="text" class="form-control" placeholder="Search" >
+                    <label>Buscar</label>
+                    <input type="text" class="form-control" placeholder="Search" value="@Model.Searchstr">
                 </div>
             </div>
 
@@ -84,258 +66,225 @@
 
         </form>
     </div>
-
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
-        </ol>
-        <div class="catmenu">
-            <div class="col-md-3 col-lg-3">
-                <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consec</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis</li>
-                  </ul>
-            </div>
-        </div>
-        <div class="col-md-8">
+            
+</div>
 
 
-            <div class="col-sm-6 col-md-4">
-                <a href="../Home/Detail">
-                    <div class="thumbnail">
-                        <img src="~/images/logo-1.png" alt="...">
-                        <div class="caption">
-                            <h3>Mr.DOg</h3>
-                            <h4>Si sitio Ideal</h4>
-                        </div>
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>El Mejicanito</h3>
-                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>Mr.DOg</h3>
-                        <h4>Si sitio Ideal</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>Greeners</h3>
-                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div><div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>El rincon de Daisy</h3>
-                        <h4>Empanadas desayunos en Si sitio Ideal</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>El Mejicanito</h3>
-                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>El Mejicanito</h3>
-                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>El Mejicanito</h3>
-                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="~/images/logo-1.png" alt="...">
-                    <div class="caption">
-                        <h3>El Mejicanito</h3>
-                        <h4>todo enensaladas y perros calientes las 24 hora</h4>
-                    </div>
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </div>
-            </div>
-        </div>     
-            <div class="row">
-                <div class="col-md-3 col-lg-3">
-                </div>
-                <div class="col-md-3 col-lg-3">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Catalogo</a></li>
+                <li> </li>
+            </ol>
+            
 
-        </div>
+         
+           
+            </div>
+            <div class="catmenu">
+                <div class="col-md-2 col-lg-2">
+                    <ul class="list-group" >
+                        <li class="list-group-item"><a href="javascript:choose(0);">Todos</a></li>
+                        @foreach (var item in Model.ListaEspecialidades)
+                        {
+                        <li class="list-group-item" ><a href="javascript:choose(@item.IdEspecialidad);">@item.EspecialidadDesc</a></li >
+                        }
+                    </ul>
+                </div> 
+            </div>
+                  
+            <div id="Details" class="col-md-8 col-lg-8">
+    @if (Model.restaurante.Count > 0)
+    {
+        @Html.Partial("StoresView")
+
+    }
+    else
+    {   <div class="row">
+                    <div class="col-md-8 col-lg-8">
+                        <p>sjdkflahjksdfahsdf</p>
+                    </div>
+                </div>
+    }
+     </div>
+
+    <div class="CarritoAd col-md-2 col-lg-2">
+        <center>Carrito de compra</center>
     </div>
 
-               
-          @Scripts.Render("~/bundles/jquery")  
-    {
-  <script>
-<!--
+<div class="col-md-12">
+    <div class="row">
+        <div id='Paging' style="text-align: center">
+         
 
-      
-    // Carousel Auto-Cycle
+            @Html.PagedListPager(Model.restaurante, page => Url.Action("Index", new { page }))
+            Pagina @(Model.restaurante.PageCount < Model.restaurante.PageNumber ? 0 : Model.restaurante.PageNumber)
+            de @Model.restaurante.PageCount
+        </div>
+           </div>
+</div>
+
+<div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div>
+<!-- line modal -->
+<form action="/" method="post" >
+    <div class="modal fade" id="squarespaceModal" name="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title" id="lineModalLabel">My Modal</h3>
+                </div>
+                <div class="modal-body" id="formcontact">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <p>@ViewBag.error1</p>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.contact.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.contact.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.contact.Nombre, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.contact.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.contact.email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.contact.email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.contact.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.contact.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.contact.Telefono, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.contact.TipodeContacto, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EnumDropDownListFor(x => x.contact.TipodeContacto, "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.contact.TipodeContacto, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.contact.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.contact.Descripcion, 6, 100, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.contact.Descripcion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.contact.DateCreated, DateTime.Now)
+                        <input id="iscontact" name="iscontact" type="hidden" value="true" />
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" role="button">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </form>
+    @Scripts.Render("~/bundles/jquery")
+    @section Scripts {
+        @if (@Model.iscontact)
+        {
+            <script>
+                $('#squarespaceModal').modal({ show: 'true' });
+          //      $('#squarespaceModal').html("");
+            </script>
+        }
+        else
+        { Model.contact = new Contacto();
+            Model.contact.Nombre = "";
+            <script>
+                $("#contact_Nombre").html("");
+                $("#contact_email").html("");
+                $("#contact_Telefono").html("");
+                $("#contact_Descripcion").html("");
+
+             </script>
+        }
+                <script>
+
+                    <!--
+
+
+        window.status = "";
+        var vciudad = 0;
+
+      if (localStorage.getItem("Ciudad") != null) {
+          var vciudad = localStorage.getItem('Ciudad');
+          document.getSelection("ciudad").value = vciudad;
+          FillCity();
+          enviar(0);
+      } else {
+                        vciudad = document.getSelection("ciudad").value.toString();
+                    FillCity();
+      }
+
+       // Carousel Auto-Cycle
       $(document).ready(function () {
-          leelocal();
-
-
-        $('.carousel').carousel({
-            interval: 3000
+                        leelocal();
+                    $('.carousel').carousel({
+                        interval: 10000
         })
-      
-       
+
+
     });
 
-//-->
-</script>
-<script>
- <!--
-      var vpais = 1;
-      var vestado = 0;
-      var vciudad = 0;
-      var vsector = 0;
+      function choose(number) {
+          var cityId = document.getElementById("ciudad").value;
+          document.getElementById("menuopcion").value = number;
+          document.forma.submit();
+      }
+
 
       function leelocal() {
-          $("#Sector").append($('<option>---------Seleccione---------</option>').val(""));
-          $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
-       vpais = localStorage.getItem("pais");
-       vestado = localStorage.getItem("estado");
-       vciudad = localStorage.getItem("ciudad");
-       vsector = localStorage.getItem("sector");
-      
-          document.getElementById("Estado").value = vestado;
-          document.getElementById("Pais").value = vpais;
-          document.getElementById("Ciudad").value = vciudad;
-          document.getElementById("Sector").value = vsector;
-  
-      FillCity();
-      FillSector();
-      
-    }
+                        FillCity();
+                    }
     function savelocal() {
-        
-        var CountryId = document.getElementById("Pais").value;
-        localStorage.setItem("pais", CountryId)
-       var stateId = document.getElementById("Estado").value;
-        localStorage.setItem("estado", stateId)
-        var cityId = document.getElementById("Ciudad").value;
-        localStorage.setItem("ciudad", cityId)
-        var sectorId = document.getElementById("Sector").value;
-        localStorage.setItem("sector", sectorId)
-        
+        var cityId = document.getElementById("Ciudad").value.toString();
+        localStorage.setItem('ciudad', cityId);
+        var scity = localStorage.getItem('ciudad');
     }
     function Fill() {
-        FillCity();
-        FillSector();
-      
-    }
-     function FillCity() {
-       
-        
-         var stateId = document.getElementById("Estado").value;
-          $.ajax({
-             url: '/Account/FillCity',
-             type: "GET",
-             dataType: "JSON",
-             data: { id: stateId },
-             success: function (cities) {
-                 $("#Ciudad").html(""); // clear before appending new list
-                 $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
-                 $.each(cities, function (i, city) {
-                     $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
-                 });
-                 $("#Ciudad").val(vciudad); 
-             },
-            
-         });
-          
-      }
-     function FillSector() {
-         ciudadId = document.getElementById("Ciudad").value;
-         if (ciudadId == "")
-             ciudadId = vciudad;
-       
-         $.ajax({
-             url: '/Account/FillSector',
-             type: "GET",
-             dataType: "JSON",
-             data: { Id: ciudadId },
-             success: function (sectores) {
-                 $("#Sector").html(""); // clear before appending new list
-                 //Coloca el mensaje Seleccione si se ha colocado en el atributo 'place-holder' de bootstrap
-                 $("#Sector").append($('<option>---------Seleccione---------</option>').val(""));
-                 $.each(sectores, function (n, sect) {
-                     $("#Sector").append($('<option>' + sect.Nombresector + '</option>').val(sect.Id));
-                 });
-            
-             $("#Sector").val(vsector); 
-             },
-                           
-         });
-        
-         
-     }
-    //-->
-</script>
-}
+                        FillCity();
+                    }
+        function FillCity() {
+            var stateId = 24;
+
+            $.ajax({
+                        url: '/Account/FillCity',
+                type: "GET",
+                dataType: "JSON",
+                data: {id: stateId },
+                success: function (cities) {
+                        $("#Ciudad").html(""); // clear before appending new list
+                    $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
+                    $.each(cities, function (i, city) {
+                        $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
+                    });
+                    $("#Ciudad").val(vciudad);
+                },
+
+            });
+
+
+       }
+
+
+   //--> </script>
+
+        }
+
+
+

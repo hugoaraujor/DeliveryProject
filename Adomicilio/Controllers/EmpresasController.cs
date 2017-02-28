@@ -19,7 +19,7 @@ namespace Adomicilio
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Empresas
-        public ViewResult  Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -36,8 +36,36 @@ namespace Adomicilio
 
             ViewBag.CurrentFilter = searchString;
 
-            var empresas = from s in db.Empresa join tipos in db.TipoEmpresa    on s.CategoriaLocal equals tipos.Id
-                           select new EmpresaCatalog { Activa = s.Activa, IdEmpresa = s.IdEmpresa, RazonSocial = s.RazonSocial, Telefonos = s.Telefonos, CategoriaLocal = s.CategoriaLocal, TipoLocal = tipos.TipodeLocal, Contacto = s.Contacto, DateCreated = s.DateCreated, Slogan = s.Slogan, RIF = s.RIF, Delivery = s.Delivery, Direccion = s.Direccion, horario1 = s.horario1, TipodeComida = s.TipodeComida };
+            var empresas = from s in db.Empresa join tipos in db.TipoEmpresa on s.CategoriaLocal equals tipos.Id
+                           select new EmpresaCatalog {
+                               IdEmpresa = s.IdEmpresa,
+                               RazonSocial = s.RazonSocial,
+                               RIF = s.RIF,
+                               Telefonos = s.Telefonos,
+                               Slogan = s.Slogan,
+                               CategoriaLocal = s.CategoriaLocal,
+                               TipodeComida = tipos.Id,
+                               like = s.like,
+                               Direccion = s.Direccion,
+                               horario1 = s.horario1,
+                               Delivery = s.Delivery,
+                               Contacto = s.Contacto,
+                               logo = s.logo,
+                               Activa = s.Activa,
+                               DateEdited = s.DateEdited,
+                               tipodelivery = s.tipodelivery,
+                               idCiudad = s.idCiudad,
+                               idEstado = s.idEstado,
+                               Sectores = s.Sectores,
+                               imagenurl = s.imagenurl,
+                               User = s.User,
+                               claveuser = s.claveuser,
+                               ip = s.ip,
+                               tipodecomidastr = tipos.TipodeLocal,
+                               DateCreated = s.DateCreated
+                           };
+
+        
             if (!String.IsNullOrEmpty(searchString))
             {
                 empresas = empresas.Where(s => s.RazonSocial.Contains(searchString)
@@ -48,18 +76,18 @@ namespace Adomicilio
                 case "name_desc":
                     empresas = empresas.OrderByDescending(s => s.RazonSocial);
                     break;
-                
+
                 default:  // Name ascending 
                     empresas = empresas.OrderBy(s => s.RazonSocial);
                     break;
             }
 
-            int pageSize =10;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             //return View(empresas.ToPagedList(pageNumber, pageSize));
-            return View(empresas.ToPagedList(pageNumber,pageSize));
+            return View(empresas.ToPagedList(pageNumber, pageSize));
         }
-        
+
         // GET: Empresas/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -71,7 +99,32 @@ namespace Adomicilio
             GruposMenusController gmc = new GruposMenusController();
             List<GruposMenu> gruposMenu = gmc.getgrupos(s.IdEmpresa);
             TipoEmpresa tipos = db.TipoEmpresa.Find(s.CategoriaLocal);
-            EmpresaCatalog empresaCat=new EmpresaCatalog {Activa = s.Activa, IdEmpresa = s.IdEmpresa, RazonSocial = s.RazonSocial, Telefonos = s.Telefonos, CategoriaLocal = s.CategoriaLocal, TipoLocal = tipos.TipodeLocal, Contacto = s.Contacto, DateCreated = s.DateCreated, Slogan = s.Slogan, RIF = s.RIF, Delivery = s.Delivery, Direccion = s.Direccion, horario1 = s.horario1,TipodeComida=s.TipodeComida };
+            EmpresaCatalog empresaCat = new EmpresaCatalog {  IdEmpresa = s.IdEmpresa,
+                                                          RazonSocial = s.RazonSocial,
+                                                          RIF = s.RIF,
+                                                          Telefonos = s.Telefonos,
+                                                          Slogan = s.Slogan,
+                 CategoriaLocal = s.CategoriaLocal,
+                TipodeComida = s.TipodeComida,
+                tipodecomidastr=tipos.TipodeLocal,
+                like =s.like,Direccion=s.Direccion,
+                horario1 = s.horario1,
+                Delivery =s.Delivery,
+                Contacto =s.Contacto,
+                logo =s.logo,
+                Activa =s.Activa,
+                DateEdited =s.DateEdited,
+                tipodelivery = s.tipodelivery,
+                idCiudad =s.idCiudad,
+                idEstado = s.idEstado,
+                Sectores =s.Sectores,
+                imagenurl =s.imagenurl,
+                User =s.User,
+                claveuser =s.claveuser,
+                ip =s.ip,
+            DateCreated=s.DateCreated
+            };
+
             empresaCat.grupomenu = gruposMenu;
             if (s == null)
             {
@@ -81,22 +134,22 @@ namespace Adomicilio
             if (s.logo != null)
             {
                 MemoryStream ms = new MemoryStream(s.logo);
-            Image imge=Image.FromStream(ms);
-             
-            String  img2= "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
-            // Response.Clear();
-            //  Response.ContentType = "image/png";
-            //  Response.BufferOutput = true;
-            //img.Save(Response.OutputStream, ImageFormat.Png);
-            //   Response.Flush();
-            ViewBag.foto = img2;
-        }else
+                Image imge = Image.FromStream(ms);
+
+                String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
+                // Response.Clear();
+                //  Response.ContentType = "image/png";
+                //  Response.BufferOutput = true;
+                //img.Save(Response.OutputStream, ImageFormat.Png);
+                //   Response.Flush();
+                ViewBag.foto = img2;
+            } else
                 ViewBag.foto = "../../images/NOPHOTO.png";
 
             @ViewBag.Number = s.IdEmpresa;
             return View(empresaCat);
         }
-
+    
         // GET: Empresas/Create
         public ActionResult Create()
         {
@@ -114,8 +167,11 @@ namespace Adomicilio
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "RazonSocial,RIF,Telefonos,Slogan,Valoracion,CategoriaLocal,like,Direccion,horario1,Delivery,Contacto,TipodeComida")] Empresa empresa, [Bind(Include = "file1")] HttpPostedFileBase file1)
+        public async Task<ActionResult> Create([Bind(Include = "IdEmpresa,RazonSocial,RIF ,Telefonos, Slogan, CategoriaLocal,TipodeComida,like,Direccion,horario1,Delivery,Contacto,logo, Activa,DateCreated, DateEdited ,tipodelivery ,idCiudad ,idEstado,Sectores , imagenurl,User ,claveuser, ip ")] Empresa empresa, [Bind(Include = "file1")] HttpPostedFileBase file1)
         {
+
+            
+
             if (file1 != null)
             {       var rutaArchivo = this.Request.Form[file1.FileName];
 
@@ -141,6 +197,8 @@ namespace Adomicilio
         // GET: Empresas/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+           
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -148,26 +206,31 @@ namespace Adomicilio
             Empresa empresa = await db.Empresa.FindAsync(id);
             if (empresa == null)
             {
-                return HttpNotFound();
+                return  HttpNotFound();
             }
             if (empresa.logo != null)
             {
+                
                 MemoryStream ms = new MemoryStream(empresa.logo);
-                var img = Image.FromStream(ms);
+                //ms.Seek(0, SeekOrigin.Begin);
+                //var img = Image.FromStream(ms);
+                //ms.Seek(0, SeekOrigin.Begin);
+                //ms.WriteTo(salida);
                 //   Response.Clear();
                 //   Response.ContentType = "image/png";
                 // Response.BufferOutput = true;
                 // img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+               // img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 //  Response.Flush();
                
+                //String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
                 String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
                 // Response.Clear();
                 //  Response.ContentType = "image/png";
                 //  Response.BufferOutput = true;
                 //img.Save(Response.OutputStream, ImageFormat.Png);
                 //   Response.Flush();
-           
+
                 ViewBag.foto = img2;
             }else
                 ViewBag.foto = "../../images/NOPHOTO.png";
@@ -180,8 +243,29 @@ namespace Adomicilio
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdEmpresa,RazonSocial,RIF,Telefonos,Slogan,Valoracion,CategoriaLocal,like,Direccion,horario1,Delivery,Contacto,logo,Activa,DateCreated,TipodeComida")] Empresa empresa, [Bind(Include = "file1")] HttpPostedFileBase file1)
+        public async Task<ActionResult> Edit([Bind(Include = "IdEmpresa,RazonSocial,RIF ,Telefonos, Slogan, CategoriaLocal,TipodeComida,like,Direccion,horario1,Delivery,Contacto,logo, Activa,DateCreated, DateEdited ,tipodelivery ,idCiudad ,idEstado,Sectores , imagenurl,User ,claveuser, ip ")] Empresa empresa, [Bind(Include = "file1")] HttpPostedFileBase file1)
         {
+
+            if (empresa.Valoracion == null)
+                empresa.Valoracion = 0;
+            if (empresa.like == null)
+                empresa.like=0;
+            if (empresa.Delivery == null)
+                empresa.Delivery = 0;
+            if (empresa.Activa == null)
+                empresa.Activa=true;
+            if (empresa.claveuser == null)
+                empresa.claveuser = "";
+            if (empresa.tipodelivery == null)
+                empresa.tipodelivery = 0;
+            if (empresa.User == null)
+                empresa.User = "";
+            if (empresa.ip == null)
+                empresa.ip= "";
+            if (empresa.ip == null)
+                empresa.ip = "";
+
+
             if (file1 != null)
             {
                 var rutaArchivo = this.Request.Form[file1.FileName];
@@ -195,6 +279,34 @@ namespace Adomicilio
 
 
             }
+            if (empresa.logo != null)
+            {
+
+                MemoryStream ms = new MemoryStream(empresa.logo);
+                //ms.Seek(0, SeekOrigin.Begin);
+                //var img = Image.FromStream(ms);
+                //ms.Seek(0, SeekOrigin.Begin);
+                //ms.WriteTo(salida);
+                //   Response.Clear();
+                //   Response.ContentType = "image/png";
+                // Response.BufferOutput = true;
+                // img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
+                // img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                //  Response.Flush();
+
+                //String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
+                String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
+                // Response.Clear();
+                //  Response.ContentType = "image/png";
+                //  Response.BufferOutput = true;
+                //img.Save(Response.OutputStream, ImageFormat.Png);
+                //   Response.Flush();
+
+                ViewBag.foto = img2;
+            }
+            else
+                ViewBag.foto = "../../images/NOPHOTO.png";
+
             if (ModelState.IsValid)
             {
                 db.Entry(empresa).State = EntityState.Modified;

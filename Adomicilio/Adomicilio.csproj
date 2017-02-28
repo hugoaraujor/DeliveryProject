@@ -34,11 +34,12 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <PublishDatabases>true</PublishDatabases>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -186,8 +187,8 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CiudadesController.cs" />
-    <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\Correo.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
@@ -236,9 +237,12 @@
     <Compile Include="Controllers\SectorsController.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\TipoEmpresasController.cs" />
+    <Compile Include="Util\Class1.cs" />
     <Compile Include="Util\ListHelper.cs" />
+    <Compile Include="Util\UtilesViews.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -253,21 +257,19 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\header.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Empresas\empresasDetail.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ViewContact.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
     <Content Include="Controllers\ConfirmEmail.cshtml" />
     <Content Include="Controllers\DisplayEmail.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Contacto\Create.cshtml" />
-    <Content Include="Views\Contacto\Delete.cshtml" />
-    <Content Include="Views\Contacto\Details.cshtml" />
-    <Content Include="Views\Contacto\Index.cshtml" />
-    <Content Include="Views\Shared\ViewContact.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\TipoEmpresas\Create.cshtml" />
     <Content Include="Views\TipoEmpresas\Delete.cshtml" />
@@ -311,6 +313,16 @@
     <None Include="Properties\PublishProfiles\deli - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\deli - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Publicar.pubxml" />
+    <Content Include="Views\Home\StoresView.cshtml" />
+    <Content Include="Views\Contacto\Create.cshtml" />
+    <Content Include="Views\Contacto\Delete.cshtml" />
+    <Content Include="Views\Contacto\Details.cshtml" />
+    <Content Include="Views\Contacto\Edit.cshtml" />
+    <Content Include="Views\Contacto\Index.cshtml" />
+    <Content Include="Views\Home\ViewContactsucess.cshtml" />
+    <Content Include="Views\Home\_ViewContact.cshtml" />
+    <Content Include="Views\Home\_PartialPage1.cshtml" />
+    <Content Include="Views\Home\_ContactView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -338,7 +350,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Contacto\Contact.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

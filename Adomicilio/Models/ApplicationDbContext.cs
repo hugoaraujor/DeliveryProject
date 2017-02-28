@@ -11,15 +11,15 @@ namespace Adomicilio.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, int, UserLogin, UserRole, UserClaim>
         {
-        public ApplicationDbContext(): base("Connection1")
+        public ApplicationDbContext(): base("LocalConnection")
         {
             //hugo araujo r cambio de clave
-            Configuration.LazyLoadingEnabled = true;
-            Configuration.ProxyCreationEnabled = true;
-            Configuration.AutoDetectChangesEnabled = false;
-      //      Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
-         //   Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
-           // Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.AutoDetectChangesEnabled = true;
+            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+           // Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
+          //  Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
 
 
         }
@@ -77,9 +77,7 @@ namespace Adomicilio.Models
 
         public static ApplicationDbContext Create()
         {
-                   
-
-            return new ApplicationDbContext();
+               return new ApplicationDbContext();
         }
 
         public System.Data.Entity.DbSet<Adomicilio.Models.Contacto> Contactoes { get; set; }

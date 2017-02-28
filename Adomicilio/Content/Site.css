@@ -1,14 +1,29 @@
 ﻿* {
     margin: 0;
-    padding: 0;
+    padding: 0px;
 }
+footer ul {
 
+    text-decoration: none;
+    list-style: none;
+}
+footer ul li a{
+    
+    text-decoration: none;
+    
+}
+    footer ul li a:hover {
+        text-decoration: none;
+        color:white;
+    }
 body,
 #wrap,
 conta2 {
     height: 100%;
-  /*  margin-top: 80px;*/
+    /*  margin-top: 80px;*/
     min-height: calc(100vh - 150px);
+    background-color: #c2185b;
+    
     
 }
 
@@ -18,10 +33,10 @@ html {
 }
 
 body {
-    padding-top: 10px;
-    background-color: orange;
+    padding-top: 0px;
+    
     min-height: calc(100% - 150px);
-    /*margin-top: -150px; /* Misma altura que el footer en negativo */ 
+    /*margin-top: -150px; /* Misma altura que el footer en negativo */
     /* padding-bottom: -150px;*/
 }
 #imagen {
@@ -45,11 +60,19 @@ body {
     padding-left: 2%;
     padding-right: 15px;
     padding-bottom: 20px; /* Mis altura que el footer */
-
+    background-color: whitesmoke;
     margin-top: 49px;
+
 }
 header {
     padding-right: 15px;
+}
+.breadcrumb {
+    padding-right: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left:15px;
+  
 }
 h2 {
     padding-right: 15px;
@@ -65,21 +88,22 @@ textarea {
 }
 .conta2 {
     border: 1px 1px 1px 1px double solid gray;
-    background-color: white;
-    width: 90%;
+    background-color: whitesmoke;
+    width: 95%;
     /* POnerlo al 100% para que ocupe toda a panatalla*/
    
 }
 footer {  
     clear: both;
     color: white;
-    background-color: darkslategrey;
+    background-color: black;
     width: 100%;
     padding-top: 20px;
     padding-left: 30px;
     position: relative;
     margin-top:20px;
     height: 150px; /* Altura del footer */
+    text-decoration:none;
   
 }
 
@@ -91,7 +115,10 @@ footer {
 .stepwizard-step p {
     margin-top: 10px;
 }
-
+.row {
+    padding: 0px;
+    margin: 0px;
+}
 .stepwizard-row {
     display: table-row;
 }
@@ -180,14 +207,13 @@ a {
     border-color:white;
 }
 .navbar-form {
-    background-color: #E53935;
-    padding: 10px 16px;
+    background-color: #e51c23;
+    padding: 3px 3px;
     font-size: 16px;
     font-weight: 800;
     line-height: 1.33;
-    border-radius: 25px;
-    border-width: medium;
-    border-color: white;
+    border-radius: 0px;
+    margin: 0px 0px 0px 0px;
 }
 .especial{
     font-size:small;
@@ -203,27 +229,14 @@ a {
 .especial  label {
     font-size: small;
     font-weight: 100;
-    color: blue;
+    color: white;
 }
     .catmenu {
        
         color: blue;
     }
 
-.thumbnail a img {
-    height: 120px;
-    width: 1630px;
-}
 
-.thumbnail h3 {
-    height: 30px;
-    font-size: medium;
-    font-weight: 600;
-}
-.thumbnail h4 {
-    height: 30px;
-    font-size: small;
-}
 .social  {
 
     height: 48px;
@@ -294,3 +307,141 @@ width:100%;
     color: gray;
        font-weight: 600;
 }
+
+.list-group {
+    line-height: 90%;
+    margin: 1px 1px 10px 1px;
+    padding: 0px 0px 0px 0px;
+    border-radius: 0px;
+   
+}
+.list-group li{
+
+    margin: 0px 0px 5px 0px;
+    border-radius: 0px;
+  
+}
+    .list-group li:hover {
+        border-radius: 0px;
+        border-left: 8px solid;
+        border-bottom:0px solid;
+        border-top: 0px solid;
+        border-right: 0px solid;
+        border-color: darkorange;
+    }
+/* Thumnail Imagenes  */
+
+.thumbnail a {
+    text-decoration: none;
+    background-color: violet;
+}
+
+.thumbnail {
+    
+    line-height: 50%;
+    margin: 1px 1px 10px 1px;
+    padding: 1px 1px 1px 1px;
+    border-radius: 0px;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+    .thumbnail a img {
+        height: 130px;
+        width: 100%;
+    }
+
+    .thumbnail h3 {
+        height: 30px;
+        font-size: medium;
+        font-weight: 600;
+    }
+
+    .thumbnail h4 {
+        height: 30px;
+        font-size: small;
+    }
+
+    .thumbnail:hover {
+        -webkit-box-shadow: -4px 0px 50px -12px rgba(235,115,9,0.63);
+        -moz-box-shadow: -4px 0px 50px -12px rgba(235,115,9,0.63);
+        box-shadow: -4px 0px 50px -12px rgba(235,115,9,0.63);
+        border-color: darkorange;
+    }
+
+.thumbnail {
+    -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
+    box-shadow: 2px 2px 2px 2px #C2C0B4;
+}
+
+
+
+.logorestaurante {
+    
+    height: auto;
+
+}
+    .logorestaurante img {
+        width: 100%;
+        height: 170px;
+        object-fit: contain;
+        padding: 5px 5px 5px 5px;
+    }
+
+#slogan {
+    font-size: small;
+    font-weight: 100;
+    color:dimgray;
+    padding: 2px 2px 1px 5px;
+}
+.nombrelocal {
+    font-size: large;
+    font-weight: 700;
+    color: coral;
+    padding:5px 5px 7px 5px;
+}
+.CarritoAd {
+    font-size: medium;
+    font-weight: 700;
+    color: white;
+    padding: 2px 2px 2px 2px;
+    margin: 2px 2px 2px 2px;
+    background-color: crimson;
+    height: 105px;
+    border-radius: 5px;
+}
+.navbar-default {
+    background-color: #e51c23;
+}
+.container {
+    background-color: whitesmoke;
+    padding:0px 0px 0px 0px;
+}
+
+
+/**************************************************/
+.center {
+    margin-top: 50px;
+}
+
+.modal-header {
+    padding-bottom: 5px;
+}
+
+.modal-footer {
+    padding: 0;
+}
+
+    .modal-footer .btn-group button {
+        height: 40px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border: none;
+        border-right: 1px solid #ddd;
+    }
+
+    .modal-footer .btn-group:last-child > button {
+        border-right: 0;
+    }
+

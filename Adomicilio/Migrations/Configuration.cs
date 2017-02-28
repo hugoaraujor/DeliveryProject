@@ -11,8 +11,8 @@ namespace Adomicilio.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationDataLossAllowed = false;
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Adomicilio.Models.ApplicationDbContext context)
@@ -55,7 +55,7 @@ namespace Adomicilio.Migrations
                 context.Roles.Add(new Role { Id = 1, Name = "User" });
                 context.Roles.Add(new Role { Id = 2, Name = "Admin" });
                 context.Roles.Add(new Role { Id = 99, Name = "Master" });
-                context.Users.Add(new ApplicationUser { UserName = "admin@adomicilio.com", Email = "admin@adomicilio.com", Password = "V-1234567", EmailConfirmed = true, TipoAfiliacion = 0, Sexo = Sexoenum.Masculino, Apellidos = "administrador", PasswordHash = "AF7gxVvymbfhUC2kVhlCsMnIInByOBvX16YbkTehqdyViYOaQ3iDUm1HLJjwgA / Qig ==", SecurityStamp = "41a72c89-adce-4a53-9644-85e46dc473c7", Nombres = "administrador", Pais = 1, Ciudad = 1 });
+                context.Users.Add(new ApplicationUser { UserName = "admin@adomicilio.com", Email = "admin@adomicilio.com", Password = "V-1234567", EmailConfirmed = true, TipoAfiliacion =TipoAfiliacion.Master, Sexo = Sexoenum.Masculino, Apellidos = "administrador", PasswordHash = "AF7gxVvymbfhUC2kVhlCsMnIInByOBvX16YbkTehqdyViYOaQ3iDUm1HLJjwgA / Qig ==", SecurityStamp = "41a72c89-adce-4a53-9644-85e46dc473c7", Nombres = "administrador", Pais = 1, Ciudad = 1 });
                 try
                 {
                     context.SaveChanges();

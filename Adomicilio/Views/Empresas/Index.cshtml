@@ -67,6 +67,11 @@
                         @Html.DisplayNameFor(model => model.Single().DateCreated)
                     </div>
                 </th>
+                <th>
+                    <div class="visible-md visible-lg">
+                        @Html.DisplayNameFor(model => model.Single().DateEdited)
+                    </div>
+                </th>
                 <th></th>
             </tr>
 
@@ -85,7 +90,7 @@
 
                     <td>
                         <div class="visible-md visible-lg">
-                            @Html.DisplayFor(modelItem => item.TipoLocal)
+                            @Html.DisplayFor(modelItem => item.tipodecomidastr)
                             </div>
 </td>
 
@@ -103,6 +108,11 @@
                     <td>
                         <div class="visible-md visible-lg">
                             @Html.DisplayFor(modelItem => item.DateCreated)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="visible-md visible-lg">
+                            @Html.DisplayFor(modelItem => item.DateEdited)
                         </div>
                     </td>
                     <td>

@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Adomicilio.Models;
 
-namespace Adomicilio
+namespace Adomicilio.Controllers
 {
     public class ContactoController : Controller
     {
@@ -36,7 +36,7 @@ namespace Adomicilio
         }
 
         // GET: Contacto/Create
-        public ActionResult Contact()
+        public ActionResult Create()
         {
             return View();
         }
@@ -46,24 +46,18 @@ namespace Adomicilio
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Contact([Bind(Include = "IdContact,Telefono,Nombre,TipodeContacto,Descripcion,email,DateCreated,DateRespondido,DateLeido,respondido,leido")] Contacto contacto)
+        public ActionResult Create([Bind(Include = "IdContact,Telefono,Nombre,TipodeContacto,Descripcion,email,DateCreated")] Contacto contacto)
         {
             if (ModelState.IsValid)
             {
-                contacto.DateCreated = DateTime.Now;
-
                 db.Contactoes.Add(contacto);
                 db.SaveChanges();
-                ViewBag.Mensaje = "Se Envio tu mensaje.";
+                return RedirectToAction("Index");
             }
-            else
-            {
-                ModelState.AddModelError("", "Hubo un problema al enviar el correo.");
-            }
-            
+
             return View(contacto);
         }
-
+       
         // GET: Contacto/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -84,7 +78,7 @@ namespace Adomicilio
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdContact,Telefono,Nombre,TipodeContacto,Descripcion,email,DateCreated,DateRespondido,DateLeido,respondido,leido")] Contacto contacto)
+        public ActionResult Edit([Bind(Include = "IdContact,Telefono,Nombre,TipodeContacto,Descripcion,email,DateCreated")] Contacto contacto)
         {
             if (ModelState.IsValid)
             {
