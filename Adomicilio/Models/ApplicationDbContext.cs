@@ -55,7 +55,7 @@ namespace Adomicilio.Models
         public DbSet<Especialidad> Especialidad { get; set; }
         public DbSet<MenuIngredients> MenuIngredients { get; set; }
         // public System.Data.Entity.DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
+        public DbSet<Contacto> Contactoes { get; set; }
 
         public object ApplicationUsers { get; internal set; }
 
@@ -80,6 +80,6 @@ namespace Adomicilio.Models
                return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Adomicilio.Models.Contacto> Contactoes { get; set; }
+       
     }
 }

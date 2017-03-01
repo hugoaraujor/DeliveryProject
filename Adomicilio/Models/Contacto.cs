@@ -32,10 +32,8 @@ namespace Adomicilio.Models
         [Column(TypeName = "DateTime2")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime? DateCreated { get; set; }
-        [Column(TypeName = "DateTime2")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public bool nuevo;
-        public bool respondido;
+          public bool? nuevo { get; set; }
+        public bool? respondido { get; set; }
 
     }
 

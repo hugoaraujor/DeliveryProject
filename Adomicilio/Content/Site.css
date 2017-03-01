@@ -1,6 +1,7 @@
 ﻿* {
-    margin: 0;
-    padding: 0px;
+    margin: 0px;
+    padding:0px;
+    
 }
 footer ul {
 
@@ -19,6 +20,7 @@ footer ul li a{
 body,
 #wrap,
 conta2 {
+    
     height: 100%;
     /*  margin-top: 80px;*/
     min-height: calc(100vh - 150px);
@@ -34,10 +36,10 @@ html {
 
 body {
     padding-top: 0px;
-    
     min-height: calc(100% - 150px);
     /*margin-top: -150px; /* Misma altura que el footer en negativo */
     /* padding-bottom: -150px;*/
+    
 }
 #imagen {
     width: 300px;
@@ -48,10 +50,11 @@ body {
     background-color:white;
 }
 
-    body > #wrap {
-        height: auto;
-        min-height: calc(100vh - 150px);
-    }
+body > #wrap {
+    height: auto;
+    min-height: calc(100vh - 150px);
+    
+}
 
 
 /* Set padding to keep content from hitting the edges */
@@ -62,7 +65,7 @@ body {
     padding-bottom: 20px; /* Mis altura que el footer */
     background-color: whitesmoke;
     margin-top: 49px;
-
+    
 }
 header {
     padding-right: 15px;
@@ -77,7 +80,7 @@ header {
 h2 {
     padding-right: 15px;
     text-align:center;
-    font-weight:900;
+    font-weight:700;
     color:darkorange;
     }
 /* Set width on the form input elements since they're 100% wide by default */
@@ -91,7 +94,7 @@ textarea {
     background-color: whitesmoke;
     width: 95%;
     /* POnerlo al 100% para que ocupe toda a panatalla*/
-   
+    
 }
 footer {  
     clear: both;
@@ -106,11 +109,28 @@ footer {
     text-decoration:none;
   
 }
-
+.btn a{
+    color:white;
+    text-decoration:none;
+    
+}
+.btn {
+    margin:8px;
+}
 #wrap{
  
     height:100%;
 }
+#adminwrap {
+    height: 100%;
+   margin-left:20px;
+}
+
+.breadcrumb {
+    padding-top:30px;
+        width:95%;
+}
+
 
 .stepwizard-step p {
     margin-top: 10px;
@@ -231,11 +251,10 @@ a {
     font-weight: 100;
     color: white;
 }
-    .catmenu {
-       
-        color: blue;
-    }
 
+.catmenu {
+    color: blue;
+}
 
 .social  {
 
@@ -264,13 +283,18 @@ width:100%;
     }
 
 
-    
+.table {
+    margin: 10px 30px 10px 30px;
+    width:95%;
+}    
 #tabla {
     border: 5px solid white;
     border-collapse: separate;
-    border-spacing:0 1px;}
+    border-spacing:0 1px;
+    width:98%
+}
     #tabla tr {
-     line-height:2;
+     line-height:3;
      }
     #tabla td {
         padding-left: 15px;
@@ -289,6 +313,10 @@ width:100%;
         text-align:right;
 
     }
+   
+.resaltado {
+background-color:lightyellow;
+}
 
 
 
@@ -315,21 +343,57 @@ width:100%;
     border-radius: 0px;
    
 }
+/*------------------( Categorias en Home/Index)-------------------------------------------*/
+#Centro {
+    
+}
+    #categoriastitle {
+    margin: 0px 0px 5px 0px;
+    border-radius: 0px;
+    height: 55px;
+    border: 0px solid;
+    height:35px;
+    background-color:darkorange;
+   border-radius:10px 10px 0px 0px;
+   padding:10px;
+   color:white;
+   font-weight:600;
+   text-align:center;
+
+    
+}
+#categoriasclose {
+    margin: 0px 0px 5px 0px;
+    border-radius: 0px;
+    height: 55px;
+    border: 0px solid;
+    height: 35px;
+    background-color: darkorange;
+    border-radius: 0px 0px 10px 10px;
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
 .list-group li{
 
     margin: 0px 0px 5px 0px;
     border-radius: 0px;
-  
+    height:45px;
+  background-color:white;
+  border:0px solid;
 }
     .list-group li:hover {
         border-radius: 0px;
-        border-left: 8px solid;
+        border-left: 15px solid;
         border-bottom:0px solid;
         border-top: 0px solid;
         border-right: 0px solid;
         border-color: darkorange;
     }
-/* Thumnail Imagenes  */
+/*---------------------------------------------------------------------------------------------------/
+/*----------------------------------- Thumnail Imagenes  ------------------------------------------*/
 
 .thumbnail a {
     text-decoration: none;
@@ -342,9 +406,8 @@ width:100%;
     margin: 1px 1px 10px 1px;
     padding: 1px 1px 1px 1px;
     border-radius: 0px;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-delay: 2s;
-    -webkit-animation-iteration-count: infinite;
+    border:none;
+   
 }
 
     .thumbnail a img {
@@ -364,18 +427,19 @@ width:100%;
     }
 
     .thumbnail:hover {
-        -webkit-box-shadow: -4px 0px 50px -12px rgba(235,115,9,0.63);
-        -moz-box-shadow: -4px 0px 50px -12px rgba(235,115,9,0.63);
-        box-shadow: -4px 0px 50px -12px rgba(235,115,9,0.63);
-        border-color: darkorange;
+        
+        -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
+        box-shadow: 2px 2px 2px 2px #C2C0B4;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-delay: 2s;
+        -webkit-animation-iteration-count: 10;
     }
 
 .thumbnail {
-    -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
-    box-shadow: 2px 2px 2px 2px #C2C0B4;
+    
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 
 .logorestaurante {
     
@@ -407,16 +471,31 @@ width:100%;
     color: white;
     padding: 2px 2px 2px 2px;
     margin: 2px 2px 2px 2px;
-    background-color: crimson;
+    background-color:darkorange;
     height: 105px;
     border-radius: 5px;
 }
+
+.CarritoAd:hover {
+    -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
+    box-shadow: 2px 2px 2px 2px #C2C0B4;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: 10;
+}
+#Carritoimg {
+    height: 70px;
+    width: 95px;
+    margin-left: 50px;
+}
+
+
 .navbar-default {
     background-color: #e51c23;
 }
 .container {
     background-color: whitesmoke;
-    padding:0px 0px 0px 0px;
+    padding:3px 5px 2px 5px;
 }
 
 
@@ -444,4 +523,14 @@ width:100%;
     .modal-footer .btn-group:last-child > button {
         border-right: 0;
     }
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 10px;
+    margin: 20px 20px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
 

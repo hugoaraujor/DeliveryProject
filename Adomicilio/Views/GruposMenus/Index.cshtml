@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<Adomicilio.Models.GruposMenu>
-@{
-    ViewBag.Title = "Index";
+
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li><a href="/Admin">Empresas</a></li>
+    <li><a href="#" class="active">@ViewBag.Empresa</a></li>
     
-}
-<h2>Details</h2>
+</ol>
 <div>
-    <div class="col-md-3"><br></div> <h3><strong>@ViewBag.Empresa</strong></h3>
+     <h2><strong>@ViewBag.Empresa.ToUpper()</strong></h2>
     
         <div class="row">
-            <p>@ViewBag.Number</p>
+            <p>&nbsp</p>
             <ul class="nav nav-tabs">
                 <li role="presentation" class="" ><a href="@Url.Action("Details", "Empresas",routeValues: new { Id =  ViewBag.Number,status=1})">Detalles</a></li>
                 <li role="presentation" class="active" ><a href="@Url.Action("Index", "Gruposmenus",routeValues: new {Id = ViewBag.Number,status=2})">Categorias</a></li>

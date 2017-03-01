@@ -263,7 +263,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\ViewContact.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
     <Content Include="Controllers\ConfirmEmail.cshtml" />
     <Content Include="Controllers\DisplayEmail.cshtml" />
@@ -319,10 +318,7 @@
     <Content Include="Views\Contacto\Details.cshtml" />
     <Content Include="Views\Contacto\Edit.cshtml" />
     <Content Include="Views\Contacto\Index.cshtml" />
-    <Content Include="Views\Home\ViewContactsucess.cshtml" />
-    <Content Include="Views\Home\_ViewContact.cshtml" />
-    <Content Include="Views\Home\_PartialPage1.cshtml" />
-    <Content Include="Views\Home\_ContactView.cshtml" />
+    <Content Include="Views\Home\Contacto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

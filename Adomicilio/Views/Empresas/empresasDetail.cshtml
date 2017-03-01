@@ -120,8 +120,14 @@
             </td>
         </tr>
 
-    </table><br /><br />@Html.ActionLink("Edit", "Edit", new { id = Model.IdEmpresa }) |@Html.ActionLink("Eliminar", "Delete", new { id = Model.IdEmpresa })|
-    @Html.ActionLink("Back to List", "Index")
+    </table><br /><br />
+    
+    <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.IdEmpresa }) </button>
+    <button type="button" class="btn btn-default">
+        @Html.ActionLink("Eliminar", "Delete", new { id = Model.IdEmpresa })
+    </button>
+        <br />
+    <br />
 </div>
 <div class="col-md-6">
     <img src="@ViewBag.foto" />

@@ -12,6 +12,7 @@ namespace Adomicilio.Models
         public int NroOrdenes { get; set; }
         public int NroNotificaciones{ get; set; }
         public int NroContactanos { get; set; }
+        public int NuevosContactanos { get; set; }
         public int NroPlatos{ get; set; }
         public int NroEmpresasNuevas { get; set; }
         public int NroClientesNuevas { get; set; }

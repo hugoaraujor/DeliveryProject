@@ -9,12 +9,15 @@
   
 }
 
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create", routeValues: new { idempresa = ViewBag.Number })
-</p>
-<div>
-    <div class="col-md-3"><br></div> <h3><strong>@ViewBag.Empresa</strong></h3>
+<div id="adminwrap" name="adminwrap">
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li><a href="/Admin">Empresas</a></li>
+    <li><a href="#" class="active">@ViewBag.Empresa</a></li>
+
+</ol>
+
+<div> <h2><strong>@ViewBag.Empresa.ToUpper()</strong></h2>
 
     <div class="row">
           <ul class="nav nav-tabs">
@@ -85,7 +88,9 @@
         </td>
     </tr>
 }
-
-</table>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    <p>
+        @Html.ActionLink("Nuevo", "Create", routeValues: new { idempresa = ViewBag.Number })
+    </p>
+</table>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

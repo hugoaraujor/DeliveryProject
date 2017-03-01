@@ -10,6 +10,13 @@ using System.Web.UI.WebControls;
 
 namespace Adomicilio.Controllers
 {
+    public class EmptyPartialViewResult : PartialViewResult
+    {
+        public override void ExecuteResult(ControllerContext context)
+        {
+            
+        }
+    }
     public class HomeController : Controller
     {
         IndexViewModel ivm = new IndexViewModel();
@@ -57,8 +64,26 @@ namespace Adomicilio.Controllers
             }
             return View(ivm);
         }
-
-
+        [HttpGet]
+        public ActionResult Contacto()
+        {
+            return View("Contacto",null);
+        }
+        [HttpPost]
+        public ActionResult Contacto(Contacto contact )
+        {
+            if (ModelState.IsValid)
+            {
+                contact.nuevo = true;
+                db.Contactoes.Add(contact);
+                db.SaveChanges();
+                ModelState.Clear();
+                ViewBag.msj = "Fue agregada su Solicitud. Puede Cerrar esta ventana.";
+             //   return new EmptyPartialViewResult();
+                return this.Content("Su solicitud fue enviada con éxito");
+            }
+            return PartialView(contact); 
+        }
         public PartialViewResult Resultados(IndexViewModel ivm)
         {
 

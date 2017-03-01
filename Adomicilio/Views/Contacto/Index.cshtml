@@ -1,59 +1,75 @@
-﻿@model IEnumerable<Adomicilio.Models.Contacto>
+﻿
+@model PagedList.IPagedList<Adomicilio.Models.Contacto>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Solicitud de contacto";
 }
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li><a href="#" class="active">Solicitudes de contacto</a></li>
+</ol>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
+       
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayNameFor(model => model.Single().Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.Single().TipodeContacto)
+        </th>
+        <th class="visible-md visible-lg">
+            @Html.DisplayNameFor(model => model.Single().Descripcion)
+        </th>
+        <th class="visible-md visible-lg">
+            @Html.DisplayNameFor(model => model.Single().email)
+        </th>
+        <th class="visible-md visible-lg">
+            Teléfono
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipodeContacto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
+           Fecha
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
+@foreach (var item in Model)
+{
+
+    var statusClass = "";
+
+    if (item.nuevo==true)
+    {
+        statusClass = "resaltado";
+    }
+
+
+
+    <tr class="@statusClass">
+           
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipodeContacto)
         </td>
-        <td>
+        <td class="visible-md visible-lg">
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
-        <td>
+        <td class="visible-md visible-lg">
             @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td class="visible-md visible-lg">
+            @Html.DisplayFor(modelItem => item.Telefono)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdContact }) |
             @Html.ActionLink("Details", "Details", new { id=item.IdContact }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IdContact })
         </td>
@@ -61,3 +77,5 @@
 }
 
 </table>
+  Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

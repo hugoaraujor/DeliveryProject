@@ -36,7 +36,7 @@
                             <ul class="nav navbar-nav">
                                 <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                                 <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                                <li>@Html.ActionLink("Contacto", "Contact", "Contacto")</li>
+                                <li data-toggle="modal" data-target="#squarespaceModal">@Html.ActionLink("Contacto", "Contact", "Contacto")</li>
                             </ul>
                             @Html.Partial("_LoginPartial")
 
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-3">
                         <ul>
-                            <li>@Html.ActionLink("Contactanos", "Contact", "Home")</li>
+                            <li data-toggle="modal" data-target="#squarespaceModal">@Html.ActionLink("Contactanos", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Preguntas Frecuentes Usuario", "About", "Home")</li>
                             <li>@Html.ActionLink("Preguntas Frecuentes Comercio", "Contact", "Home")</li>
 

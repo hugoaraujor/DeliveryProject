@@ -76,8 +76,8 @@ namespace Adomicilio.Controllers
             if (menu.imagen != null)
             {
                 MemoryStream ms = new MemoryStream(menu.imagen);
-                var img = Image.FromStream(ms);
-               img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            //    var img = Image.FromStream(ms);
+          //     img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                   String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
                  ViewBag.foto = img2;
             }
@@ -136,23 +136,20 @@ namespace Adomicilio.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Menu menu= await db.Menu.FindAsync(id);
+           
+
             if (menu.imagen != null)
             {
                 
                 MemoryStream ms = new MemoryStream(menu.imagen);
-                var img = Image.FromStream(ms);
-                try
-                {
-                    img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
- String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
+                //var img = Image.FromStream(ms);
+                //try
+                //{
+                //    img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                 String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
           
                 ViewBag.foto = img2;
-                }
-                catch {
-                    ViewBag.foto = "../../images/NOPHOTO.png";
-                }
-               
-            }
+             }
             else
                 ViewBag.foto = "../../images/NOPHOTO.png";
 
