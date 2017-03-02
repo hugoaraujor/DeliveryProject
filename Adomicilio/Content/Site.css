@@ -17,6 +17,18 @@ footer ul li a{
         text-decoration: none;
         color:white;
     }
+footer {
+    clear: both;
+    color: white;
+    background-color:darkslategray;
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 30px;
+    position: relative;
+    margin-top: 20px;
+    height: 150px; /* Altura del footer */
+    text-decoration: none;
+}
 body,
 #wrap,
 conta2 {
@@ -96,19 +108,7 @@ textarea {
     /* POnerlo al 100% para que ocupe toda a panatalla*/
     
 }
-footer {  
-    clear: both;
-    color: white;
-    background-color: black;
-    width: 100%;
-    padding-top: 20px;
-    padding-left: 30px;
-    position: relative;
-    margin-top:20px;
-    height: 150px; /* Altura del footer */
-    text-decoration:none;
-  
-}
+
 .btn a{
     color:white;
     text-decoration:none;
@@ -432,7 +432,7 @@ background-color:lightyellow;
         box-shadow: 2px 2px 2px 2px #C2C0B4;
         -webkit-animation-duration: 3s;
         -webkit-animation-delay: 2s;
-        -webkit-animation-iteration-count: 10;
+        -webkit-animation-iteration-count: infinite;
     }
 
 .thumbnail {
@@ -481,14 +481,17 @@ background-color:lightyellow;
     box-shadow: 2px 2px 2px 2px #C2C0B4;
     -webkit-animation-duration: 3s;
     -webkit-animation-delay: 2s;
-    -webkit-animation-iteration-count: 10;
+    -webkit-animation-iteration-count: infinite;
+
 }
 #Carritoimg {
     height: 70px;
     width: 95px;
     margin-left: 50px;
 }
-
+#Centro {
+    height:100%;
+}
 
 .navbar-default {
     background-color: #e51c23;
@@ -532,5 +535,28 @@ background-color:lightyellow;
     font-size: 18px;
     line-height: 1.33;
     border-radius: 25px;
+}
+
+
+
+
+#toprow {
+    text-align-last:center;
+    height: 45px;
+
+    color: darkgray;
+    vertical-align: central;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+#howmanylikes  {
+    font-size: xx-small;
+    color: red;
+}
+[id^='howmanylikes'], div[id*=' howmanylikes'] {
+    color:darkgray;
+    vertical-align:super;
+    font-size: small;
+    font-family: Arial;
 }
 

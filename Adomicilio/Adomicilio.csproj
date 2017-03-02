@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <PublishDatabases>true</PublishDatabases>
-    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\Correo.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
+    <Compile Include="Controllers\EmptyPartialViewResult.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -256,6 +257,7 @@
     <Content Include="Images\image4.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

@@ -82,7 +82,7 @@ namespace Adomicilio
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 2;
             int pageNumber = (page ?? 1);
             //return View(empresas.ToPagedList(pageNumber, pageSize));
             return View(empresas.ToPagedList(pageNumber, pageSize));
@@ -149,7 +149,29 @@ namespace Adomicilio
             @ViewBag.Number = s.IdEmpresa;
             return View(empresaCat);
         }
-    
+       
+        public async Task<int> Likes(int? id,bool add)
+        {
+            Empresa s = null;
+            if (id != null)
+            {
+                 s = await db.Empresa.FindAsync(id);
+            }
+            
+            if (s != null )
+            {
+                if (add)
+                    s.like++;
+                else
+                    s.like--;
+
+                    db.Entry(s).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                                  
+            }
+
+            return s.like;
+        }
         // GET: Empresas/Create
         public ActionResult Create()
         {

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
+
 namespace Adomicilio.Models
 {
     [Table("Contactanos")]
     public class Contacto
     {
+      
         public Contacto()
         {
             DateCreated = DateTime.Now;
@@ -34,6 +37,7 @@ namespace Adomicilio.Models
         public System.DateTime? DateCreated { get; set; }
           public bool? nuevo { get; set; }
         public bool? respondido { get; set; }
+       
 
     }
 

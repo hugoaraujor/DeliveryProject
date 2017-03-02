@@ -7,27 +7,28 @@ using Adomicilio.Models;
 using PagedList;
 using System.Runtime.Remoting.Contexts;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 
 namespace Adomicilio.Controllers
 {
-    public class EmptyPartialViewResult : PartialViewResult
+   public class HomeController : Controller
     {
-        public override void ExecuteResult(ControllerContext context)
-        {
-            
-        }
-    }
-    public class HomeController : Controller
-    {
+       
+        int n = 0;
         IndexViewModel ivm = new IndexViewModel();
 
         public Searchlocation currentloc;
         private ApplicationDbContext db = new ApplicationDbContext();
-       
-      
+
         public ActionResult Index(IndexViewModel ivm)
-        {
-             if (ivm.page == 0)
+        { 
+            var username = User.Identity.GetUserName();
+            var userid = User.Identity.GetUserId();
+            ivm.userid = userid;
+            ivm.username = username;
+            ivm.loggedin = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+
+            if (ivm.page == 0)
                 ivm.page = 1;
             
             int? page = ivm.page;
@@ -39,50 +40,36 @@ namespace Adomicilio.Controllers
             else
                 ivm.restaurante = db.Empresa.Where(r => r.Activa == true && r.idCiudad == ivm.ciudad&r.TipodeComida==ivm.menuopcion).OrderBy(r => r.RazonSocial).ToPagedList(pageNumber, pageSize);
 
-            if (ivm.iscontact)
-            {
-                Contacto contacto = new Contacto { Descripcion = ivm.contact.Descripcion, email = ivm.contact.email, Nombre = ivm.contact.Nombre, respondido = ivm.contact.respondido, Telefono = ivm.contact.Telefono, TipodeContacto = ivm.contact.TipodeContacto, DateCreated = DateTime.Now, nuevo = true };
-
-
-                if (ModelState.IsValid)
-                {
-                    ivm.added = true;
-                    db.Contactoes.Add(contacto);
-                    db.SaveChanges();
-                    ivm.contact = new Contacto();
-                    ivm.contact.Nombre = "";
-                    ivm.contact.email = "";
-                    ivm.contact.Descripcion = "";
-                    ivm.contact.Telefono = "";
-                    ivm.iscontact = false;
-                    return View(ivm);
-
-                }
-                ViewBag.error1 = "Favor complete la información requerida antes de enviar.";
-                ViewBag.popup = 1;
-                return View(ivm);
-            }
+           
             return View(ivm);
         }
         [HttpGet]
         public ActionResult Contacto()
         {
+        
             return View("Contacto",null);
         }
         [HttpPost]
         public ActionResult Contacto(Contacto contact )
         {
-            if (ModelState.IsValid)
-            {
-                contact.nuevo = true;
-                db.Contactoes.Add(contact);
-                db.SaveChanges();
-                ModelState.Clear();
-                ViewBag.msj = "Fue agregada su Solicitud. Puede Cerrar esta ventana.";
-             //   return new EmptyPartialViewResult();
+            var AUX = HttpContext.Session["DataInserted"].ToString();
+
+
+                if (ModelState.IsValid&& HttpContext.Session["DataInserted"].ToString()!="1")
+                {
+                    contact.nuevo = true;
+                    db.Contactoes.Add(contact);
+                    db.SaveChanges();
+                    //  ModelState.Clear();
+                    ViewBag.msj = "Fue agregada su Solicitud. Puede Cerrar esta ventana.";
+                //   return new EmptyPartialViewResult();
+                HttpContext.Session["DataInserted"] = "1";
                 return this.Content("Su solicitud fue enviada con éxito");
-            }
-            return PartialView(contact); 
+                }
+            if (ModelState.IsValid && HttpContext.Session["DataInserted"].ToString() == "1")
+                return this.Content("Su solicitud fue enviada con éxito");
+            else
+                return PartialView(contact); 
         }
         public PartialViewResult Resultados(IndexViewModel ivm)
         {

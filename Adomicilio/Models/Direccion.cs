@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity;
 namespace Adomicilio.Models
 {
-
+    
     [Table("Direccion")]
     public class Direccion
     {

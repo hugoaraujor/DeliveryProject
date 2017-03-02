@@ -4,10 +4,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Adomicilio.Models;
 using PagedList;
+using System.Web;
+
 namespace Adomicilio.Models
 {
+    
     public class IndexViewModel
     {
+
        public IndexViewModel()
             {
             ListaEspecialidades = new List<Especialidad>();
@@ -29,7 +33,10 @@ namespace Adomicilio.Models
         public Contacto contact { get; set; }
         public bool iscontact { get; set; }
         public bool added { get; set; }
-
+        public string userid { get; set; }
+        public string username { get; set; }
+        public bool loggedin { get; set; }
+       
     }
     public class Searchlocation
     {

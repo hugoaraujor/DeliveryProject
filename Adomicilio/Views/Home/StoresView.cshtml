@@ -5,25 +5,49 @@
 
 }
 
+
 @foreach (var rest in auxmodel)
-{
-    
-            <div class="col-sm-6 col-md-4 ">
-
-                <div class="thumbnail pulse">
-                    <a href="../Home/Detail">
-                        <div class="logorestaurante">
-                            <img src="@Model.utiles.bytestoimage(rest.logo)" alt="...">
-                        </div>
-                        <div class="caption">
-
-                            <p class="nombrelocal">@rest.RazonSocial</p>
-                            <p name="slogan" id="slogan">@rest.Slogan</p>
-                            <span class="glyphicon glyphicon-thumbs-up"> &nbsp;0</span>
-                        </div>
-
-                    </a>
-                </div>
+        {
+            var tag2 = Convert.ToString(rest.IdEmpresa);
+            var tag = "howmanylikes" + Convert.ToString(rest.IdEmpresa);
+            var tag3 = "likehand" + Convert.ToString(rest.IdEmpresa);
+           
+   
+            <div class="col-sm-6 col-md-4 " >
+            
+            <div class="thumbnail pulse">
+                <a href="../Home/Detail">
+                    <div class="logorestaurante" >
+                        <img src="@Model.utiles.bytestoimage(rest.logo)" alt="...">
+                    </div>
+                    <div class="caption">
+                        <p class="nombrelocal">@rest.RazonSocial</p>
+                        <p name="slogan" id="slogan">@rest.Slogan</p>
+                    </div>
+                </a>
             </div>
- 
-        }
+            <div class="col-sm-6 col-md-4 "  >
+
+
+                <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up"  onclick="megusta(@rest.IdEmpresa);"  style="">
+                    <span id="@tag" name="@tag">
+                        @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
+                    </span>
+                </span>
+               
+            </div>
+                <script type="text/javascript">
+                   var existe = localStorage.getItem("@tag").toString();
+                    if (existe = "1") {
+                        document.getElementById("@tag3").style.color = "darkorange";
+                    } else
+                    { document.getElementById("@tag3").style.color = "gray";};
+                </script>
+        </div>
+
+      
+
+
+}
+
+
