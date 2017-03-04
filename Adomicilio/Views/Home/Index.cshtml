@@ -40,14 +40,14 @@
             <a data-slide="next" href="#myCarousel" class="carousel-control right btn-circle">›</a>
         </div><!-- /.control-box -->
     </div><!-- /#myCarousel -->
-    <div class="row">
-        <form class="navbar-form navbar especial" role="search" name="forma" id="forma">
+    <div class="row"><center>
+    <form class="navbar-form navbar especial" role="search" name="forma" id="forma">
 
-            @Html.HiddenFor(m => m.menuopcion)
-            <div class="form-group">
-                <div class="col-2">
-                    <label class="glyphicon glyphicon-record"></label>
-                    @Html.DropDownListFor(m => m.ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(24), new
+        @Html.HiddenFor(m => m.menuopcion)
+        <div class="form-group">
+            <div class="col-2">
+                <label class="glyphicon glyphicon-record"></label>
+                @Html.DropDownListFor(m => m.ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(24), new
                {
                    @class = "form-control required place-holder",
                    @onchange = "FillSector()",
@@ -55,16 +55,17 @@
                    @Model.ciudad
 
                })
-                </div>
             </div>
-            <div class="form-group ">
-                <div class="col-2">
-                    <label>Buscar @val1</label>
-                    <input type="text" class="form-control" placeholder="Search" value="@Model.Searchstr" >
-                </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-2">
+                <label>Buscar @val1</label>
+                <input type="text" class="form-control" placeholder="Search" value="@Model.Searchstr">
             </div>
-            <button type="submit" class="btn btn-default" onclick="savelocal()">Submit</button>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-default" onclick="savelocal()">Submit</button>
+    </form>
+</center>
     </div>
 
 </div>
@@ -119,8 +120,10 @@
             }
             else
             {   <div class="row">
-                <div class="col-md-8 col-lg-8">
-                    <p>No hay ningun registro que cumpla con esas especificaciones</p>
+                    <div class="col-md-12 col-lg-12">
+                        <p>No hay ningun registro que cumpla con esas especificaciones</p>
+                        <a href="" data-toggle="modal" data-target="#squarespaceModal"  style="border:1px none"><img src="~/Images/carnes.png" /></a>
+                                    
                 </div>
             </div>
             }
@@ -130,7 +133,7 @@
 
         <div class="CarritoAd bounce">
             <center>Carrito de compra</center>
-            <img src="~/Images/cart.png" alt="Carrito de Compra" id="Carritoimg" name="Carritoimg" />
+            <img src="~/Images/cart1.png" alt="Carrito de Compra" id="Carritoimg" name="Carritoimg" />
         </div>
     </div>
     <div class="col-md-12">
@@ -178,14 +181,14 @@
 
  @Scripts.Render("~/bundles/jquery")
 @section Scripts {
-    <script>
-    <!--
-      
-       
-
+<script src="~/Scripts/Votos.js"></script>
+        <script>
+            <!--
+           
+           
      $("#squarespaceModal").on("hidden.bs.modal",function(e){
-     location.reload();
-     });
+                location.reload();
+            });
 
      window.status = "";
      var vciudad = 0;
@@ -196,15 +199,15 @@
        FillCity();
        enviar(0);
       } else {
-        vciudad = document.getSelection("ciudad").value.toString();
-        FillCity();
+                vciudad = document.getSelection("ciudad").value.toString();
+            FillCity();
       }
 
        // Carousel Auto-Cycle
       $(document).ready(function () {
-                        leelocal();
-                    $('.carousel').carousel({
-                        interval: 10000
+                leelocal();
+            $('.carousel').carousel({
+                interval: 10000
         })
        });
 
@@ -215,8 +218,8 @@
             }
 
       function leelocal() {
-            FillCity();
-        }
+                FillCity();
+            }
 
       function savelocal() {
         var cityId = document.getElementById("Ciudad").value.toString();
@@ -226,22 +229,22 @@
 
         function FillCity() {
             var stateId = 24;
-            $.ajax({ url: '/Account/FillCity',
+            $.ajax({url: '/Account/FillCity',
                       type: "GET",
                       dataType: "JSON",
                       data: {id: stateId },
                       success: function (cities) {
-                      $("#Ciudad").html(""); // clear before appending new list
-                      $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
+                $("#Ciudad").html(""); // clear before appending new list
+            $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
                       $.each(cities, function (i, city) {
-                      $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
+                $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
                       });
                       $("#Ciudad").val(vciudad);
                       },
             });
         }
    //-->
-    </script>
+</script>
 }
 
 

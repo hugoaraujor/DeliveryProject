@@ -172,6 +172,27 @@ namespace Adomicilio
 
             return s.like;
         }
+        public async Task<int> Votar(int? id,int valor)
+        {
+            Empresa s = null;
+            if (id != null)
+            {
+                s = await db.Empresa.FindAsync(id);
+            }
+
+            if (s != null)
+            { if (s.Valoracion==0 )
+                    s.Valoracion =  valor;
+            else
+                s.Valoracion= ((int)Math.Floor((decimal)(s.Valoracion+valor)/2));
+             
+                db.Entry(s).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+
+            }
+
+            return s.Valoracion;
+        }
         // GET: Empresas/Create
         public ActionResult Create()
         {

@@ -8,37 +8,103 @@ footer ul {
     text-decoration: none;
     list-style: none;
 }
-footer ul li a{
-    
-    text-decoration: none;
-    
-}
+    footer ul li a {
+        color: #F61D04;
+        text-decoration: none;
+    }
     footer ul li a:hover {
         text-decoration: none;
         color:white;
     }
+
 footer {
     clear: both;
     color: white;
-    background-color:darkslategray;
+    background-color:black;
     width: 100%;
     padding-top: 20px;
     padding-left: 30px;
     position: relative;
     margin-top: 20px;
-    height: 150px; /* Altura del footer */
+    height: 250px; /* Altura del footer */
     text-decoration: none;
 }
 body,
 #wrap,
 conta2 {
-    
     height: 100%;
     /*  margin-top: 80px;*/
     min-height: calc(100vh - 150px);
-    background-color: #c2185b;
-    
-    
+    background-color: #079AAD;
+}
+
+#city {
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+#motito {
+    top: 110px;
+    left: 1800px;
+    z-index: 3;
+    position: absolute;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 100px;
+    width: 130px;
+
+    -webkit-animation: myfirst 5s infinite; /* Chrome, Safari, Opera */
+    -webkit-animation-direction:normal; /* Chrome, Safari, Opera */
+    animation: myfirst 20s infinite;
+    animation-direction: normal;
+    pause-before:16s;
+}
+
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+    0% {
+     
+        left: 0px;
+        top: 110px;
+    }
+
+    25% {
+       
+        left: 200px;
+        top: 110px;
+    }
+
+
+    100% {
+      
+        left: 1600px;
+        top: 110px;
+    }
+}
+
+@keyframes myfirst {
+    0% {
+      
+        left: 0px;
+        top: 110px;
+    }
+
+    25% {
+      
+        left: 200px;
+        top: 110px;
+    }
+
+   
+
+    100% {
+        
+        left: 1600px;
+        top: 110px;
+    }
 }
 
 html {
@@ -48,7 +114,7 @@ html {
 
 body {
     padding-top: 0px;
-    min-height: calc(100% - 150px);
+    min-height: calc(100% -150px);
     /*margin-top: -150px; /* Misma altura que el footer en negativo */
     /* padding-bottom: -150px;*/
     
@@ -226,14 +292,27 @@ a {
     border-width:medium;
     border-color:white;
 }
+.navbar a {
+    background-color: #F61D04;
+}
+.navbar.navbar-default {
+    background-color: #F61D04;
+}
+
+.navbar a {
+    background-color: #F61D04;
+}
+
 .navbar-form {
-    background-color: #e51c23;
+    background-color: #F61D04;
     padding: 3px 3px;
     font-size: 16px;
     font-weight: 800;
     line-height: 1.33;
     border-radius: 0px;
     margin: 0px 0px 0px 0px;
+    align-content: center;
+    text-align: center;
 }
 .especial{
     font-size:small;
@@ -347,20 +426,18 @@ background-color:lightyellow;
 #Centro {
     
 }
-    #categoriastitle {
+#categoriastitle {
     margin: 0px 0px 5px 0px;
     border-radius: 0px;
     height: 55px;
     border: 0px solid;
-    height:35px;
-    background-color:darkorange;
-   border-radius:10px 10px 0px 0px;
-   padding:10px;
-   color:white;
-   font-weight:600;
-   text-align:center;
-
-    
+    height: 35px;
+    background-color: #F61D04;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
 }
 #categoriasclose {
     margin: 0px 0px 5px 0px;
@@ -368,7 +445,7 @@ background-color:lightyellow;
     height: 55px;
     border: 0px solid;
     height: 35px;
-    background-color: darkorange;
+    background-color: #F61D04;
     border-radius: 0px 0px 10px 10px;
     padding: 10px;
     color: white;
@@ -387,10 +464,10 @@ background-color:lightyellow;
     .list-group li:hover {
         border-radius: 0px;
         border-left: 15px solid;
-        border-bottom:0px solid;
+        border-bottom: 0px solid;
         border-top: 0px solid;
         border-right: 0px solid;
-        border-color: darkorange;
+        border-color: #F61D04;
     }
 /*---------------------------------------------------------------------------------------------------/
 /*----------------------------------- Thumnail Imagenes  ------------------------------------------*/
@@ -462,8 +539,8 @@ background-color:lightyellow;
 .nombrelocal {
     font-size: large;
     font-weight: 700;
-    color: coral;
-    padding:5px 5px 7px 5px;
+    color: #FF5249;
+    padding: 5px 5px 7px 5px;
 }
 .CarritoAd {
     font-size: medium;
@@ -471,7 +548,7 @@ background-color:lightyellow;
     color: white;
     padding: 2px 2px 2px 2px;
     margin: 2px 2px 2px 2px;
-    background-color:darkorange;
+    background-color: #FF5249;
     height: 105px;
     border-radius: 5px;
 }
@@ -541,6 +618,7 @@ background-color:lightyellow;
 
 
 #toprow {
+    
     text-align-last:center;
     height: 45px;
 
@@ -550,13 +628,82 @@ background-color:lightyellow;
     padding-left: 10px;
 }
 #howmanylikes  {
-    font-size: xx-small;
+    font-size:smaller;
     color: red;
 }
 [id^='howmanylikes'], div[id*=' howmanylikes'] {
     color:darkgray;
-    vertical-align:super;
+    vertical-align:central;
     font-size: small;
     font-family: Arial;
 }
+[id^='choosestar'], div[id*='choosestar'] {
+    display: inline-block;
+}
+.choosestar {
+    width: 95px;
+    text-decoration: none;
+    direction: rtl;
+    background-color:lightgray;
+    border-radius: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
+    animation: slideInDown;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 4s;
+    -webkit-animation-iteration-count: 1;
+    color: white;
+     display: none;
+         visibility: hidden;
+}
+span:hover ~ span { /* On hover target it's "previous";) elements */
+    color: orangered;
+}
+.choosestar span:hover ~ span, .choosestar :hover {
+    color: gold;
+    animation: pulse;
+}
 
+[id^='star']:hover, div[id*=' star'] :hover ~ a {
+    color:gold;
+    background-color: orangered;
+    border-radius:6px;
+    animation:bounce;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: 3;
+}
+
+#star :hover {
+    color:red;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#areadevotos {
+    height:28px;
+    
+       }
+[id^='ranking'] {
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    padding-left: 10px;
+    width: 50px;
+    color: #F61D04;
+    border: 1px solid #9E9E9E;
+}
+[id^='ranking']:hover {
+    
+    -webkit-box-shadow: 1px 1px 1px 1px #C2C0B4;
+    box-shadow: 1px 1px 1px 1px #C2C0B4;
+}
+
+.disabled {
+    pointer-events: none; /**<-----------*/
+    opacity: 0.2;
+}
+.enabled {
+    pointer-events: auto; /**<-----------*/
+    opacity: 1;
+}

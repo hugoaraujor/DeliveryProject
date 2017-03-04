@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - DExpress.com Del Restaurante a su casa en un solo clic</title>
   
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -30,7 +30,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        @Html.ActionLink("DeliExpress.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("DExpress.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
 
                         <div class="navbar-collapse collapse">
@@ -51,10 +51,15 @@
         <div class="container body-content conta2 container-fluid">
             @RenderBody()
         </div>
+       
     </div>
-        <footer class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded">
-
-            <div class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded">
+    <div style="position: relative; left: 0; top: 0;">
+    <img id="city" name="city" src="~/Images/city.png" />
+    <img src="~/Images/motito.png" id="motito" name="motito" class="animated" />
+    </div>
+        <footer class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded" id="bas" name="bas">
+           
+            <div class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded" >
                 <p>&copy; @DateTime.Now.Year - DeliExpress.com</p>
                 <div class="row">
                     <div class="col-md-3">
@@ -99,10 +104,12 @@
                     </div>
                 </div>
             </div>
+           
 
 
         </footer>
-  
+   
+
 </body>
 
 
@@ -113,3 +120,5 @@
     @RenderSection("scripts", required: false)
 
 </html>
+
+

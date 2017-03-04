@@ -6,13 +6,17 @@
 }
 
 
+
 @foreach (var rest in auxmodel)
-        {
-            var tag2 = Convert.ToString(rest.IdEmpresa);
-            var tag = "howmanylikes" + Convert.ToString(rest.IdEmpresa);
-            var tag3 = "likehand" + Convert.ToString(rest.IdEmpresa);
-           
-   
+{
+
+    var tag2 = Convert.ToString(rest.IdEmpresa);
+    var tag = "howmanylikes" + Convert.ToString(rest.IdEmpresa);
+    var tag3 = "likehand" + Convert.ToString(rest.IdEmpresa);
+    var tag4 = "choosestar" + Convert.ToString(rest.IdEmpresa);
+    var tag5 = "ranking" + Convert.ToString(rest.IdEmpresa);
+    var tag6 = "valoracion" + Convert.ToString(rest.IdEmpresa);
+
             <div class="col-sm-6 col-md-4 " >
             
             <div class="thumbnail pulse">
@@ -26,17 +30,33 @@
                     </div>
                 </a>
             </div>
-            <div class="col-sm-6 col-md-4 "  >
-
-
-                <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up"  onclick="megusta(@rest.IdEmpresa);"  style="">
-                    <span id="@tag" name="@tag">
-                        @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
+             <div >
+              
+                    <div class="col-md-4" id="areadevotos" name="areadevotos">
+                        <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
+                            <span id="@tag" name="@tag">
+                                @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
+                        </span>
                     </span>
-                </span>
+                   </div>
                
+                <div class="col-md-4" id="@tag5" onclick="activavalor(@tag2)" data-toggle="tooltip" data-placement="top" title="Click para Votar">
+                    <span id="@tag3" name="@tag3" class="glyphicon glyphicon-star"  style="" ><span id="@tag6" name="@tag6"  >@rest.Valoracion<input type="hidden" value="@rest.Valoracion" /></span></span>
+                </div>
+                <div class="col-md-4">
+                
+                    <div class="choosestar" id="@tag4" name="@tag4"  >
+                        <span id="star5" name="star5" class="glyphicon glyphicon-star" onclick="valora(@tag2,5);"></span>
+                        <span id="star4" name="star4" class="glyphicon glyphicon-star" onclick="valora(@tag2,3);"></span>
+                        <span id="star3" name="star3" class="glyphicon glyphicon-star" onclick="valora(@tag2,4);"></span>
+                        <span id="star2" name="star2" class="glyphicon glyphicon-star" onclick="valora(@tag2,2);"></span>
+                        <span id="star1" name="star1" class="glyphicon glyphicon-star" onclick="valora(@tag2,1);"></span>
+                    </div>
+                </div>
             </div>
+               
                 <script type="text/javascript">
+                   
                    var existe = localStorage.getItem("@tag").toString();
                     if (existe = "1") {
                         document.getElementById("@tag3").style.color = "darkorange";
@@ -44,10 +64,13 @@
                     { document.getElementById("@tag3").style.color = "gray";};
                 </script>
         </div>
+}
 
       
 
 
-}
+
+
+
 
 
