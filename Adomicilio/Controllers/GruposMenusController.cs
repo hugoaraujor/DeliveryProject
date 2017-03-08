@@ -13,9 +13,15 @@ namespace Adomicilio
     public class GruposMenusController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
-       
-       
+
+
+        public ViewResult GetGruposMenu(int? id)
+        {
+
+            return View(db.GruposMenu.Where(x => x.IdEmpresa == id).OrderBy(z => z.Orden).ToList());
+        }
+
+
         public ActionResult Index(int? id,string mensaje="",string NombreGrupo="",int orden=0)
         {
             
@@ -119,6 +125,12 @@ namespace Adomicilio
             
             return View(gruposMenu);
         }
+
+        public  string getgrupostr(int idgrupo)
+        {
+            return  db.GruposMenu.Where(x => x.Id == idgrupo).SingleOrDefault().GrupoMenuDesc;
+        }
+
         // GET: GruposMenus/Delete/5
         public List<GruposMenu> getgrupos(int? idempresa)
         {

@@ -69,6 +69,7 @@ namespace Adomicilio.Models
         public int Pais { get; set; }
         public int Estado { get; set; }
         public int Ciudad { get; set; }
+        
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         [Column(TypeName = "DateTime2")]

@@ -95,10 +95,21 @@ namespace Adomicilio.Controllers
             return View();
         }
 
-        public ActionResult Detail()
+        public ActionResult Detail(IndexViewModel ivm,int id,int idg=0)
         {
-            IndexViewModel ivm = new IndexViewModel();
+            
             ViewBag.Message = "Detalle de Restaurant.";
+            GruposMenusController GmC = new GruposMenusController();
+            Adomicilio.Models.Menu MC = new Adomicilio.Models.Menu();
+            
+            ivm.CurrentEmpresa = new ApplicationDbContext().Empresa.Where(x => x.IdEmpresa == id).SingleOrDefault();
+            ivm.opcionesmenu = GmC.getgrupos(ivm.CurrentEmpresa.IdEmpresa);
+            ivm.primergrupo = ivm.opcionesmenu.First().Id;
+            ivm.PLatos = new MenusController().GetMenus(idg);
+            if (idg==0)
+                @ViewBag.Grupo = GmC.getgrupostr(ivm.primergrupo);
+            else
+                @ViewBag.Grupo = GmC.getgrupostr(idg);
             return View(ivm);
         }
 

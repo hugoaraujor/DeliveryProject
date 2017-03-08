@@ -16,6 +16,7 @@ namespace Adomicilio.Models
             {
             ListaEspecialidades = new List<Especialidad>();
             utiles = new UtilesViews();
+
             page = 1;
             }
         public string Searchstr { get; set; }
@@ -30,14 +31,18 @@ namespace Adomicilio.Models
         public List<Especialidad> ListaEspecialidades { get; set; }
         public UtilesViews utiles { get; set; }
         public PagedList.IPagedList<Empresa> restaurante { get; set; }
-        public Contacto contact { get; set; }
+        public List<GruposMenu> opcionesmenu { get; set; }
+        public List<Menu> PLatos { get; set; }
+       public Contacto contact { get; set; }
         public bool iscontact { get; set; }
         public bool added { get; set; }
         public string userid { get; set; }
         public string username { get; set; }
         public bool loggedin { get; set; }
-       
-    }
+        public Empresa CurrentEmpresa { get; set; }
+        public int primergrupo { get; set; }
+
+}
     public class Searchlocation
     {
         public string ip { get; set; }

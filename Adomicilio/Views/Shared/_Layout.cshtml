@@ -9,14 +9,13 @@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="animate.css" />
+    <script src="~/Scripts/jquery.viewportchecker.js"></script>
+    <script src="~/Scripts/viewportchecker.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     <link rel="stylesheet" href="~/Content/animate.css" />
-
-</head>
-
+    </head>
 <body>
 
     <div id="wrap" name="wrap">
@@ -55,7 +54,7 @@
     </div>
     <div style="position: relative; left: 0; top: 0;">
     <img id="city" name="city" src="~/Images/city.png" />
-    <img src="~/Images/motito.png" id="motito" name="motito" class="animated" />
+    <img src="~/Images/motito.png" id="motito" name="motito" class="" />
     </div>
         <footer class="modal-footer_wrapper hide-on-mobile-menu hidden-xs  loaded" id="bas" name="bas">
            
@@ -91,15 +90,15 @@
                     <div class="col-md-3">
                         <picture>
 
-                            <img class="social" src="../images/facebook.png" alt="Visitanos en facebook" />
+                            <img class="social" src="~/images/facebook.png" alt="Visitanos en facebook" />
                         </picture>
                         <picture>
 
-                            <img class="social" src="../images/twitter.png" alt="Danos un Tweet" />
+                            <img class="social" src="~/images/twitter.png" alt="Danos un Tweet" />
                         </picture>
                         <picture>
 
-                            <img class="social" src="../images/instagram.png" alt="Visitanos en instagram" />
+                            <img class="social" src="~/images/instagram.png" alt="Visitanos en instagram" />
                         </picture>
                     </div>
                 </div>
@@ -108,17 +107,32 @@
 
 
         </footer>
-   
+   @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/viewportchecker.js"></script>
+    <script>
+        localStorage.clear();
+        $(window).scroll(function () {
+            var height = $(window).scrollTop();
+
+            if (height > 900)
+             {
+               
+            }
+        });
+      
+    </script>
+
 
 </body>
 
 
 
 
-    @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
 </html>
+
+
 
 

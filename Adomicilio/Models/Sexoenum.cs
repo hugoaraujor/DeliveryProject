@@ -10,6 +10,7 @@ namespace Adomicilio.Models
         return new DateTime(1900, 01, 01, 00, 00, 00);
     }
     }
+    public enum Tipocasaenum { Casa = 0,  Apartamento = 2, Residencia = 3,  }
     public enum Tipodelivery {Afiliado=0, Propio = 1, Externo = 2, Taxi= 3 }
     public enum Sexoenum { Masculino=1,Femenino=2 }
     public enum TipoAfiliacion { Usuario=0, Administrador=2,Comercio = 1,Master=99  }

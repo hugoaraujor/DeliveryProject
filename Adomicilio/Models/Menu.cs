@@ -38,7 +38,7 @@ namespace Adomicilio.Models
         [Display(Name = "Presentación")]
         public string clase3 { get; set; }
         [Display(Name = "Precio Bs.")]
-     //    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#0.00}")]
+        //    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#0.00}")]
         [RegularExpression(@"^\d+.?\d{0,2}$", ErrorMessage = "Precio invalido use puntos como signo de decimal y dos decimales.")]
         public Decimal Precio1 { get; set; }
         [Display(Name = "Precio Bs.")]

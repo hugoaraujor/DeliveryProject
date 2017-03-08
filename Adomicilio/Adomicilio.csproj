@@ -239,6 +239,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\TipoEmpresasController.cs" />
     <Compile Include="Util\Class1.cs" />
+    <Compile Include="Util\helpers.cs" />
     <Compile Include="Util\ListHelper.cs" />
     <Compile Include="Util\UtilesViews.cs" />
   </ItemGroup>
@@ -261,6 +262,8 @@
     <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.viewportchecker.js" />
+    <Content Include="Scripts\viewportchecker.js" />
     <Content Include="Scripts\Votos.js" />
     <Content Include="Views\Empresas\empresasDetail.cshtml" />
     <Content Include="Views\Home\About.cshtml" />

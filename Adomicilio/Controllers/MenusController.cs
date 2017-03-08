@@ -19,6 +19,15 @@ namespace Adomicilio.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+        // GET: Menus
+        public List<Menu> GetMenus(int idempresa )
+        {
+          
+             var menu = db.Menu.Where(x => x.IdEmpresa == idempresa);
+            return menu.ToList();
+        }
+
         // GET: Menus
         public ViewResult Index(int idempresa,string sortOrder, string currentFilter, string searchString, int? page)
         {
