@@ -21,7 +21,7 @@
 
     <div class="row">
           <ul class="nav nav-tabs">
-            <li role="presentation" class=""><a href="@Url.Action("Details", "Empresas", routeValues: new { Id = ViewBag.Number, status = 1 })">Detalles</a></li>
+            <li role="presentation" class=""><a href="@Url.Action("Details", "Menus", routeValues: new { Id = ViewBag.Number, status = 1 })">Detalles</a></li>
             <li role="presentation" class=""><a href="@Url.Action("Index", "Gruposmenus", routeValues: new { Id = ViewBag.Number, status = 2 })">Categorias</a></li>
             <li role="presentation" class="active"><a href="@Url.Action("Details", "Empresas", routeValues: new { Idempresa = ViewBag.Number, status = 3 })">Productos</a></li>
         </ul>

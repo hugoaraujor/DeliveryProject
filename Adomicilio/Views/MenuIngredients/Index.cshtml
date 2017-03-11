@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Adomicilio.Models.MenuIngredients>
+
+@{
+    ViewBag.Title = "Index";
+
+    
+}
+
+<h2>Detalles Productos</h2>
+
+<ol class="breadcrumb">
+     <li><a href="@Url.Action("Details", "Menus",routeValues: new { Id = @ViewBag.idproducto,idempresa=@ViewBag.empresa })">Productos</a></li>
+    <li><a href="#" >Detalle de Productos</a></li>
+    <li>Ingredientes</li>
+
+</ol>
+<div>
+    <h2><strong></strong></h2>
+
+    <div class="row">
+        <p>&nbsp</p>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class=""><a href="@Url.Action("Details", "Menus",routeValues: new { Id = @ViewBag.idproducto })">Producto</a></li>
+            <li role="presentation" class="active"><a href="#">Ingredientes</a></li>
+            <li role="presentation" class=""><a href="@Url.Action("Index", "Extras",routeValues: new { Id =  @ViewBag.idproducto,idempresa=@ViewBag.empresa})">Extras</a></li>
+
+        </ul>
+    </div>
+
+
+</div>
+<br />
+
+@using (Html.BeginForm("Create", "MenuIngredients", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+   
+    <table >
+        <tr class=" col-md-12">
+                <td><input type="text" name="Descripcion" id="Descripcion" class="form-control col-md-6" placeholder="Nuevo Grupo" /></td>
+                <input type="hidden" name="IdProducto" id="IdProducto" value="@ViewBag.idproducto" />
+            <input type="hidden" name="IdIngrediente" id="IdIngrediente" value="1" />
+                <td class="col-md-4"><input type="checkbox" id="requerido" name="requerido" value="false"/> Requerido<br /></td>
+                <td><input type="submit" value="Agregar" class="btn btn-default" /></td>
+</tr>
+    </table>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-1">
+                @ViewBag.Mensaje
+            </div>
+        </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdIngrediente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requerido)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdIngrediente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Requerido)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdIngrediente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdIngrediente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdIngrediente })
+        </td>
+    </tr>
+}
+
+</table>

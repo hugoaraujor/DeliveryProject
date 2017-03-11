@@ -1,0 +1,17 @@
+﻿
+@using Adomicilio.Models
+@using PagedList.Mvc;
+@model Menu
+@{
+    var imagen = new  UtilesViews().bytestoimage(@Model.imagen);
+}
+
+   <div class="col-md-12">
+    @if (@Model.imagen != null)
+    {<img src="@imagen" class="animated" alt="...">}
+        <h4 class="media-heading">@Model.Nombre</h4>
+        @Model.Descripcion
+    <div class="col-md-2">
+        <a href="#" class="btn btn-success btm-xs" role="button" data-toggle="modal" data-target="#squarespaceModal">Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a>
+    </div>
+    </div>

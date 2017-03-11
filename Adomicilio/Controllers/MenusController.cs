@@ -25,7 +25,7 @@ namespace Adomicilio.Controllers
         {
           
              var menu = db.Menu.Where(x => x.IdEmpresa == idempresa);
-            return menu.ToList();
+             return menu.ToList();
         }
 
         // GET: Menus
@@ -77,11 +77,13 @@ namespace Adomicilio.Controllers
         // GET: Menus/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            ViewBag.empresa = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Menu menu = await db.Menu.FindAsync(id);
+            
             if (menu.imagen != null)
             {
                 MemoryStream ms = new MemoryStream(menu.imagen);

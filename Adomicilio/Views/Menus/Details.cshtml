@@ -5,21 +5,33 @@
     ApplicationDbContext db = new ApplicationDbContext();
 
     string cat = db.Categorias.Where(x => x.IdCategory == Model.IdCategory).FirstOrDefault().CategoryName;
-    string grupo= db.GruposMenu.Where(x => x.Id == Model.IdGrupoMenu).FirstOrDefault().GrupoMenuDesc;
+    string grupo = db.GruposMenu.Where(x => x.Id == Model.IdGrupoMenu).FirstOrDefault().GrupoMenuDesc;
 }
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles Productos</h2>
 
 
-    <h4>Menu</h4>
     <hr />
-    <h3><strong>@ViewBag.Empresa</strong></h3>
-    <h4>Producto a la Venta</h4>
- 
+    <h3><strong>@ViewBag.Producto</strong></h3>
+   <ol class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Menus",routeValues: new   { idempresa=Model.IdEmpresa})">Menu</a></li>
+    <li><a href="#">Producto</a></li>
+    
 
+</ol>
+ 
+<div class="row">
+    <p>&nbsp</p>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="">Producto</a></li>
+        <li role="presentation" class=""><a href="@Url.Action("Index","MenuIngredients",routeValues: new { Id =  @Model.IdProducto,idempresa=@Model.IdEmpresa})">Ingredientes</a></li>
+        <li role="presentation" class=""><a href="@Url.Action("Index", "Extras",routeValues: new { Id = @Model.IdProducto,idempresa=ViewBag.empresa })">Extras</a></li>
+    </ul>
+    <p>&nbsp</p>
+</div>
 <div class="col-md-6">
     <dl class="dl-horizontal">
         <dt>
@@ -164,7 +176,7 @@
 </div><div class="col-md-6"><img src=@ViewBag.foto name="imagen" id="imagen" /></div>
 <div class="row col-md-12">
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdProducto }) |
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IdProducto }) |
         @Html.ActionLink("Regresar", "Index",new  { idempresa=Model.IdEmpresa})
     </p>
 </div>

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Adomicilio.Models.Extras>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<h2>Index</h2>
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Menus",routeValues: new {  idempresa=1})">Menu</a></li>
+    <li><a href="@Url.Action("Details", "Menus",routeValues: new { Id = @ViewBag.idproducto })">Productos</a></li>
+      <li>Extras</li>
+
+</ol>
+<div>
+    <h2><strong></strong></h2>
+
+    <div class="row">
+        <p>&nbsp</p>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class=""><a href="@Url.Action("Details", "Menus",routeValues: new { Id = ViewBag.idproducto,status=1})">Detalles</a></li>
+            <li role="presentation" ><a href="@Url.Action("Index", "MenuIngredients",routeValues: new {Id = ViewBag.idproducto})">Ingredientes</a></li>
+            <li role="presentation" class="active"><a href="@Url.Action("Index", "Extras",routeValues: new { Id =  ViewBag.idproducto})">Extras</a></li>
+
+        </ul>
+    </div>
+
+
+</div>
+<br />
+
+@using (Html.BeginForm("Create", "Extras", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+    <div class="form-inline">
+     
+
+        <input type="hidden" name="IdProducto" id="IdProducto" value="@ViewBag.idproducto" />
+        <table>
+            <tr>
+                <td>
+                    <div class="form-group col-md-2">
+                     
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group ">
+                      Descripción:
+                   
+                            @Html.EditorFor(model => model.FirstOrDefault().Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstOrDefault().Descripcion, "", new { @class = "text-danger" })
+                     
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group ">
+                        
+
+                    </div>
+                    <div class="form-group ">
+                      Precio:
+                   
+                            @Html.EditorFor(model => model.FirstOrDefault().Precio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstOrDefault().Precio, "", new { @class = "text-danger" })
+                 
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group  ">
+                        <div class="col-md-offset-2 col-md-1">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+</div>
+}
+
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            @ViewBag.Mensaje
+        </div>
+    </div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdAdicional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdAdicional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdAdicional }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdAdicional })
+        </td>
+    </tr>
+}
+
+</table>

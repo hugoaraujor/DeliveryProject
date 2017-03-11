@@ -779,3 +779,24 @@ span:hover ~ span { /* On hover target it's "previous";) elements */
 .visible {
     opacity: 1;
 }
+
+.subtitle {
+    background: #F61D04;
+    color: white;
+    font-size: large;
+    padding-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    line-height: 30px;
+}
+#lineModalLabel1 {
+    color: darkorange;
+    font-size: large;
+    padding-top: 15px;
+    padding-left: 15px;
+    line-height: 10px;
+    font-weight:600;
+}
+.modal .close{
+padding-bottom:25px;
+}

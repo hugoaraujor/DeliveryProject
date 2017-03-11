@@ -10,7 +10,8 @@
     var tag3 = "likehand" + Convert.ToString(rest.IdEmpresa);
     var tag4 = "choosestar" + Convert.ToString(rest.IdEmpresa);
     var tag5 = "ranking" + Convert.ToString(rest.IdEmpresa);
-    var tag6 = "valoracion" + Convert.ToString(rest.IdEmpresa);
+    var tag6 = "Valoracion" + Convert.ToString(rest.IdEmpresa);
+
 }
 <div class="row">
 
@@ -38,7 +39,7 @@
             </div>
             <div>
                 <div class="col-md-4" id="areadevotos" name="areadevotos">
-           
+
                     <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
                         <span id="@tag" name="@tag">
                             @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
@@ -46,11 +47,11 @@
                     </span>
                 </div>
                 <div class="col-md-4" id="@tag5" onclick="activavalor(@tag2)" data-toggle="tooltip" data-placement="top" title="Click para Votar">
-         
+
                     <span id="@tag3" name="@tag3" class="glyphicon glyphicon-star" style=""><span id="@tag6" name="@tag6">@rest.Valoracion<input type="hidden" value="@rest.Valoracion" /></span></span>
                 </div>
                 <div class="col-md-4">
-                 
+
                     <div class="choosestar" id="@tag4" name="@tag4">
                         <span id="star5" name="star5" class="glyphicon glyphicon-star" onclick="valora(@tag2,5);"></span>
                         <span id="star4" name="star4" class="glyphicon glyphicon-star" onclick="valora(@tag2,3);"></span>
@@ -90,102 +91,212 @@
     </div>
 </div>
 <div class="row">
-            <div id="izquierda" class="col-md-3">
-                <div class="catmenu">
-                    <ul class="list-group">
-                        @foreach (var item in Model.opcionesmenu)
-                        {
-                            <li class="list-group-item"><a href="/Home/Detail/1?idg=@item.Id">@item.GrupoMenuDesc</a></li>
-                        }
-                    </ul>
+    <div id="izquierda" class="col-md-3">
+        <div class="catmenu">
+            <ul class="list-group">
+                @foreach (var item in Model.opcionesmenu)
+                {
+                    <li class="list-group-item"><a href="/Home/Detail/1?idg=@item.Id">@item.GrupoMenuDesc</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div id="Centro" name="Centro" class="col-md-6">
+        <div id="titulogrupo" name="titulogrupo">
+            @ViewBag.Grupo.ToUpper()
+        </div>
+
+        @foreach (var menu in seccionmenu)
+        {
+            var platotag = "squarespaceModal" + menu.IdProducto;
+            <div class="piato col-md-12">
+                <div class="col-md-3">
+                    @if (visible)
+                    {<img src="@Model.utiles.bytestoimage(menu.imagen)" class="animated zoomIn" alt="...">}
+                </div>
+                <div class="col-md-8">
+                    <h4 class="media-heading">@menu.Nombre</h4>
+                    @menu.Descripcion
+                </div>
+
+                @if (menu.Precio2 > 0 || menu.Precio3 > 0)
+                {
+                    <div id="clase" name="clase" class="col-md-3">
+                    </div>
+                }
+                @if (menu.Precio2 > 0)
+                {
+                    <div id="clase" name="clase" class="col-md-3">
+                        <h5>@menu.clase2 <span class="active">@Helpers.Getvalue(menu.Precio2)</span></h5>
+                    </div>
+                }
+                else
+                {
+                    <div id="clase" name="clase" class="col-md-3">
+                    </div>
+                }
+
+                @if (menu.Precio3 > 0)
+                {
+                    <div id="clase" name="clase" class="col-md-3">
+                        <h5>@menu.clase3 <span class="active">@Helpers.Getvalue(@menu.Precio3)</span></h5>
+                    </div>
+                }
+                else
+                {<div id="clase" name="clase" class="col-md-3">
+                        </div>
+                }
+                <div id="clase" name="clase" class="col-md-3">
+                    <h5>@menu.clase1 <span class="active">@Helpers.Getvalue(menu.Precio1)</span></h5>
+                </div>
+                <div class="row">
+                    <div id="clase" name="clase" class="col-md-12">
+                        <div class="col-md-4" id="areadevotos1" name="areadevotos1">
+                            <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
+                                <span id="@tag" name="@tag">
+                                    @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col-md-4" id="@tag5" onclick="activavalor(@tag2)" data-toggle="tooltip" data-placement="top" title="Click para Votar">
+                            <span id="@tag3" name="@tag3" class="glyphicon glyphicon-star" style=""><span id="@tag6" name="@tag6">@rest.Valoracion<input type="hidden" value="@rest.Valoracion" /></span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="choosestar" id="@tag4" name="@tag4">
+                                <span id="star5" name="star5" class="glyphicon glyphicon-star" onclick="valora(@tag2,5);"></span>
+                                <span id="star4" name="star4" class="glyphicon glyphicon-star" onclick="valora(@tag2,3);"></span>
+                                <span id="star3" name="star3" class="glyphicon glyphicon-star" onclick="valora(@tag2,4);"></span>
+                                <span id="star2" name="star2" class="glyphicon glyphicon-star" onclick="valora(@tag2,2);"></span>
+                                <span id="star1" name="star1" class="glyphicon glyphicon-star" onclick="valora(@tag2,1);"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#" class="btn btn-success btm-xs" role="button" data-toggle="modal" data-target="#@platotag">Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-         
-            <div id="Centro" name="Centro" class="col-md-6">
-                <div id="titulogrupo" name="titulogrupo">
-                  @ViewBag.Grupo.ToUpper()
-                </div>
-             
-                @foreach (var menu in seccionmenu)
+                        <!-- line modal -->
+            using (Ajax.BeginForm("#", "#", null, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "formcontact" }))
             {
-                    <div class="piato col-md-12">
-                        <div class="col-md-3">
-                            @if (visible)
-                {<img src="@Model.utiles.bytestoimage(menu.imagen)" class="animated zoomIn" alt="...">}
-                        </div>
-
-                        <div class="col-md-8">
-                            <h4 class="media-heading">@menu.Nombre</h4>
-
-                            @menu.Descripcion
-                        </div>
-
-                        @if (menu.Precio2 > 0|| menu.Precio3 > 0)
-                        {
-                            
-                                                    <div id="clase" name="clase" class="col-md-3">
-
+                <div class="modal fade" id="@platotag" name="@platotag" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header"><div id="lineModalLabel1" class="col-md-11">@menu.Nombre.ToUpper()</div>
+                                <button type="button" class="close col-md-1" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                               
                             </div>
-                        }
-                        
-                        @if (menu.Precio2 > 0)
-                {
-                            <div id="clase" name="clase" class="col-md-3">
-                                <h5>@menu.clase2 <span class="active">@helpers.Getvalue(menu.Precio2)</span></h5>
-                            </div>
-                        }
-                        else {
-                        <div id="clase" name="clase" class="col-md-3">
-                          
-                        </div>
-                        }
-
-                        @if (menu.Precio3 > 0)
-                        {
-                            <div id="clase" name="clase" class="col-md-3">
-                                <h5>@menu.clase3 <span class="active">@helpers.Getvalue(@menu.Precio3)</span></h5>
-                            </div>
-                        }
-                        else
-                        {
-                            <div id="clase" name="clase" class="col-md-3">
-                          
-                            </div>
-                        }
-                        <div id="clase" name="clase" class="col-md-3">
-                            <h5>@menu.clase1 <span class="active">@helpers.Getvalue(menu.Precio1)</span></h5>
-                        </div>
-                        <div class="row">
-                            <div id="clase" name="clase" class="col-md-12">
-
-                                <div class="col-md-4" id="areadevotos1" name="areadevotos1">
-                                     <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
-                                        <span id="@tag" name="@tag">
-                                            @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
-                                        </span>
-                                    </span>
+                            <div class="modal-body" id="formcontact">
+                                @{var modalproducto = Convert.ToString(@menu.IdProducto);
+                                    var modalvar2 = "cantidad" + Convert.ToString(@menu.IdProducto);
+                                    var modalvar3 = "clasesel" + Convert.ToString(@menu.IdProducto);
+                                    var modalvar4 = "precio" + Convert.ToString(@menu.IdProducto);
+                                    var modalvar5 = "monto" + Convert.ToString(@menu.IdProducto);
+                                    var modalvarpu = "pu" + Convert.ToString(@menu.IdProducto);
+                                    var modalextradiv = "extrasdiv" + @modalproducto;
+                                }
+                             
+                                <div class="form-group  col-md-12">
+                                    @menu.Descripcion
                                 </div>
-                                <div class="col-md-4" id="@tag5" onclick="activavalor(@tag2)" data-toggle="tooltip" data-placement="top" title="Click para Votar">
-                                  <span id="@tag3" name="@tag3" class="glyphicon glyphicon-star" style=""><span id="@tag6" name="@tag6">@rest.Valoracion<input type="hidden" value="@rest.Valoracion" /></span></span>
+                                    <div class="form-group  col-md-2">
+
+                                        <input type="number" id="@modalvar2" name="@modalvar2" value="1" class="form-control" onchange="selecciona(@modalvar3,@modalvar4,@modalproducto);calcular()" />
+
+                                    </div>
+                                 
+                                        <select id="@modalvar3" name="@modalvar3" class="form-control col-md-2" onchange="selecciona(@modalvar3,@modalvar4,@modalproducto);calcular()">
+                                            <option value=1>@menu.clase1</option>
+                                            @if (@menu.Precio2 != 0)
+                                            {
+                                                <option value=2>@menu.clase2</option>
+                                            }
+                                            
+                                            @if (@menu.Precio3 != 0)
+                                            {
+                                                <option value=3>@menu.clase3</option>
+                                            }
+                                        </select>
+                                        <select id="@modalvar4" name="@modalvar4" class="hidden">
+                                            <option value=1>@menu.Precio1</option>
+                                            <option value=2>@menu.Precio2</option>
+                                            @if (@menu.Precio3 != 0)
+                                            {
+                                                <option value=3>@menu.Precio3</option>
+                                            }
+
+                                        </select>
+                                     
+                               
+                                
+                                <div class="col-md-3">
+                                    <span id="@modalvarpu" name="@modalvarpu" class="form-control">@Helpers.Getvalue(@menu.Precio1)</span>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="choosestar" id="@tag4" name="@tag4">
-                                        <span id="star5" name="star5" class="glyphicon glyphicon-star" onclick="valora(@tag2,5);"></span>
-                                        <span id="star4" name="star4" class="glyphicon glyphicon-star" onclick="valora(@tag2,3);"></span>
-                                        <span id="star3" name="star3" class="glyphicon glyphicon-star" onclick="valora(@tag2,4);"></span>
-                                        <span id="star2" name="star2" class="glyphicon glyphicon-star" onclick="valora(@tag2,2);"></span>
-                                        <span id="star1" name="star1" class="glyphicon glyphicon-star" onclick="valora(@tag2,1);"></span>
+
+                                
+				<div class="col-md-12">
+	                                <span  class="active col-md-8">Su Importe.</span><span id="@modalvar5" name="@modalvar5" class="active col-md-4">@Helpers.Getvalue(@menu.Precio1)</span>
+				</div>
+                                    @if (menu.Getingredientes(menu.IdProducto).Count > 0)
+                                    { 
+                                        
+                                         <div class="subtitle col-md-12">Ingredientes</div>
+                                        foreach (var ingre in menu.Getingredientes(menu.IdProducto))
+                                        {
+                                            <div class="col-md-6">
+                                                @Html.CheckBox(@ingre.Descripcion, true)<span>&nbsp; @Helpers.Titlecase(@ingre.Descripcion)</span>
+                                            </div>
+                                        }
+                                    }
+
+                                    <br />
+                                    @if (menu.GetExtras(menu.IdProducto).Count > 0)
+                                    {
+                                        <div class="subtitle col-md-12">Extras</div>
+                                        <div id="@modalextradiv">
+                                            @{var i = 0;
+
+                                                foreach (var extra in menu.GetExtras(menu.IdProducto))
+                                                {
+                                                    var varchk = "chkdata" + menu.IdProducto + "-" + i.ToString();
+                                                    i = i + 1;
+
+                                            <div class="col-md-6">
+                                                @Html.CheckBox(extra.Descripcion, false, new { onclick = "sumaextra(this," + @modalproducto + ");", value = @extra.Precio })<span>&nbsp; @Helpers.Titlecase(@extra.Descripcion) </span>&nbsp&nbsp<span>@Helpers.Getvalue(@extra.Precio)</span>
+                                            </div>
+                                                    }
+                                                }
+                                        </div>
+                                    }
+                               
+				<div class="col-md-12">
+                              	<div class="col-md-9">
+                          		 </div>
+                              	<div class="col-md-3">
+                                    <a href="#" class="btn btn-success btm-xs" role="button" data-toggle="modal" data-target="#squarespaceModal">Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a>
+                              	 </div>
+                          		 </div>
+                                </div>
+
+
+
+                            <div class="modal-footer1">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" role="button">Cerrar</button>
                                     </div>
                                 </div>
-                              <div class="col-md-2">
-                                 <a href="#" class="btn btn-success btm-xs" role="button" data-toggle="modal" data-target="#squarespaceModal"  >Al Carrito<span class="glyphicon glyphicon-shopping-cart"></span></a>
-                               </div>
-                              </div>
                             </div>
                         </div>
-                              }
-                
-            </div>
+                    </div>
+                </div>
+
+                                    }
+                                }
+
+
+    </div>
     <div id="Derecha" name="Derecha" class="col-md-2">
 
         <div class="CarritoAd bounce">
@@ -194,47 +305,79 @@
         </div>
     </div>
 
-            <div class="col-md-12">
-                <div class="row">
-                    <div id='Paging' style="text-align: center">
+    <div class="col-md-12">
+        <div class="row">
+            <div id='Paging' style="text-align: center">
 
-                    </div>
-                </div>
-            </div>
-
-        </div>
- <!-- <div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div><!-- -->
-<!-- line modal -->
-<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
-
-@using (Ajax.BeginForm("Contacto", "Home", null, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "formcontact" }))
-{
-
-    <div class="modal fade" id="squarespaceModal" name="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title" id="lineModalLabel"></h3>
-                </div>
-                <div class="modal-body" id="formcontact">
-                   
-                </div>
-
-                <div class="modal-footer">
-                    <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" role="button">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-}
+</div>
+<!-- <div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div><!-- -->
+
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
+
 
 <script src="~/Scripts/Votos.js"></script>
+<script type="text/javascript">
+                    function sumaextra(e, idproducto) {
+                       var campo3 = "monto" + idproducto;
+                        var montoformatted = document.getElementById(campo3).innerHTML.replace("Bs.", "");
+                        var temp = "";
+                        var i = 0;
+                        for (i; i < montoformatted.length; i++) {
+                            if (montoformatted[i] != ".")
+                                temp = temp + montoformatted[i];
+                        }
+                        temp = temp.replace(",", ".");
+                        var campo2 = "cantidad" + idproducto;
+                        var Qty = document.getElementById(campo2).value;
+                        var sumaextra = 0;
+                        if (e.checked)
+                            sumaextra = parseFloat(temp) + (parseFloat(e.value)*Qty);
+                        else
+                            sumaextra = parseFloat(temp) - (parseFloat(e.value)*Qty)
+                        result = currencyFormatES(sumaextra);
+                        document.getElementById(campo3).innerText = "Bs. "+result;
 
+                       
+
+                    }
+    function selecciona(n, m, p) {
+        m.value = n.value;
+       var campo3 = "pu" + p;
+        var campo = "monto" + p;
+        var campo2 = "cantidad" + p;
+        var myList = document.getElementById(campo);
+        var selectedText = "";
+        selectedText = m.options[m.selectedIndex].text;
+		var Qty=document.getElementById(campo2).value;
+		var amount=parseFloat(selectedText) * parseFloat(Qty);
+		var num  =amount.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+		var result= currencyFormatES(amount);
+		myList.innerText="Bs. "+result.toString();
+        document.getElementById(campo3).innerText = "Bs. " + currencyFormatES(parseFloat(selectedText));
+        var checks = document.querySelectorAll('#extrasdiv'+p+' input[type="checkbox"]');
+        alert(checks.length);
+            for (var i = 0; i < checks.length; i++) {
+                var check = checks[i];
+                if (check.checked==true)
+                            sumaextra(check, p);
+            }
+         }
+function currencyFormatES (num) {
+    return num
+       .toFixed(2) // always two decimal digits
+       .replace(".", ",") // replace decimal point character with ,
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")   // use . as a separator
+}
+
+    function calcular() {
+        alert("bye");
+
+    }
+</script>
 
 

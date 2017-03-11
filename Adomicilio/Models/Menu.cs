@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adomicilio.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,8 +11,7 @@ namespace Adomicilio.Models
         public Menu()
         {
             //  DateCreated = DataExtension.MinValue();
-
-        }
+              }
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -68,8 +68,23 @@ namespace Adomicilio.Models
         public virtual List<Extras> extras { get; set; }
         [ForeignKey("IdProducto")]
         public virtual List<Opinion> Opiniones { get; set; }
-        
-    }
+        [Display(Name = "Ingredientes")]
+        public string SelecciondeIngredientes { get; set; }
+        [Display(Name = "Extras")]
+        public string SelecciondeExtras { get; set; }
 
+        public List<MenuIngredients>  Getingredientes(int idproducto)
+    {
+            MenuIngredientsController mic = new MenuIngredientsController();
+            var query= mic.Getingredientes(idproducto);
+            return query;
+    }
+    public List<Extras> GetExtras(int idproducto)
+    {
+            ExtrasController exc = new ExtrasController();
+            var query = exc.GetExtras(idproducto);
+            return query;
+        }
+    }
 
 }

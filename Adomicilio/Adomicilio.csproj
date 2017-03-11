@@ -29,7 +29,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -38,7 +38,7 @@
     <PublishDatabases>true</PublishDatabases>
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -193,8 +193,10 @@
     <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\EmptyPartialViewResult.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
+    <Compile Include="Controllers\ExtrasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuIngredientsController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
@@ -225,12 +227,14 @@
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Especialidad.cs" />
     <Compile Include="Models\Estado.cs" />
+    <Compile Include="Models\Extras.cs" />
     <Compile Include="Models\GruposMenu.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageUtils.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\masterdashinfo.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuIngredients.cs" />
     <Compile Include="Models\Pais.cs" />
     <Compile Include="Models\Sector.cs" />
     <Compile Include="Models\Sexoenum.cs" />
@@ -325,6 +329,16 @@
     <Content Include="Views\Contacto\Edit.cshtml" />
     <Content Include="Views\Contacto\Index.cshtml" />
     <Content Include="Views\Home\Contacto.cshtml" />
+    <Content Include="Views\Home\ImagenView.cshtml" />
+    <Content Include="Views\Extras\Create.cshtml" />
+    <Content Include="Views\Extras\Delete.cshtml" />
+    <Content Include="Views\Extras\Edit.cshtml" />
+    <Content Include="Views\Extras\Index.cshtml" />
+    <Content Include="Views\MenuIngredients\Create.cshtml" />
+    <Content Include="Views\MenuIngredients\Delete.cshtml" />
+    <Content Include="Views\MenuIngredients\Details.cshtml" />
+    <Content Include="Views\MenuIngredients\Edit.cshtml" />
+    <Content Include="Views\MenuIngredients\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

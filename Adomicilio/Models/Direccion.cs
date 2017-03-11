@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity;
 namespace Adomicilio.Models
 {
-    
+
     [Table("Direccion")]
     public class Direccion
     {
@@ -73,32 +73,6 @@ namespace Adomicilio.Models
             return null;
         }
 
-    }
-    [Table("MenuIngredients")]
-    public class MenuIngredients
-    {
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdIngrediente { get; set; }
-        public int IdProducto { get; set; }
-        public string Descripcion { get; set; }
-        public bool Requerido { get; set; }
-        [ForeignKey("IdProducto")]
-        public virtual List<Menu> Producto { get; set; }
-    }
-    [Table("Extras")]
-    public class Extras
-    {
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdAdicional { get; set; }
-        public int IdProducto { get; set; }
-        public string Descripcion { get; set; }
-        public Decimal Precio { get; set; }
-        [ForeignKey("IdProducto")]
-        public virtual List<Menu> Producto { get; set; }
     }
     [Table("SubCategorias")]
     public class SubCategorias
