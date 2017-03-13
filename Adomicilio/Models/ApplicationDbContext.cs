@@ -18,8 +18,9 @@ namespace Adomicilio.Models
             Configuration.ProxyCreationEnabled = false;
             Configuration.AutoDetectChangesEnabled = true;
             Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
-           // Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
-          //  Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            
+            // Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            //  Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
 
 
         }
@@ -33,8 +34,8 @@ namespace Adomicilio.Models
         public DbSet<Category> Categorias { get; set; }
         public DbSet<SubCategorias> SubCategorias { get; set; }
         public DbSet<CarritodeCompras> CarritodeCompras { get; set; }
-        public DbSet<Orden> Ordenes { get; set; }
         public DbSet<Compra> Compras { get; set; }
+        public DbSet<Orden> Ordenes { get; set; }
         public DbSet<EmpresaSector> EmpresaSector { get; set; }
         public DbSet<Pais> Paises { get; set; }
         public DbSet<Estado>Estados { get; set; }

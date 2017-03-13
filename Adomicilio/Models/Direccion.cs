@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity;
 namespace Adomicilio.Models
 {
-
     [Table("Direccion")]
     public class Direccion
     {
@@ -105,35 +104,6 @@ namespace Adomicilio.Models
         public long clicks { get; set; }
 
     }
-    [Table("CarritodeCompras")]
-    public class CarritodeCompras
-    {
-        public CarritodeCompras()
-        {
-            //        DateCreated= DateTime.Now;
-
-        }
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public long OrdenNro { get; set; }
-        public int IdProducto { get; set; }
-        public int UserId { get; set; }
-        public int  Cant { get; set; }
-        public Decimal Precio{ get; set; }
-        public String Mensaje { get; set; }
-        public String ingredientes { get; set; }
-        public String Extra { get; set; }
-        [Column(TypeName = "DateTime2")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-
-        public System.DateTime? DateCreated { get; set; }
-        [ForeignKey("UserId")]
-        public virtual ApplicationUser Buyer { get; set; }
-        public System.DateTime? DateDelivered { get; set; }
-        public virtual Orden Orden { get; set; }
-    }
 
     public class Orden
     {
@@ -150,7 +120,8 @@ namespace Adomicilio.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 
         public System.DateTime? DateCreated { get; set; }
-
+       
+       
         private Procesadostat status;
 
         public Procesadostat GetStatus()
@@ -173,18 +144,18 @@ namespace Adomicilio.Models
         public int OrdenNro { get; set; }
         [Column(TypeName = "DateTime2")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-
+        public System.DateTime? DateDispatched { get; set; }
         public System.DateTime? DateCreated { get; set; }
         [ForeignKey("Buyer")]
         public int UId { get; set; }
         public int IdDireccion { get; set; }
-        public int idSector { get; set; }
+        public string Idsession { get; set; }
         public TipoPago tipopago { get; set; }
         [ForeignKey("IdDireccion")]
         public virtual Direccion Adireccion { get; set; }
-        [ForeignKey("idSector")]
-        public virtual Sector Sector { get; set; }
         public virtual  ApplicationUser  Buyer { get; set; }
+        public virtual decimal monto { get; set; }
+        public virtual bool pagoconfirmado{ get; set; }
     }
    
     [Table("EmpresaSector")]

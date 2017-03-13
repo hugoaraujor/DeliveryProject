@@ -30,7 +30,7 @@ namespace Adomicilio
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-           
+            ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
         }
 
         protected void Application_BeginRequest()

@@ -1,0 +1,35 @@
+public class SessionVar
+{
+    static HttpSessionState Session
+    {
+        get
+        {
+            if (HttpContext.Current == null)
+                throw new ApplicationException("No Http Context, No Session to Get!");
+
+            return HttpContext.Current.Session;
+        }
+    }
+
+    public static T Get<T>(string key)
+    {
+        if (Session[key] == null)
+            return default(T);
+        else
+            return (T)Session[key];
+    }
+
+    public static void Set<T>(string key, T value)
+    {
+        Session[key] = value;
+    }
+}
+
+@{ CurrentUser user = (CurrentUser)HttpContext.Current.Session["CurrentUser"]; }
+@HttpContext.Current.Session["Whatever"].ToString()
+@(CurrentUser)Session["CurrentUser"]
+
+Guid.NewGuid().ToString()
+ Guid.NewGuid().ToString("N");
+
+04126452152 pedro

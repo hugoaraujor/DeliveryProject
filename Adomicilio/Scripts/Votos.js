@@ -1,20 +1,23 @@
 ﻿
 
 function megusta(empresaid) {
-    if (localStorage.getItem("howmanylikes" + empresaid.toString()) == "" || localStorage.getItem("howmanylikes" + empresaid.toString()) == null) {
-        $.ajax({
-            url: '/Empresas/Likes',
-            type: "Post",
-            dataType: "JSON",
-            data: { id: empresaid, add: true },
-            success: function (num) {
-                document.getElementById("howmanylikes" + empresaid).innerHTML = num;
-                document.getElementById("likehand" + empresaid).style.color = "darkorange";
-            }
-        });
-        localStorage.setItem("howmanylikes" + empresaid.toString(), "1");
+    if (localStorage.getItem("howmanylikes" + empresaid) == null)
+        {
+        if (localStorage.getItem("howmanylikes" + empresaid) == "") {
+            $.ajax({
+                url: '/Empresas/Likes',
+                type: "Post",
+                dataType: "JSON",
+                data: { id: empresaid, add: true },
+                success: function (num) {
+                    document.getElementById("howmanylikes" + empresaid).innerHTML = num;
+                    document.getElementById("likehand" + empresaid).style.color = "darkorange";
+                }
+            });
+      
+        localStorage.setItem("howmanylikes" + empresaid, "1");
     } else {
-        localStorage.removeItem("howmanylikes" + empresaid.toString());
+        localStorage.removeItem("howmanylikes" + empresaid);
         $.ajax({
             url: '/Empresas/Likes',
             type: "Post",
@@ -26,6 +29,7 @@ function megusta(empresaid) {
             }
         });
 
+        }
     }
 }
 

@@ -184,6 +184,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\CarritodeComprasController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CiudadesController.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="DireccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +220,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\CarritodeCompras.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\Contacto.cs" />
@@ -339,6 +342,16 @@
     <Content Include="Views\MenuIngredients\Details.cshtml" />
     <Content Include="Views\MenuIngredients\Edit.cshtml" />
     <Content Include="Views\MenuIngredients\Index.cshtml" />
+    <Content Include="Views\Direcciones\Create.cshtml" />
+    <Content Include="Views\Direcciones\Delete.cshtml" />
+    <Content Include="Views\Direcciones\Details.cshtml" />
+    <Content Include="Views\Direcciones\Edit.cshtml" />
+    <Content Include="Views\Direcciones\Index.cshtml" />
+    <Content Include="Views\CarritodeCompras\Create.cshtml" />
+    <Content Include="Views\CarritodeCompras\Delete.cshtml" />
+    <Content Include="Views\CarritodeCompras\Details.cshtml" />
+    <Content Include="Views\CarritodeCompras\Edit.cshtml" />
+    <Content Include="Views\CarritodeCompras\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

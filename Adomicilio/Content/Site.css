@@ -16,7 +16,10 @@ footer ul {
         text-decoration: none;
         color:white;
     }
+.observaciones {
+    max-width:100%;
 
+}
 footer {
     clear: both;
     color: white;
