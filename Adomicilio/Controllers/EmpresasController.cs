@@ -134,7 +134,7 @@ namespace Adomicilio
             if (s.logo != null)
             {
                 MemoryStream ms = new MemoryStream(s.logo);
-                Image imge = Image.FromStream(ms);
+               // Image imge = Image.FromStream(ms);
 
                 String img2 = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray(), 0, ms.ToArray().Length);
                 // Response.Clear();

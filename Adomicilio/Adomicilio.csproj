@@ -269,9 +269,8 @@
     <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.viewportchecker.js" />
-    <Content Include="Scripts\viewportchecker.js" />
     <Content Include="Scripts\Votos.js" />
+    <Content Include="Views\CarritodeCompras\Index.cshtml" />
     <Content Include="Views\Empresas\empresasDetail.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
@@ -351,7 +350,7 @@
     <Content Include="Views\CarritodeCompras\Delete.cshtml" />
     <Content Include="Views\CarritodeCompras\Details.cshtml" />
     <Content Include="Views\CarritodeCompras\Edit.cshtml" />
-    <Content Include="Views\CarritodeCompras\Index.cshtml" />
+    <Content Include="Views\CarritodeCompras\VerCarrito.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

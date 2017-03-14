@@ -14,7 +14,14 @@ namespace Adomicilio
 {
     public class CarritodeComprasController : Controller
     {
-      
+        [System.Web.Mvc.HttpGet]
+        public JsonResult GetCartData(string sessionid, int userid)
+        {
+            var suma=db.CarritodeCompras.Where(z => z.sessionid == sessionid).Sum(z => z.Precio);
+            var cuenta = db.CarritodeCompras.Where(z => z.sessionid == sessionid).Count();
+            
+            return Json(new {numarticulos=cuenta,montoart=suma}, JsonRequestBehavior.AllowGet);
+        }
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CarritodeCompras
@@ -22,6 +29,39 @@ namespace Adomicilio
         {
             
             return View(await db.CarritodeCompras.ToListAsync());
+        }
+
+        // GET: CarritodeCompras
+        public async Task<ActionResult> VerCarrito(string sessionid,int xuserid)
+        {
+            var query = (from a in db.CarritodeCompras
+                         join m in db.Menu on a.IdProducto equals m.IdProducto
+                         join e in db.Empresa on m.IdEmpresa equals e.IdEmpresa
+                         where a.sessionid == sessionid || a.UserId==xuserid select new CarritodeComprasViewModel
+            {
+
+
+         id = a.id,
+        sessionid =a.sessionid,
+        clase =a.clase,
+        IdProducto =a.IdProducto,
+        UserId =a.UserId,
+        Cant =a.Cant,
+        Precio =a.Precio,
+        Mensaje =a.Mensaje,
+        ingredientes =a.ingredientes,
+        Extra =a.Extra,
+        Fecha =a.Fecha,
+        IdEmpresa =m.IdEmpresa,
+        RazonSocial =e.RazonSocial,
+        RIF =e.RIF,
+        Nombre =m.Nombre,
+        Descripcion =m.Descripcion,
+        imagen=m.imagen
+        
+
+    });
+            return View(await query.ToListAsync());
         }
 
         // GET: CarritodeCompras/Details/5
@@ -53,6 +93,7 @@ namespace Adomicilio
 
         public ActionResult Create(CarritodeCompras carritodeCompras)
         {
+            
             //public async Task<ActionResult> Create([Bind(Include = "id,sessionid,IdProducto,UserId,Cant,Precio,Mensaje,ingredientes,Extra")] CarritodeCompras carritodeCompras)
             if (ModelState.IsValid)
             {
@@ -120,6 +161,15 @@ namespace Adomicilio
             db.CarritodeCompras.Remove(carritodeCompras);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+        // POST: CarritodeCompras/Delete/5
+        [HttpPost]
+        public async Task<ActionResult> Deletecart(int id)
+        {
+            CarritodeCompras carritodeCompras = await db.CarritodeCompras.FindAsync(id);
+            db.CarritodeCompras.Remove(carritodeCompras);
+            await db.SaveChangesAsync();
+            return Json(new { Response = "Success" });
         }
 
         protected override void Dispose(bool disposing)

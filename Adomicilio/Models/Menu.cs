@@ -73,6 +73,9 @@ namespace Adomicilio.Models
         [Display(Name = "Extras")]
         public string SelecciondeExtras { get; set; }
 
+        public int Valoracion { get; set; }
+        public int like { get; set; }
+
         public List<MenuIngredients>  Getingredientes(int idproducto)
     {
             MenuIngredientsController mic = new MenuIngredientsController();

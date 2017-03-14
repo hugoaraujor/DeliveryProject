@@ -1,0 +1,229 @@
+﻿@model IEnumerable<Adomicilio.Models.CarritodeComprasViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+@using Adomicilio.Models
+@{
+    var visible = true;
+    var sessionidstr = HttpContext.Current.Session.SessionID;
+    var varuserid = ViewBag.userid;
+    bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+    if (varuserid == null)
+    { varuserid = "0"; }
+
+}
+<div class="row">
+    <div id="adphone" name="adphone" class="col-sm-3 col-md-3 ">
+        <dl>
+            <dd>&nbsp</ dd>
+            <dd>&nbsp</ dd>
+            <dd> Estamos para Servirle</ dd>
+            <dd>(0265) 631-88-88</ dd>
+        </dl>
+    </div>
+    <div class="col-sm-6 col-md-6 ">
+
+        Hello
+    </div>
+    <div id="toprightad" name="toprightad" class="col-sm-3 col-md-3 ">
+        <dl>
+            <dd>Su publicidad</ dd>
+            <dd>aqui se ve</ dd>
+            <dd>Contactanos!</ dd>
+            <dd>(0265) 631-88-88</ dd>
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <ol class="breadcrumb">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#"><b>Carrito de Compra</b></a></li>
+            
+        </ol>
+    </div>
+</div>@if (@Model.ToList().Count == 0)
+{
+    <div id="vacio" name="vacio">
+        <b class="active"> Su carrito esta vacio.</b><p>El proposito de su carrito de compras es el servicio, Llenelo con deliciosos platos de sus sitios de comidas o bebidas favoritos.Si ya tienes una cuenta, ingrese haciendo Login.continue comprando en la tienda que prefiera y haga click en el boton del Carrito para regresar aqui.
+        <p>Los precios y la disponibilidad dependen del sitio que escoja para hacer sus compras y del momento que la ejecute.</p>
+    </div>
+}
+else
+{
+<div id="Centro" name="Centro col-md-9">
+
+    <div class="row  col-md-9">
+            <div class="form-inline  col-md-9">
+                <div class="headcart">
+                    <div class="form-group col-md-3">
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <span>Producto</span>
+                    </div>
+
+                    <div class="form-group col-md-offset-1  hidden-xs  hidden-sm">
+                        <span>Monto</span>
+                    </div>
+                    <div class="form-group col-md-offset-2 hidden-xs hidden-sm">
+
+                        <span>Cantidad</span>
+
+                    </div>
+                </div>
+                </div>
+            <hr />
+            <div class="carritoview">
+                <form role="form">
+
+                    @foreach (var item in Model)
+                    {
+                        var i = 0;
+                        var tag = "cartcant" + @item.id;
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <img src="@item.imagenstr" id="imagencarrito" name="imagencarrito" />
+                            </div>
+
+
+
+
+                            <div class="form-group col-md-4">
+                                <div class="row">
+                                    <span id="cartname" name="cartname">@item.Nombre</span>
+                                </div>
+                                <div class="row">
+                                    <span id="razoncart" name="razoncart">@Helpers.Titlecase(@item.RazonSocial)</span>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group ">
+                                        @Html.DisplayFor(modelItem => item.ingredientes)
+                                        @if (item.Extra != null)
+                                        { <p><b>Adicional</b>:@Html.DisplayFor(modelItem => item.Extra)</p>
+
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.DisplayFor(modelItem => item.Mensaje)
+                                </div>
+                                <div class="row">
+                                    <a href="#" onclick="Deletecart(@item.id)">Borrar</a>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <span>@Helpers.Getvalue(@item.Precio)</span>
+                            </div>
+                            <div class="form-group col-md-2">
+
+                                <input type="number" class="form-control" id="@tag" value="@item.Cant" />
+
+                            </div>
+
+
+                        
+                        </div>
+                        <hr />
+
+                    }
+                </form>    
+                <div class="row">
+                    <div class="form-group col-md-2">
+
+                    </div>
+
+
+
+                    <div class="form-group col-md-3">
+                        <div class="row">
+                            <span><b class="active">Monto Total</b> </span>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-2">
+                        <span id="carritomonto" name="carritomonto">Bs. 0</span>
+                    </div>
+                    <div class="form-group col-md-2">
+                        
+
+
+                    </div>
+
+                    <div class="form-group col-md-2">
+
+                    </div>
+
+                    <div class="form-group col-md-2">
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    }
+    <div id="Derecha" name="Derecha" class="col-md-3">
+    @if (@Model.ToList().Count == 0)
+    {
+        <div class="well well-md">
+            <center><span id="carritoarticulos" name="carritoarticulos">0</span></center>
+            <center><span id="totalmonto" name="totalmonto">0</span></center>
+            <center> <button type="button" class="btn btn-primary">Comprar</button></center>
+
+       </div>
+     }
+    </div>
+ 
+
+
+
+    <!-- <- -->
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script src="~/Scripts/Votos.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @section Scripts {
+        <script>
+
+updatecart();
+
+                      function updatecart()
+                      {
+                          var sesss = '@sessionidstr'; var us = '@varuserid';
+                         
+                    $.ajax({
+                    url: "/CarritodeCompras/GetCartData",
+                    data: {sessionid:sesss,userid:us},
+                    type: 'GET',
+                    success: function (result) {
+                        document.getElementById("carritomonto").innerText = "Bs." + currencyFormatES(result.montoart);
+                        document.getElementById("totalmonto").innerText = "Bs." + currencyFormatES(result.montoart);
+                    document.getElementById("carritoarticulos").innerText = result.numarticulos+" Productos";
+                    }
+                                     });
+
+                      }
+              function Deletecart(pid)
+                      {
+                          var sesss = '@sessionidstr'; var us = '@varuserid';
+                          alert(pid);
+
+                    $.ajax({
+                    url: "/CarritodeCompras/Deletecart",
+                    data: {id:pid},
+                    type: 'POST',
+                    success: function (result) {
+                        location.reload();
+                    },
+                     });
+
+                      }
+                      function currencyFormatES(num) {
+                          return num
+                              .toFixed(2) // always two decimal digits
+                              .replace(".", ",") // replace decimal point character with ,
+                              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")   // use . as a separator
+                      }
+        </script>
+    }

@@ -133,7 +133,12 @@
 
         <div class="CarritoAd bounce">
             <center>Carrito de compra</center>
-            <img src="~/Images/cart1.png" alt="Carrito de Compra" id="Carritoimg" name="Carritoimg" />
+           
+
+            <center>
+                <span class="" id="carrito-articulos" name="carrito-articulos"></span>
+            </center>
+            <center><span class="" id="carrito-monto" name="carrito-monto"></span></center>
         </div>
     </div>
     <div class="col-md-12">
@@ -183,7 +188,7 @@
 @section Scripts { 
           <script>
             <!--
-         
+              localstorage.clear();
      $("#squarespaceModal").on("hidden.bs.modal",function(e){
                 location.reload();
             });

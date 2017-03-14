@@ -27,7 +27,50 @@ namespace Adomicilio.Controllers
              var menu = db.Menu.Where(x => x.IdEmpresa == idempresa);
              return menu.ToList();
         }
+        public async Task<int> Likes(int? id, bool add)
+        {
+            Menu s = null;
+            if (id != null)
+            {
+                s = await db.Menu.FindAsync(id);
+            }
 
+            if (s != null)
+            {
+                if (add)
+                    s.like++;
+                else
+                    s.like--;
+
+                db.Entry(s).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+
+            }
+
+            return s.like;
+        }
+        public async Task<int> Votar(int? id, int valor)
+        {
+            Menu s = null;
+            if (id != null)
+            {
+                s = await db.Menu.FindAsync(id);
+            }
+
+            if (s != null)
+            {
+                if (s.Valoracion == 0)
+                    s.Valoracion = valor;
+                else
+                    s.Valoracion = ((int)Math.Floor((decimal)(s.Valoracion + valor) / 2));
+
+                db.Entry(s).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+
+            }
+
+            return s.Valoracion;
+        }
         // GET: Menus
         public ViewResult Index(int idempresa,string sortOrder, string currentFilter, string searchString, int? page)
         {
