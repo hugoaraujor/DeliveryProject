@@ -14,16 +14,16 @@ namespace Adomicilio.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDireccion { get; set; }
         public int Id { get; set; }
+        [Required]
         public string Calle { get; set; }
+        [Required]
         public string CasaNro { get; set; }
+        [Required]
         public string Urbanizacion { get; set; }
         public string referencia { get; set; }
-        public string Municipio { get; set; }
         public string zipcode { get; set; }
-        public int Sector { get; set; }
-        public int Ciudad { get; set; }
-        public int? Estado { get; set; }
-        public int? Pais { get; set; }
+        public string Sector { get; set; }
+      
     }
 
     public class RegistroUser

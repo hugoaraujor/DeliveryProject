@@ -23,6 +23,10 @@
 
 }
 <input type="hidden" id="sessionid" name="sessionid" value="@sessionidstr" />
+
+<div id="ok" name="ok" >
+     <img src="~/Images/checkwhite.png" />
+     </div>
 <div class="row">
     <div id="adphone" name="adphone" class="col-sm-3 col-md-3 ">
         <dl>
@@ -311,7 +315,7 @@
                                             }
     </div>
     <div id="Derecha" name="Derecha" class="col-md-2">
-        <div class="CarritoAd bounce" onclick="alert('hello')">
+        <div class="CarritoAd bounce" onclick="iracarrito()">
             <center>Carrito de compra</center>
          
             <center>
@@ -327,28 +331,33 @@
         </div>
     </div>
 </div>
+
 <!-- <div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div><!-- -->
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 <script src="~/Scripts/Votos.js"></script>
+<script src="~/Scripts/cart.js"></script>
 @Scripts.Render("~/bundles/jquery")
 @section Scripts {
                   <script>
-                      updatecart();
+                      updatecart('@sessionidstr','@varuserid','carrito-articulos','carrito-monto','');
                       var post_vars;
-                      function updatecart()
-                      {   var sesss = '@sessionidstr';var us = '@varuserid';
-                          $.ajax({
-                              url: "/CarritodeCompras/GetCartData",
-                              data: {sessionid:sesss,userid:us},
-                              type: 'GET',
-                              success: function (result) {
-                                  document.getElementById("carrito-monto").innerText = "Monto Bs."+currencyFormatES(result.montoart);
-                                  document.getElementById("carrito-articulos").innerText = result.numarticulos;
-                              },
-                              async: true
-                          });
+                      function carritook() {
+                          var xSeconds = 2000; // 1 second
+                          $('#overlay').show();
+                          $('#overlay').toggleClass('backdrop');
+                          $('#ok').show();
+                          setTimeout(function () {
+                              $('#overlay').fadeOut('slow');
+                              $('#ok').fadeOut('slow');
+                              $('#ok').hide();
+                          }, xSeconds);
+                      }
+                          function iracarrito()
+                          { var sesss = '@sessionidstr';var us = '@varuserid';
+                              window.location.href = '/CarritodeCompras/Vercarrito/?sessionid='+sesss+"&xuserid="+us;
 
                       }
+
                       function getdata(cantidad, clase, monto, observaciones, nidproducto) {
                           var ex = getextras(nidproducto);
                           var ingr= getingredientes(nidproducto);
@@ -372,7 +381,8 @@
                                   // you can see the result from the console
                                   // tab of the developer tools
                                   $('.modal.in').modal('hide')
-                                  updatecart();
+                                  carritook();
+                                   updatecart('@sessionidstr','@varuserid','carrito-articulos','carrito-monto','');
                                   alertconsole.log(result);
                               },
                               error: function (xhr, resp, text) {
@@ -383,13 +393,8 @@
                           });
                       }
 
-                  
-                      function currencyFormatES(num) {
-                          return num
-                              .toFixed(2) // always two decimal digits
-                              .replace(".", ",") // replace decimal point character with ,
-                              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")   // use . as a separator
-                      }
+
+
                       function getextras(p) {
                           var extraresult = "";
                           var checks = document.querySelectorAll('#extrasdiv' + p + ' input[type="checkbox"]');

@@ -37,7 +37,7 @@ namespace Adomicilio
             var query = (from a in db.CarritodeCompras
                          join m in db.Menu on a.IdProducto equals m.IdProducto
                          join e in db.Empresa on m.IdEmpresa equals e.IdEmpresa
-                         where a.sessionid == sessionid || a.UserId==xuserid select new CarritodeComprasViewModel
+                         where a.sessionid == sessionid  select new CarritodeComprasViewModel
             {
 
 
@@ -120,7 +120,30 @@ namespace Adomicilio
             }
             return View(carritodeCompras);
         }
+        [HttpPost]
+        // POST: CarritodeCompras/Editcant/5
+        public  ActionResult Editcant(int? id,int n,decimal precio)
+        {
+            if (id == null)
+            {
+                return Json(new { Response = "Error" });
+            }
+            CarritodeCompras carritodeCompras =  db.CarritodeCompras.Find(id);
+            if (carritodeCompras == null)
+            {
 
+                return Json(new { Response = "Error" });
+            }
+            else
+            {
+                carritodeCompras.Cant = n;
+                carritodeCompras.Precio = precio;
+                db.Entry(carritodeCompras).State = EntityState.Modified;
+                db.SaveChanges();
+                return Json(new { Response = "Success" });
+            }
+           
+        }
         // POST: CarritodeCompras/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.

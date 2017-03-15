@@ -10,14 +10,14 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
-    <script src="~/Scripts/jquery.viewportchecker.js"></script>
-    <script src="~/Scripts/viewportchecker.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/animate.css" />
     </head>
 <body>
-
+    <div id="overlay" name="overlay" ></div> 
     <div id="wrap" name="wrap">
         
         <div class="container-fluid">
@@ -109,7 +109,7 @@
         </footer>
    @Scripts.Render("~/bundles/jquery")
     <script>
-        localStorage.clear();
+   
 
         $(window).scroll(function () {
             var height = $(window).scrollTop();

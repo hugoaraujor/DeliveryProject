@@ -107,6 +107,7 @@ namespace Adomicilio.Models
         public List<Estado> _estados { get;  }
         public List<Sector> _sectores { get; }
         public List<Direccion> _direcciones { get; }
+        public Direccion direccioninicial { get; }
         public static object Estados { get; private set; }
 
        

@@ -2,36 +2,83 @@
 @using Microsoft.AspNet.Identity;
 @model Adomicilio.Models.IndexViewModel
 @using PagedList.Mvc;
-@{
+@{  var sessionidstr = HttpContext.Current.Session.SessionID;
+    var varuserid = ViewBag.userid;
+    bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+    if (varuserid == null)
+    { varuserid = "0"; }
     var auxrestaurantes = Model.restaurante;
     var contactomodel = Model.contact;
-    bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+ 
     ViewBag.msj = "*";
     Session["DataInserted"] = "";
 }
 
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 @Html.AntiForgeryToken()
 <div class="span12">
     <div class="carousel slide row-fluidbs-slider" id="myCarousel" data-ride="carousel">
+    <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
         <div class="carousel-inner ">
-            <div class="item active">
+        
+            <div class="item active" data-slide-to="0">
                 <div class="bannerImage">
-                    <a href="#"><img src="~/images/image1.png" alt=""></a>
-                </div>
-            </div><!-- /Slide1 -->
-            <div class="item">
+                  
+                        <a href="#"><img src="~/images/image1.png" alt=""></a><div class="carousel-caption">
+                                                                                
+    <h3 data-animation="animated bounceInLeft" style="font-size:70px;">
+       Tienes Hambre
+    </h3>
+    <h3 data-animation="animated bounceInUp">
+             ¿No quieres moverte?
+    </h3>
+ 
+</div>
+                    </div>
+              
+                   
+              
+                </div><!-- /Slide1 -->
+            <div class="item" data-slide-to="1">
                 <div class="bannerImage">
                     <a href="#"><img src="~/images/image2.png" alt=""></a>
+                    <div class="carousel-caption">
+                        <h3 class="icon-container" data-animation="animated bounceInDown fadeout">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </h3>
+                        <h3 data-animation="animated bounceInUp">
+                            Dexpress.com
+                          Lo Llevamos donde estés.
+                        </h3>
+                       
+                    </div>
                 </div>
             </div><!-- /Slide2 -->
-            <div class="item">
+            <div class="item" data-slide-to="2">
                 <div class="bannerImage">
                     <a href="#"><img src="~/images/image4.png" alt=""></a>
+                    <div class="carousel-caption">
+
+                        <h3 class="icon-container" data-animation="animated zoomInLeft">
+                            <span class="glyphicon glyphicon-glass"></span>
+                        </h3>
+
+                        <h3 data-animation="animated flipInX">
+                        
+                                <p>Comidas, bebidas, Fiesta Packs lo que desees.</p>
+                                <p>En tiempo Record y al mismo precio.</p>
+                        
+                        </h3>
+
+                        <h3 class="carousel-caption button hidden-xs hidden-sm" data-animation="animated  bounceInUp bounceInDown">
+                            <img src="~/Images/hombre2.png" />
+                        </h3>
+                      
+                    </div>
                 </div>
             </div><!-- /Slide2 -->
         </div>
@@ -41,6 +88,8 @@
         </div><!-- /.control-box -->
     </div><!-- /#myCarousel -->
     <div class="row"><center>
+                       
+
     <form class="navbar-form navbar especial" role="search" name="forma" id="forma">
 
         @Html.HiddenFor(m => m.menuopcion)
@@ -50,8 +99,7 @@
                 @Html.DropDownListFor(m => m.ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(24), new
                {
                    @class = "form-control required place-holder",
-                   @onchange = "FillSector()",
-                   @onmouseup = "FillSector",
+                   @onchange = "savelocation()",
                    @Model.ciudad
 
                })
@@ -131,7 +179,7 @@
     </div>
     <div id="Derecha" name="Derecha" class="col-md-2">
 
-        <div class="CarritoAd bounce">
+        <div class="CarritoAd bounce" onclick="iracarrito()">
             <center>Carrito de compra</center>
            
 
@@ -184,70 +232,110 @@
     }
 </div>
 <script src="~/Scripts/Votos.js"></script>
+<script src="~/Scripts/cart.js"></script>
+
  @Scripts.Render("~/bundles/jquery")
 @section Scripts { 
           <script>
             <!--
-              localstorage.clear();
-     $("#squarespaceModal").on("hidden.bs.modal",function(e){
-                location.reload();
-            });
+              updatecart('@sessionidstr', '@varuserid', 'carrito-articulos', 'carrito-monto', '');
+              $("#squarespaceModal").on("hidden.bs.modal",function(e){location.reload(); }); window.status = "";
+              var vciudad = 0;
 
-     window.status = "";
-     var vciudad = 0;
+            function iracarrito()
+                          { var sesss = '@sessionidstr';var us = '@varuserid';
+                              window.location.href = '/CarritodeCompras/Vercarrito/?sessionid='+sesss+"&xuserid="+us;
 
-      if (localStorage.getItem("Ciudad") != null) {
-       var vciudad = localStorage.getItem('Ciudad');
-       document.getSelection("ciudad").value = vciudad;
-       FillCity();
-       enviar(0);
-      } else {
-                vciudad = document.getSelection("ciudad").value.toString();
-            FillCity();
-      }
+                      }
 
-       // Carousel Auto-Cycle
-      $(document).ready(function () {
-                leelocal();
-            $('.carousel').carousel({
-                interval: 10000
-        })
-       });
 
-     function choose(number) {
-                var cityId = document.getElementById("ciudad").value;
-                document.getElementById("menuopcion").value = number;
-                document.forma.submit();
-            }
+              var savedcity = localStorage.getItem("ciudad");
 
-      function leelocal() {
-                FillCity();
-            }
+              if (savedcity != null) {
+                  var vciudad = localStorage.getItem('ciudad');
+                  document.getSelection("ciudad").value = savedcity;
+              }
 
-      function savelocal() {
-        var cityId = document.getElementById("Ciudad").value.toString();
-        localStorage.setItem('ciudad', cityId);
-        var scity = localStorage.getItem('ciudad');
-      }
 
-        function FillCity() {
-            var stateId = 24;
-            $.ajax({url: '/Account/FillCity',
-                      type: "GET",
-                      dataType: "JSON",
-                      data: {id: stateId },
-                      success: function (cities) {
-                $("#Ciudad").html(""); // clear before appending new list
-            $("#Ciudad").append($('<option>-------Seleccione-------</option>').val(""));
-                      $.each(cities, function (i, city) {
-                $("#Ciudad").append($('<option>' + city.ciudad + '</option>').val(city.CiudadId));
+
+
+              function savelocation() {
+                  var cityId = document.getElementById("ciudad").value;
+                  localStorage.setItem("ciudad", cityId);
+                
+                  window.location.href = '//Index/?menuopcion=0&ciudad=' + cityId;
+              }
+
+
+
+
+     
+
+                 function choose(number) {
+                            var cityId = document.getElementById("ciudad").value;
+                            document.getElementById("menuopcion").value = number;
+                            document.forma.submit();
+                        }
+
+                  function leelocal() {
+                            FillCity();
+                        }
+
+
+
+
+                  // Carousel Auto-Cycle
+                  $(document).ready(function () {
+                      leelocal();
+                      $('.carousel').carousel({
+                          interval: 100000
+                      })
+                  });
+
+
+                  /* Demo Scripts for Bootstrap Carousel and Animate.css article
+                  * on SitePoint by Maria Antonietta Perna
+                  */
+                  (function ($) {
+
+                      //Function to animate slider captions 
+                      function doAnimations(elems) {
+                          //Cache the animationend event in a variable
+                          var animEndEv = 'webkitAnimationEnd animationend';
+
+                          elems.each(function () {
+                              var $this = $(this),
+                                  $animationType = $this.data('animation');
+                              $this.addClass($animationType).one(animEndEv, function () {
+                                  $this.removeClass($animationType);
+                              });
+                          });
+                      }
+
+                      //Variables on page load 
+                      var $myCarousel = $('#myCarousel'),
+                          $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+
+                      //Initialize carousel 
+                      $myCarousel.carousel();
+
+                      //Animate captions in first slide on page load 
+                      doAnimations($firstAnimatingElems);
+
+                      //Pause carousel  
+                      $myCarousel.carousel('pause');
+
+
+                      //Other slides to be animated on carousel slide event 
+                      $myCarousel.on('slide.bs.carousel', function (e) {
+                          var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
+                          doAnimations($animatingElems);
                       });
-                      $("#Ciudad").val(vciudad);
-                      },
-            });
-        }
-   //-->
+
+                  })(jQuery);
+
 </script>
+    
 }
 
 

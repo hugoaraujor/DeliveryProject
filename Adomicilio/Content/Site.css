@@ -1,7 +1,7 @@
 ﻿* {
     margin: 0px;
-    padding:0px;
-    
+    padding: 0px;
+
 }
 footer ul {
 
@@ -39,6 +39,7 @@ conta2 {
     /*  margin-top: 80px;*/
     min-height: calc(100vh - 150px);
     background-color: #079AAD;
+  
 }
 
 #city {
@@ -151,14 +152,15 @@ conta2 {
 html {
     height: 100%;
     min-height: calc(100vh - 150px);
+   
 }
 
 body {
-    padding-top: 0px;
+    padding-top: 10px;
     min-height: calc(100% -150px);
     /*margin-top: -150px; /* Misma altura que el footer en negativo */
     /* padding-bottom: -150px;*/
-    
+    font-family: 'Chivo', sans-serif;
 }
 #imagen {
     width: 300px;
@@ -213,7 +215,6 @@ textarea {
     background-color: whitesmoke;
     width: 95%;
     /* POnerlo al 100% para que ocupe toda a panatalla*/
-    
 }
 
 .btn a{
@@ -315,6 +316,7 @@ img {
 }
 .carousel-control {
     top: 33%;
+    background-color: #F61D04;
 }
 
 a {
@@ -359,10 +361,14 @@ a {
     align-content: center;
     text-align: center;
 }
-.especial{
-    font-size:small;
-   color:white;
-   text-align:center;
+.especial {
+    font-size: small;
+    color: white;
+    text-align: center;
+    box-shadow: 4px 3px 17px 3px #807979;
+    -webkit-box-shadow: 4px 3px 17px 3px #807979;
+    -moz-box-shadow: 4px 3px 17px 3px #807979;
+    -o-box-shadow: 4px 3px 17px 3px #807979;
 }
 
     .especial .form-group {
@@ -611,10 +617,12 @@ background-color:lightyellow;
 
 .navbar-default {
     background-color: #e51c23;
+  
 }
 .container {
     background-color: whitesmoke;
-    padding:3px 5px 2px 5px;
+    padding: 0px 0px 0px 0px;
+
 }
 /*---------------------------Carrito de compra -----------------------------------------------------------**/
 .CarritoAd {
@@ -670,14 +678,57 @@ background-color:lightyellow;
     margin-left: 40px;
 }
 #vacio {
-        margin-left: 50px;
-        padding:20px 100px 10px 30px;
-        margin-right:50px;
-        background-color:ghostwhite;
-        border-radius:15px;
-        color:gray;
-        
-      
+    margin-left: 50px;
+    padding: 20px 100px 10px 30px;
+    margin-right: 50px;
+    background-color: ghostwhite;
+    border-radius: 15px;
+    color: gray;
+}
+/*-(Check sign to confirm a new elements was added to a cart----------------------------------*/
+#ok {
+    width: 100px;
+    height: 100px;
+    background-color: #38B44A;
+    border-radius: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display:none;
+}
+
+#ok .img{
+    border-radius: 100px;
+    /* bring your own prefixes */
+    transform: translate(-100%, -100%);
+    z-index: 2;
+    background-image: url("Images/checkwhite.png");
+    background-position: center;
+    margin-top:7px;
+}
+
+/*-(fade elements :fade all screen each time cart is filled,overlay div is in layout.chtml)-----------------------*/
+#overlay {
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: #000;
+    top: 0;
+    left: 0;
+    transition: opacity .25s;
+    -moz-transition: opacity .25s;
+    -webkit-transition: opacity .25s;
+    z-index:3;
+    display:none;
+}
+
+.backdrop {
+    opacity: .4 !important;
+    display: block;
 }
 /*--------------------------------------------------------------------------------------------------*/
 .center {
@@ -746,9 +797,9 @@ background-color:lightyellow;
     direction: rtl;
     background-color:lightgray;
     border-radius: 10px;
-    padding-left: 6px;
+    padding-left: 0px;
     padding-right: 6px;
-    animation: slideInDown;
+    animation: pulse;
     -webkit-animation-duration: 2s;
     -webkit-animation-delay: 4s;
     -webkit-animation-iteration-count: 1;
@@ -793,7 +844,7 @@ span:hover ~ span { /* On hover target it's "previous";) elements */
 [id^='ranking'], [id^='prodranking'] {
     background-color: #EEEEEE;
     border-radius: 10px;
-    padding-left: 10px;
+    padding-left: 15px;
     width: 50px;
     color: #F61D04;
     border: 1px solid #9E9E9E;
@@ -879,13 +930,94 @@ a.buttondel {
     height: 20px;
     text-indent: -9999px; /* hides the link text */
 }
-
-
-    #checkout:hover {
+#checkout:hover {
         -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
         box-shadow: 2px 2px 2px 2px #C2C0B4;
         -webkit-animation-duration: 3s;
         -webkit-animation-delay: 2s;
         -webkit-animation-iteration-count: infinite;
       
+ }
+
+/**<---------Animation Carrosel text--*/
+
+.main-container {
+    padding: 10px 15px;
+    -webkit-animation-iteration-count: 1;
+}
+
+
+
+
+.carousel-indicators {
+    bottom: 0;
+}
+
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel .item {
+    min-height: 50px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.carousel .icon-container {
+    background-color: #F61D04;
+}
+ .carousel-caption h3,
+.carousel-caption button {
+}
+
+.carousel-caption h3 {
+    padding: .5em;
+}
+
+.carousel .icon-container {
+    display: inline-block;
+    font-size: 25px;
+    line-height: 25px;
+    padding: 1em;
+    text-align: center;
+    border-radius: 50%;
+}
+
+
+/* Animation delays */
+.carousel-caption h3:first-child {
+    animation-delay: 1s;
+}
+
+.carousel-caption h3:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.carousel-caption img {
+    margin-top: 0px;
+    margin-left: 0px;
+    animation-direction: alternate-reverse;
+    animation-delay: 6s;
+    top: -200px;
+    right: 90%;
+    position: absolute;
+    transition:all 2s;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.p {
+    padding-top: 125px;
+    text-align:center;
+}
+
+    .p a {
+        text-decoration: underline;
     }

@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\Correo.cs" />
+    <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\EmptyPartialViewResult.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
@@ -265,6 +266,8 @@
     <Content Include="Images\image4.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\carruselanim.js" />
+    <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\header.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -351,6 +354,7 @@
     <Content Include="Views\CarritodeCompras\Details.cshtml" />
     <Content Include="Views\CarritodeCompras\Edit.cshtml" />
     <Content Include="Views\CarritodeCompras\VerCarrito.cshtml" />
+    <Content Include="Views\Direcciones\Crear.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
