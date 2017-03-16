@@ -21,7 +21,6 @@ namespace Adomicilio.Models
         [Required]
         public string Urbanizacion { get; set; }
         public string referencia { get; set; }
-        public string zipcode { get; set; }
         public string Sector { get; set; }
       
     }

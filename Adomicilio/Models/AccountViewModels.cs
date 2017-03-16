@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -102,6 +103,8 @@ namespace Adomicilio.Models
         public string PhoneNumber { get; set; }
         public string movil { get; set; }
         public bool aceptapublicidad { get; set; }
+        [Display(Name = "Terminos de Uso:")]
+//        [Range(typeof(bool), "true", "true", ErrorMessage = "Debe aceptar los terminos del sitio web")]
         public bool aceptaterminosdeuso { get; set; }
         public bool notificaraltelefonomovil { get; set; }
         public List<Estado> _estados { get;  }

@@ -46,7 +46,7 @@ namespace Adomicilio.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDireccion,Id,Calle,CasaNro,Urbanizacion,referencia,Municipio,zipcode,Sector")] Direccion direccion)
+        public ActionResult Create([Bind(Include = "IdDireccion,Id,Calle,CasaNro,Urbanizacion,referencia,Sector")] Direccion direccion)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Adomicilio.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdDireccion,Id,Calle,CasaNro,Urbanizacion,referencia,Municipio,zipcode,Sector")] Direccion direccion)
+        public ActionResult Edit([Bind(Include = "IdDireccion,Id,Calle,CasaNro,Urbanizacion,referencia,Sector")] Direccion direccion)
         {
             if (ModelState.IsValid)
             {

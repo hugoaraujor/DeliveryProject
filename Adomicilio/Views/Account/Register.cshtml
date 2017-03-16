@@ -1,8 +1,8 @@
 ﻿@using Adomicilio.Models
 @model RegisterViewModel
 @{
-    ViewBag.Title = "Registro";
-   
+    ViewBag.Title = "Registro"; 
+
 }
 <h2>@ViewBag.Title.</h2>
 <h3 class="titulo1"><strong>Estas a solo tres pasos</strong></h3>
@@ -10,79 +10,76 @@
 <h4 class="instrucciones">el boton siguiente para especificar datos adicionales</h4>
  
    
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form",id="forma",name="forma" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     <div class="row">
                         <div class="stepwizard">
-                            <div class="stepwizard-row setup-panel col-md-10">
+                            <div class="stepwizard-row setup-panel col-md-11">
                                 <div class="stepwizard-step col-md-4">
                                     <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-
                                 </div>
                                 <div class="stepwizard-step col-md-4">
                                     <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-
                                 </div>
                                 <div class="stepwizard-step col-md-4">
                                     <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <form role="form">
                                 <div class="row setup-content" id="step-1">
-                                    <div class="col-xs-10">
-                                        <div class="col-md-10">
+                                    <div >
+                                        <div class="col-md-8">
                                             <h3>Paso 1</h3>
+                                            <p>Tus datos de Identidad. Permitenos conocernos</p>
                                             <div class="form-group">
-                                                <label class="control-label col-md-2">Correo electrónico</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label col-md-4">Correo electrónico</label>
+                                                <div class="col-md-8">
                                                     <input id="Email" name="Email" maxlength="200" type="text" required="required" class="form-control" placeholder="Direccion de Correo" value=@Model.Email />
                                                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                                 </div>
 
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-2">Contraseña</label>
-                                                <div class="col-md-10">
-                                                    <input id="Password" name="Password" minlength="8" maxlength="20" type="text" required="required" class="form-control" placeholder="Contraseña" value=@Model.Password />
-                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                <label class="control-label col-md-4">Contraseña</label>
+                                                <div class="col-md-8">
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                                 </div>
-                                                @Html.HiddenFor(m => m.Pais)
-                                            </div>
+                                                
+                                            </div>@Html.HiddenFor(m => m.Pais)
                                             <div class="form-group">
-                                                <label class="control-label col-md-2">Confirme Contraseña</label>
-                                                <div class="col-md-10">
-                                                    <input id="ConfirmPassword" name="ConfirmPassword" minlength="8" maxlength="20" type="text" required="required" class="form-control" placeholder="Repetir Contraseña" value=@Model.ConfirmPassword />
+                                                <label class="control-label col-md-4">Confirme Contraseña</label>
+                                                <div class="col-md-8">
+                                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                                                     @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                                                 </div>
 
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Nombres</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Nombres</label>
+                                                <div class="col-md-8">
                                                     <input id="Nombres" name="Nombres" maxlength="200" type="text" required="required" class="form-control" placeholder="Su(s) Nombre(s)" value=@Model.Nombres />
                                                     @Html.ValidationMessageFor(m => m.Nombres, "", new { @class = "text-danger" })
 
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Apellidos</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Apellidos</label>
+                                                <div class="col-md-8">
                                                     <input id="Apellidos" name="Apellidos" maxlength="200" type="text" required="required" class="form-control" placeholder="Su(s) Apellido(s)" value=@Model.Apellidos />
                                                     @Html.ValidationMessageFor(m => m.Apellidos, "", new { @class = "text-danger" })
                                                 </div>
 
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Sexo</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Sexo</label>
+                                                <div class="col-md-8">
                                                     <select id="Sexo" name="Sexo" min="1" type="text" required="required" class="form-control" value=@Model.Sexo>
                                                         <option value="1">Masculino</option>
                                                         <option value="2">Femenino</option>
@@ -96,145 +93,128 @@
                                     </div>
                                 </div>
                                 <div class="row setup-content" id="step-2">
-                                    <div class="col-xs-10">
-                                        <div class="col-md-10">
+                                    <div class="col-xs-9">
+                                        <div class="col-md-8">
                                             <h3> Paso 2</h3>
+                                            <p >Tus Números de contacto y Localización</p>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Telefono</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Telefono</label>
+                                                <div class="col-md-8">
                                                     <input id="PhoneNumber" name="PhoneNumber" maxlength="30" type="text" required="required" class="form-control" placeholder="Telefono Fijo" value=@Model.PhoneNumber />
                                                     @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                                                 </div>
 
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Movil</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Movil</label>
+                                                <div class="col-md-8">
                                                     <input id="movil" name="movil" maxlength="30" type="text" required="required" class="form-control" placeholder="Movil" value=@Model.movil />
                                                     @Html.ValidationMessageFor(m => m.movil, "", new { @class = "text-danger" })
                                                 </div>
 
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Estado</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Estado</label>
+                                                <div class="col-md-8">
                                                     @Html.DropDownListFor(m => m.Estado, ListHelper.SelectListItemHelper.GetEstadosList(Model.Pais), new
                                                    { @class = "form-control required", @onchange = "FillCity()"
                                                    })
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label  col-md-2">Ciudad</label>
-                                                <div class="col-md-10">
+                                                <label class="control-label  col-md-4">Ciudad</label>
+                                                <div class="col-md-8">
                                                     @Html.DropDownListFor(m => m.Ciudad, ListHelper.SelectListItemHelper.GetCiudadesList(Model.Estado), new
-                                                   {
-                                                       @class = "form-control required"
-                                                   })
+                                               {
+                                                   @class = "form-control required"
+                                                   
+                                               })
                                                 </div>
                                             </div>
-
                                             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row setup-content" id="step-3">
-                                    <div class="col-xs-10">
-                                        <div class="col-md-10">
+                                    <div class="col-xs-9">
+                                        <div class="col-md-8">
                                             <h3> Paso 3</h3>
-
-
-                                          
-                                                <h4>Direccion</h4>
+                                            <p>Tu dirección de domicilio. Luego podrás agregar otras direcciones adicionales</p>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.Calle, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
+                                                    @Html.LabelFor(model => model.direccioninicial.Calle, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
                                                         @Html.EditorFor(model => model.direccioninicial.Calle, new { htmlAttributes = new { @class = "form-control" } })
                                                         @Html.ValidationMessageFor(model => model.direccioninicial.Calle, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.CasaNro, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
+                                                    <label class="control-label col-md-4">Casa/Apto Nro.</label> 
+                                                    <div class="col-md-8">
                                                         @Html.EditorFor(model => model.direccioninicial.CasaNro, new { htmlAttributes = new { @class = "form-control" } })
                                                         @Html.ValidationMessageFor(model => model.direccioninicial.CasaNro, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.Urbanizacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
+                                                    @Html.LabelFor(model => model.direccioninicial.Urbanizacion, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
                                                         @Html.EditorFor(model => model.direccioninicial.Urbanizacion, new { htmlAttributes = new { @class = "form-control" } })
                                                         @Html.ValidationMessageFor(model => model.direccioninicial.Urbanizacion, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.referencia, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
+                                                    <label class="control-label col-md-4">Referencia</label> 
+                                                    <div class="col-md-8">
                                                         @Html.EditorFor(model => model.direccioninicial.referencia, new { htmlAttributes = new { @class = "form-control" } })
                                                         @Html.ValidationMessageFor(model => model.direccioninicial.referencia, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
-
-                                              
-
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.zipcode, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
-                                                        @Html.EditorFor(model => model.direccioninicial.zipcode, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.direccioninicial.zipcode, "", new { @class = "text-danger" })
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.Sector, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
+                                                    @Html.LabelFor(model => model.direccioninicial.Sector, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    @Html.ValidationMessageFor(model => model.direccioninicial.Sector, "", new { @class = "text-danger" })
+                                                    <div class="col-md-8">
                                                         @Html.EditorFor(model => model.direccioninicial.Sector, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.direccioninicial.Sector, "", new { @class = "text-danger" })
+                                                
                                                     </div>
                                                 </div>
-
-
-
-
                                             <div class="form-group">
-                                                @Html.LabelFor(m => m.aceptapublicidad, htmlAttributes: new { @class = "control-label col-md-3" })
-                                                <div class="col-md-10">
+                                                <label class="control-label col-md-10">Acepta el envio de avisos y alertas de este sitio web.</label> 
+                                                @Html.ValidationMessageFor(m => m.aceptapublicidad, "", new { @class = "text-danger" })
+                                                <div class="col-md-1">
                                                     <div class="checkbox">
                                                         @Html.EditorFor(m => m.aceptapublicidad)
-                                                        @Html.ValidationMessageFor(m => m.aceptapublicidad, "", new { @class = "text-danger" })
+                                            
                                                     </div>
                                                 </div>
+                                               
                                             </div>
-
                                             <div class="form-group">
-                                                @Html.LabelFor(m => m.aceptaterminosdeuso, htmlAttributes: new { @class = "control-label col-md-3" })
+                                                <label class="control-label col-md-10">Acepta los <a href="/terminos">Terminos de uso de www.Dexpress.com.ve</a></label> 
                                                 <div class="col-md-10">
-                                                    <div class="checkbox">
-                                                        @Html.EditorFor(m => m.aceptaterminosdeuso)
-                                                        @Html.ValidationMessageFor(m => m.aceptaterminosdeuso, "", new { @class = "text-danger" })
+                                                    @Html.ValidationMessageFor(m => m.aceptaterminosdeuso, "", new { @class = "text-danger   " })
+                                                    <span id="atuspan" name="atuspan" class="text-danger" ></span>
+                                                   </div>
+                                                    <div class="col-md-1">
+                                                        <div class="checkbox">
+                                                            @Html.EditorFor(m => m.aceptaterminosdeuso)
+
+                                                            <span class="checkboxStatus"> </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <button class="btn btn-success btn-lg pull-right" type="submit">Enviar!</button>
+                                            <button id="btnenvia" name="btnenvia" class="btn btn-success btn-lg pull-right" type="submit">Enviar</button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
-
-
-
                     </div>
                 </div>
-            
             }
 
         @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
+ @Scripts.Render("~/bundles/jqueryval")
     <script>
+     
         function FillCity() {
             alert("ciudad");
             var stateId = $("#Estado").val();
@@ -250,10 +230,39 @@
                 }
             });
         }
+     
+        function FillSector() {
+            ciudadId = document.getElementById("Ciudad").value;
+            if (ciudadId == "")
+                ciudadId = vciudad;
+
+            $.ajax({
+                url: '/Account/FillSector',
+                type: "GET",
+                dataType: "JSON",
+                data: { Id: ciudadId },
+                success: function (sectores) {
+                    $("#Sector").html(""); // clear before appending new list
+                    //Coloca el mensaje Seleccione si se ha colocado en el atributo 'place-holder' de bootstrap
+                    $("#Sector").append($('<option>---------Seleccione---------</option>').val(""));
+                    $.each(sectores, function (n, sect) {
+                        $("#Sector").append($('<option>' + sect.Nombresector + '</option>').val(sect.Id));
+                    });
+
+                    $("#Sector").val(vsector);
+                },
+
+            });
+
+
+        }
     </script>
 
             <script>
-                $(document).ready(function () {
+            
+                    $("#registerLink").toggle();
+                    $("#contactolink").toggle();
+
                     var navListItems = $('div.setup-panel div a'),
                         allWells = $('.setup-content'),
                         allNextBtn = $('.nextBtn');
@@ -294,7 +303,23 @@
                     });
 
                     $('div.setup-panel div a.btn-primary').trigger('click');
-                });
+
+                    $(document).ready(function () {
+                        var $form = $('#forma');
+                        var $checkbox = $('#aceptaterminosdeuso');
+
+                        $form.on('submit', function (e) {
+                            if (!$checkbox.is(':checked')) {
+                                document.getElementById("atuspan").innerText="Debe aceptar los terminos de uso."
+                                e.preventDefault();
+                                return;
+                            }
+                        });
+
+                        $('#aceptaterminosdeuso').click(function () { document.getElementById("atuspan").innerText = "" });
+                        
+                       
+                    });
             </script>
         }
 

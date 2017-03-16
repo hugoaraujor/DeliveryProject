@@ -36,7 +36,7 @@
                             <ul class="nav navbar-nav">
                                 <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                                 <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                                <li data-toggle="modal" data-target="#squarespaceModal">@Html.ActionLink("Contacto", "Contact", "Contacto")</li>
+                                <li name="contactolink" id="contactolink" data-toggle="modal" data-target="#squarespaceModal">@Html.ActionLink("Contacto", "Contact", "Contacto")</li>
                             </ul>
                             @Html.Partial("_LoginPartial")
 

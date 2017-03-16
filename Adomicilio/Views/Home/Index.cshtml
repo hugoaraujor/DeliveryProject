@@ -12,6 +12,7 @@
  
     ViewBag.msj = "*";
     Session["DataInserted"] = "";
+    
 }
 
 
@@ -238,27 +239,25 @@
 @section Scripts { 
           <script>
             <!--
+             
               updatecart('@sessionidstr', '@varuserid', 'carrito-articulos', 'carrito-monto', '');
               $("#squarespaceModal").on("hidden.bs.modal",function(e){location.reload(); }); window.status = "";
               var vciudad = 0;
 
-            function iracarrito()
-                          { var sesss = '@sessionidstr';var us = '@varuserid';
-                              window.location.href = '/CarritodeCompras/Vercarrito/?sessionid='+sesss+"&xuserid="+us;
-
-                      }
-
-
-              var savedcity = localStorage.getItem("ciudad");
-
-              if (savedcity != null) {
-                  var vciudad = localStorage.getItem('ciudad');
-                  document.getSelection("ciudad").value = savedcity;
+              function iracarrito()
+              {                var sesss = '@sessionidstr';var us = '@varuserid';
+                               window.location.href = '/CarritodeCompras/Vercarrito/?sessionid='+sesss+"&xuserid="+us;
               }
 
-
-
-
+           
+                  var savedcity = localStorage.getItem("ciudad");
+                  if (savedcity != null && savedcity != document.getElementById("ciudad").value) {
+                      document.getElementById("ciudad").value = savedcity;
+                      vciudad = savedcity;
+                      document.forma.submit();
+                    
+                  }
+           
               function savelocation() {
                   var cityId = document.getElementById("ciudad").value;
                   localStorage.setItem("ciudad", cityId);
@@ -266,23 +265,15 @@
                   window.location.href = '//Index/?menuopcion=0&ciudad=' + cityId;
               }
 
-
-
-
-     
-
-                 function choose(number) {
+             function choose(number) {
                             var cityId = document.getElementById("ciudad").value;
                             document.getElementById("menuopcion").value = number;
                             document.forma.submit();
-                        }
+             }
 
-                  function leelocal() {
-                            FillCity();
-                        }
+              
 
-
-
+             
 
                   // Carousel Auto-Cycle
                   $(document).ready(function () {

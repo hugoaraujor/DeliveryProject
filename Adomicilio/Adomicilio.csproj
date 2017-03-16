@@ -250,6 +250,7 @@
     <Compile Include="Util\helpers.cs" />
     <Compile Include="Util\ListHelper.cs" />
     <Compile Include="Util\UtilesViews.cs" />
+    <Compile Include="Models\EnforceTrueAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
