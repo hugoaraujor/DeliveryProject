@@ -22,7 +22,7 @@ namespace Adomicilio.Models
         public string Urbanizacion { get; set; }
         public string referencia { get; set; }
         public string Sector { get; set; }
-      
+        public string Alias { get; set; }
     }
 
     public class RegistroUser

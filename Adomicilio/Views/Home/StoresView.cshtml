@@ -11,32 +11,34 @@
     var tag5 = "ranking" + Convert.ToString(rest.IdEmpresa);
     var tag6 = "valoracion" + Convert.ToString(rest.IdEmpresa);
 
-            <div class="col-sm-6 col-md-4 " >
-            
-            <div class="thumbnail pulse">
-                <a href="../Home/Detail/@tag2?idg=0" >
-                    <div class="logorestaurante" >
-                        <img src="@Model.utiles.bytestoimage(rest.logo)" alt="...">
-                    </div>
-                    <div class="caption">
-                        <p class="nombrelocal">@rest.RazonSocial</p>
-                        <p name="slogan" id="slogan">@rest.Slogan</p>
-                    </div>
-                </a>
-            </div>
-             <div >
-                  <div class="col-md-4" id="areadevotos" name="areadevotos">
-                    <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa,1);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
-                            <span id="@tag" name="@tag">
-                                @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
-                    </span>
-                   </span>
-                 </div>
-                <div class="col-md-4" id="@tag5" onclick="activavalor(@tag2)" data-toggle="tooltip" data-placement="top" title="Click para Votar">
-                    <span id="@tag3" name="@tag3" class="glyphicon glyphicon-star"  style="" ><span id="@tag6" name="@tag6"  >@rest.Valoracion<input type="hidden" value="@rest.Valoracion" /></span></span>
+    <div class="col-sm-6 col-md-4 col-xs-12">
+
+        <div class="thumbnail pulse">
+            <a href="../Home/Detail/@tag2?idg=0">
+                <div class="logorestaurante">
+                    <img src="@Model.utiles.bytestoimage(rest.logo)" alt="...">
                 </div>
-                <div class="col-md-4">
-                    <div class="choosestar" id="@tag4" name="@tag4"  >
+                <div class="caption">
+                    <p class="nombrelocal">@rest.RazonSocial</p>
+                    <p name="slogan" id="slogan">@rest.Slogan</p>
+                </div>
+            </a>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4" id="areadevotos" name="areadevotos">
+                    <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa,1);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
+                        <span id="@tag" name="@tag">
+                            @rest.like <input type="hidden" value="@rest.like" /><input type="hidden" value="@rest.IdEmpresa" id="idempresa" name="idempresa" />
+                        </span>
+                    </span>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4" id="@tag5" onclick="activavalor(@tag2)" data-toggle="tooltip" data-placement="top" title="Click para Votar">
+                    <span id="@tag3" name="@tag3" class="glyphicon glyphicon-star" style=""><span id="@tag6" name="@tag6">@rest.Valoracion<input type="hidden" value="@rest.Valoracion" /></span></span>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="choosestar" id="@tag4" name="@tag4">
                         <span id="star5" name="star5" class="glyphicon glyphicon-star" onclick="valora(@tag2,5);"></span>
                         <span id="star4" name="star4" class="glyphicon glyphicon-star" onclick="valora(@tag2,3);"></span>
                         <span id="star3" name="star3" class="glyphicon glyphicon-star" onclick="valora(@tag2,4);"></span>
@@ -45,6 +47,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
                 <script type="text/javascript">
                    
                    var existe = localStorage.getItem("@tag").toString();
@@ -53,7 +57,7 @@
                     } else
                     { document.getElementById("@tag3").style.color = "gray";};
                 </script>
-        </div>
+     
 }
 
       

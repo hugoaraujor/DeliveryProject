@@ -142,11 +142,10 @@
          &nbsp
     </div>
 </div>
-<div class="row">
-    <div id="Izquierda" name="Izquierda">
-        <div class="catmenu">
 
-            <div class="col-md-2 col-lg-2">
+    <div id="Izquierda" name="Izquierda" class="hidden-xs">
+        <div class="catmenu">
+                 <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2">
                 <div id="categoriastitle" name="categoriastitle">Categorias</div>
                 <ul class="list-group">
 
@@ -169,43 +168,88 @@
             }
             else
             {   <div class="row">
-                    <div class="col-md-12 col-lg-12">
-                        <p>No hay ningun registro que cumpla con esas especificaciones</p>
-                        <a href="" data-toggle="modal" data-target="#squarespaceModal"  style="border:1px none"><img src="~/Images/carnes.png" /></a>
-                                    
+                <div class="col-md-10 col-lg-10">
+                    <p>No hay ningun registro que cumpla con esas especificaciones</p>
+                    <a href="" data-toggle="modal" data-target="#squarespaceModal" style="border:1px none"><img src="~/Images/carnes.png" /></a>
+
                 </div>
             </div>
             }
         </div>
-    </div>
-    <div id="Derecha" name="Derecha" class="col-md-2">
-
-        <div class="CarritoAd bounce" onclick="iracarrito()">
-            <center>Carrito de compra</center>
-           
-
-            <center>
-                <span class="" id="carrito-articulos" name="carrito-articulos"></span>
-            </center>
-            <center><span class="" id="carrito-monto" name="carrito-monto"></span></center>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="row">
-            <div id='Paging' style="text-align: center">
 
 
-                @Html.PagedListPager(Model.restaurante, page => Url.Action("Index", new { page }))
-                
+    <div class="row">
+        <div id="Derecha" name="Derecha" class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <div class="CarritoAd bounce" onclick="iracarrito()">
+                <center>Carrito de compra</center>
+                <center>
+                    <span class="" id="carrito-articulos" name="carrito-articulos"></span>
+                </center>
+                <center><span class="" id="carrito-monto" name="carrito-monto"></span></center>
             </div>
         </div>
     </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div id='Paging' style="text-align: center">
+                @Html.PagedListPager(Model.restaurante, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+    </div>
+</div>
+<div class="containercomo">
+    <div class="row">
+        <div id="titulocomousar" name="titulocomousar">Ordene en Línea su comida en solo tres pasos.</div>
+        <div id="comousar" name="comousar" class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+            <center>   <img src="~/images/step-1.png" class="img-circle img-responsive"></center>
 
+        </div>
+        <div id="comousar" name="comousar" class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+            <center>   <img src="~/images/step-2.png" class="img-circle img-responsive"></center>
+
+
+</div>
+        <div id="comousar" name="comousar" class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+            <center>   <img src="~/images/step-3.png" class="img-circle img-responsive"></center>
+
+
+</div>
+    </div>
+    <div class="row">
+
+        <div id="comousar" name="comousar" class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+
+            <center>
+                <h7>Seleccione su Restaurant y Menú.</h7>
+            </center>
+                <h5 class="media-object hidden-xs">Seleccione el restaurant y algunos de los platos que se encuentran en el menu segun su elección.</h5>
+</div>
+        <div id="comousar" name="comousar" class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+
+
+            <center>
+                <h7>Seleccione su Restaurant y Menú.</h7>
+            </center>
+                <h5 class="media-object hidden-xs">Ordene en Línea su comida y haga su pago en el momento pagando con su tarjeta de credito o puede hacerlo con efectivo en puerta.</h5>
+</div>
+        <div id="comousar" name="comousar" class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+
+
+            <center>
+                <h7>Relájese su pedido ya esta en camino.</h7>
+            </center>
+                <h5 class="media-object hidden-xs">Seleccione su Restaurant y Menú. Ordene en Línea su comida y haga su pago.</h5>
+
+</div>
+    </div>
+</div>
     <!-- <div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Click Me</button></div><!-- -->
     <!-- line modal -->
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 
-    @using (Ajax.BeginForm("Contacto", "Home", null, new AjaxOptions() { HttpMethod="POST", UpdateTargetId = "formcontact" }))
+    @using (Ajax.BeginForm("Contacto", "Home", null, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "formcontact" }))
     {
 
         <div class="modal fade" id="squarespaceModal" name="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -231,16 +275,17 @@
         </div>
 
     }
-</div>
-<script src="~/Scripts/Votos.js"></script>
-<script src="~/Scripts/cart.js"></script>
 
- @Scripts.Render("~/bundles/jquery")
-@section Scripts { 
-          <script>
+    <script src="~/Scripts/Votos.js"></script>
+    <script src="~/Scripts/cart.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @section Scripts {
+        <script>
             <!--
-             
-              updatecart('@sessionidstr', '@varuserid', 'carrito-articulos', 'carrito-monto', '');
+
+            updatecart('@sessionidstr', '@varuserid', 'carrito-articulos', 'carrito-monto', '');
+
               $("#squarespaceModal").on("hidden.bs.modal",function(e){location.reload(); }); window.status = "";
               var vciudad = 0;
 
@@ -249,19 +294,20 @@
                                window.location.href = '/CarritodeCompras/Vercarrito/?sessionid='+sesss+"&xuserid="+us;
               }
 
+
+              var savedcity = localStorage.getItem("ciudad");
            
-                  var savedcity = localStorage.getItem("ciudad");
                   if (savedcity != null && savedcity != document.getElementById("ciudad").value) {
                       document.getElementById("ciudad").value = savedcity;
                       vciudad = savedcity;
                       document.forma.submit();
-                    
+
                   }
-           
+
               function savelocation() {
                   var cityId = document.getElementById("ciudad").value;
                   localStorage.setItem("ciudad", cityId);
-                
+
                   window.location.href = '//Index/?menuopcion=0&ciudad=' + cityId;
               }
 
@@ -271,9 +317,9 @@
                             document.forma.submit();
              }
 
-              
 
-             
+
+
 
                   // Carousel Auto-Cycle
                   $(document).ready(function () {
@@ -289,7 +335,7 @@
                   */
                   (function ($) {
 
-                      //Function to animate slider captions 
+                      //Function to animate slider captions
                       function doAnimations(elems) {
                           //Cache the animationend event in a variable
                           var animEndEv = 'webkitAnimationEnd animationend';
@@ -303,21 +349,21 @@
                           });
                       }
 
-                      //Variables on page load 
+                      //Variables on page load
                       var $myCarousel = $('#myCarousel'),
                           $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
 
-                      //Initialize carousel 
+                      //Initialize carousel
                       $myCarousel.carousel();
 
-                      //Animate captions in first slide on page load 
+                      //Animate captions in first slide on page load
                       doAnimations($firstAnimatingElems);
 
-                      //Pause carousel  
+                      //Pause carousel
                       $myCarousel.carousel('pause');
 
 
-                      //Other slides to be animated on carousel slide event 
+                      //Other slides to be animated on carousel slide event
                       $myCarousel.on('slide.bs.carousel', function (e) {
                           var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
                           doAnimations($animatingElems);
@@ -325,9 +371,9 @@
 
                   })(jQuery);
 
-</script>
-    
-}
+        </script>
+
+    }
 
 
 

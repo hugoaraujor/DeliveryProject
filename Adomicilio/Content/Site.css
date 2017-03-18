@@ -1,29 +1,48 @@
 ﻿* {
     margin: 0px;
     padding: 0px;
-
 }
-footer ul {
+col {
+padding-left:0px;
+}
 
+[class*="col"] {
+    padding: 3px;
+}
+.wrapcarritodecompras {
+  
+  
+}
+    .wrapcarritodecompras [id*="precio"] {
+       font-size:medium;
+      
+    }
+   
+footer ul {
     text-decoration: none;
     list-style: none;
 }
+
     footer ul li a {
         color: #F61D04;
         text-decoration: none;
     }
-    footer ul li a:hover {
-        text-decoration: none;
-        color:white;
-    }
-.observaciones {
-    max-width:100%;
 
+        footer ul li a:hover {
+            text-decoration: none;
+            color: white;
+        }
+.wrapcarritodecompras {
+    padding-left:25px;
 }
+.observaciones {
+    max-width: 100%;
+}
+
 footer {
     clear: both;
     color: white;
-    background-color:black;
+    background-color: black;
     width: 100%;
     padding-top: 20px;
     padding-left: 30px;
@@ -32,6 +51,7 @@ footer {
     height: 250px; /* Altura del footer */
     text-decoration: none;
 }
+
 body,
 #wrap,
 conta2 {
@@ -39,7 +59,6 @@ conta2 {
     /*  margin-top: 80px;*/
     min-height: calc(100vh - 150px);
     background-color: #079AAD;
-  
 }
 
 #city {
@@ -48,6 +67,7 @@ conta2 {
     top: 0;
     left: 0;
 }
+
 #motito {
     top: 110px;
     left: 1800px;
@@ -57,13 +77,13 @@ conta2 {
     margin: 0px 0px 0px 0px;
     height: 100px;
     width: 130px;
-   -webkit-animation: myfirst 10s 3; /* Chrome, Safari, Opera */
-    -webkit-animation-direction:normal; /* Chrome, Safari, Opera */
+    -webkit-animation: myfirst 10s 3; /* Chrome, Safari, Opera */
+    -webkit-animation-direction: normal; /* Chrome, Safari, Opera */
     animation: myfirst 20s 3;
     animation-direction: normal;
-    pause-before:16s;
-   
+    pause-before: 16s;
 }
+
 #toprightad {
     background-color: #079AAD;
     border-radius: 5px;
@@ -74,54 +94,53 @@ conta2 {
     padding-top: 20px;
 }
 
-#toprightad dd {
-    text-decoration: none;
-    text-align: center;
-    color: white;
-}
+    #toprightad dd {
+        text-decoration: none;
+        text-align: center;
+        color: white;
+    }
 
 #adphone {
     background-color: #F61D04;
-    border-radius:5px;
+    border-radius: 5px;
     height: 200px;
-    text-decoration:none;
-    font-size:22px;
-    vertical-align:central;
+    text-decoration: none;
+    font-size: 22px;
+    vertical-align: central;
 }
-    
+
     #adphone dd {
         text-decoration: none;
-        text-align:center;
-        color:white;
-    }
-    .tope {
-      padding-top:35px;
         text-align: center;
-      line-height:10px;
-      background-color:white;
-      color:black;
-      height:200px;
+        color: white;
     }
-        .tope img{
-            height: 100px;
-            }
+
+.tope {
+    padding-top: 35px;
+    text-align: center;
+    line-height: 10px;
+    background-color: white;
+    color: black;
+    height: 200px;
+}
+
+    .tope img {
+        height: 100px;
+    }
 /* Chrome, Safari, Opera */
 @-webkit-keyframes myfirst {
     0% {
-     
         left: 0px;
         top: 110px;
     }
 
     25% {
-       
         left: 200px;
         top: 110px;
     }
 
 
     100% {
-      
         left: 1600px;
         top: 110px;
     }
@@ -129,21 +148,18 @@ conta2 {
 
 @keyframes myfirst {
     0% {
-      
         left: 0px;
         top: 110px;
     }
 
     25% {
-      
         left: 200px;
         top: 110px;
     }
 
-   
+
 
     100% {
-        
         left: 1600px;
         top: 110px;
     }
@@ -152,7 +168,6 @@ conta2 {
 html {
     height: 100%;
     min-height: calc(100vh - 150px);
-   
 }
 
 body {
@@ -162,19 +177,19 @@ body {
     /* padding-bottom: -150px;*/
     font-family: 'Chivo', sans-serif;
 }
+
 #imagen {
     width: 300px;
     height: 300px;
     border: 5px solid gainsboro;
     margin: 2px 2px 2px 2px;
     padding: 10px 10px 10px 10px;
-    background-color:white;
+    background-color: white;
 }
 
 body > #wrap {
     height: auto;
     min-height: calc(100vh - 150px);
-    
 }
 
 
@@ -186,30 +201,32 @@ body > #wrap {
     padding-bottom: 20px; /* Mis altura que el footer */
     background-color: whitesmoke;
     margin-top: 49px;
-    
 }
+
 header {
     padding-right: 15px;
 }
+
 .breadcrumb {
     padding-right: 0px;
     margin-right: 0px;
     margin-left: 0px;
-    padding-left:15px;
-  
+    padding-left: 15px;
 }
+
 h2 {
     padding-right: 15px;
-    text-align:center;
-    font-weight:700;
-    color:darkorange;
-    }
+    text-align: center;
+    font-weight: 700;
+    color: darkorange;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
 }
+
 .conta2 {
     border: 1px 1px 1px 1px double solid gray;
     background-color: whitesmoke;
@@ -217,40 +234,42 @@ textarea {
     /* POnerlo al 100% para que ocupe toda a panatalla*/
 }
 
-.btn a{
-    color:white;
-    text-decoration:none;
-    
+.btn a {
+    color: white;
+    text-decoration: none;
 }
+
 .btn {
-    margin:8px;
+    margin: 8px;
 }
-#wrap{
- 
-    height:100%;
+
+#wrap {
+    height: 100%;
 }
+
 #titulogrupo {
     text-align: center;
     font-size: x-large;
     color: darkorange;
     font-weight: 600;
-  
-    margin-top:-60px;
+    margin-top: -60px;
 }
 
 .breadcrumb {
-    padding-top:30px;
-        width:95%;
+    padding-top: 30px;
+    width: 95%;
 }
 
 
 .stepwizard-step p {
     margin-top: 10px;
 }
+
 .row {
     padding: 0px;
     margin: 0px;
 }
+
 .stepwizard-row {
     display: table-row;
 }
@@ -265,12 +284,14 @@ textarea {
     opacity: 1 !important;
     filter: alpha(opacity=100) !important;
 }
+
 .row-lg-height {
     display: table;
     table-layout: fixed;
     height: 100%;
     width: 100%;
 }
+
 .stepwizard-row:before {
     top: 14px;
     bottom: 0;
@@ -297,23 +318,27 @@ textarea {
     line-height: 1.428571429;
     border-radius: 15px;
 }
+
 .instrucciones {
     text-align: center;
     font-weight: normal;
     font-size: small;
     text-align: center;
 }
+
 .titulo1 {
     text-align: center;
     font-weight: normal;
-    font-size:large;
+    font-size: large;
     text-align: center;
-    color:gainsboro;
+    color: gainsboro;
 }
+
 img {
     max-width: 100%;
-    align-content:center;
+    align-content: center;
 }
+
 .carousel-control {
     top: 33%;
     background-color: #F61D04;
@@ -333,15 +358,17 @@ a {
     height: 50px;
     padding: 10px 16px;
     font-size: 20px;
-    font-weight:800;
+    font-weight: 800;
     line-height: 1.33;
     border-radius: 25px;
-    border-width:medium;
-    border-color:white;
+    border-width: medium;
+    border-color: white;
 }
+
 .navbar a {
     background-color: #F61D04;
 }
+
 .navbar.navbar-default {
     background-color: #F61D04;
 }
@@ -361,6 +388,7 @@ a {
     align-content: center;
     text-align: center;
 }
+
 .especial {
     font-size: small;
     color: white;
@@ -376,39 +404,78 @@ a {
         font-weight: 100;
         color: #E53935;
     }
-.especial  label {
-    font-size: small;
-    font-weight: 100;
-    color: white;
-}
+
+    .especial label {
+        font-size: small;
+        font-weight: 100;
+        color: white;
+    }
 
 .catmenu {
-    color: blue;
+   
 }
 
-.social  {
-
+.social {
     height: 48px;
     width: 48px;
     font-size: small;
 }
-.bannerImage img{
-width:100%;
+
+.bannerImage img {
+    width: 100%;
 }
 
 .media-heading {
- color:darkorange;
- font-weight:550px
- 
+    color: darkorange;
+    font-weight: 500;
 }
+
 #clase {
     color: darkorange;
-    
+}
+#nombredelplato, #descripciondelplato {
+padding-left:20px;
+}
+#descripciondelplato {
+    padding-bottom: 5px;
+}
+#plato {
+    margin-bottom:5px;
+    background-color:white;
+}
+
+#plato:hover {
+    -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
+    box-shadow: 2px 2px 2px 2px #C2C0B4;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    background-color:azure;
+}
+.piato [class*="row"] {
+        width:100%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
 }
 .piato row [class*="col-"] {
     display: table-cell;
     float: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
+.piato [class*="row"] {
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+        margin:0px;
+}
+
 .piato img:hover {
     -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
     box-shadow: 2px 2px 2px 2px #C2C0B4;
@@ -416,71 +483,83 @@ width:100%;
     -webkit-animation-delay: 2s;
     -webkit-animation-iteration-count: infinite;
 }
+
 .piato {
-    padding-top:18px;
-    background-color: aliceblue;
-    border: 3px solid white;
-    margin-bottom:7px;
+    padding-top: 3px;
+   
+    border: 1px solid white;
+    margin-bottom: 3px;
+    margin-left: 5px;
 }
 
-    .piato img {width:90%;
-                height:50%;
-               align-content:center;
-               vertical-align:central;
+    .piato img {
+        width: 80%;
+        align-content: center;
+        vertical-align: central;
+        border-radius:6px;
+        border:dashed solid red;
+        max-height:140px;
+        height:140px;
+        margin-left:10px;
     }
 
 
 .table {
     margin: 10px 30px 10px 30px;
-    width:95%;
-}    
+    width: 95%;
+}
+
 #tabla {
     border: 5px solid white;
     border-collapse: separate;
-    border-spacing:0 1px;
-    width:98%
+    border-spacing: 0 1px;
+    width: 98%;
 }
+
     #tabla tr {
-     line-height:3;
-     }
+        line-height: 3;
+    }
+
     #tabla td {
         padding-left: 15px;
         padding-right: 2px;
-          align-content:stretch;
+        align-content: stretch;
     }
-    #tabla th {
-        border:0px;
-    }
-    #tabla menutitulo {
-        
-        font-size:xx-large;
-    }
-    #tabla td input{
-        width:120px;
-        text-align:right;
 
+    #tabla th {
+        border: 0px;
     }
-   
+
+    #tabla menutitulo {
+        font-size: xx-large;
+    }
+
+    #tabla td input {
+        width: 120px;
+        text-align: right;
+    }
+
 .resaltado {
-background-color:lightyellow;
+    background-color: lightyellow;
 }
 
 
 
-   
-      
+
+
 .active {
     color: orangered;
     font-weight: 600;
     font-size: large;
 }
+
 .form-horizontal {
     padding-left: 40px;
 }
 
 .form-horizontal, form-group, label {
     color: gray;
-       font-weight: 600;
+    font-weight: 600;
 }
 
 .list-group {
@@ -488,12 +567,11 @@ background-color:lightyellow;
     margin: 1px 1px 10px 1px;
     padding: 0px 0px 0px 0px;
     border-radius: 0px;
-   
 }
 /*------------------( Categorias en Home/Index)-------------------------------------------*/
 #Centro {
-    
 }
+
 #categoriastitle {
     margin: 0px 0px 5px 0px;
     border-radius: 0px;
@@ -507,28 +585,25 @@ background-color:lightyellow;
     font-weight: 600;
     text-align: center;
 }
+
 #categoriasclose {
-    margin: 0px 0px 5px 0px;
-    border-radius: 0px;
-    height: 55px;
-    border: 0px solid;
-    height: 35px;
+    margin: 0px 0px 20px 0px;
     background-color: #F61D04;
     border-radius: 0px 0px 10px 10px;
-    padding: 10px;
-    color: white;
-    font-weight: 600;
-    text-align: center;
+    padding: 5px;
 }
-
-.list-group li{
-
-    margin: 0px 0px 5px 0px;
+.list-group {
+    padding-bottom:0px;
+    margin-bottom:2px;
+}
+    .list-group li {
+    margin: 0px 0px 1px 0px;
     border-radius: 0px;
-    height:45px;
-  background-color:white;
-  border:0px solid;
+    height: 30px;
+    background-color: white;
+    border: 0px solid;
 }
+
     .list-group li:hover {
         border-radius: 0px;
         border-left: 15px solid;
@@ -546,13 +621,11 @@ background-color:lightyellow;
 }
 
 .thumbnail {
-    
     line-height: 50%;
     margin: 1px 1px 10px 1px;
     padding: 1px 1px 1px 1px;
     border-radius: 0px;
-    border:none;
-   
+    border: none;
 }
 
     .thumbnail a img {
@@ -572,7 +645,6 @@ background-color:lightyellow;
     }
 
     .thumbnail:hover {
-        
         -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
         box-shadow: 2px 2px 2px 2px #C2C0B4;
         -webkit-animation-duration: 3s;
@@ -581,29 +653,40 @@ background-color:lightyellow;
     }
 
 .thumbnail {
-    
 }
 
 /*---------------------------------------------------------------------------------------------------*/
 
 .logorestaurante {
-    
     height: auto;
-
 }
+
     .logorestaurante img {
         width: 100%;
         height: 170px;
         object-fit: contain;
         padding: 5px 5px 5px 5px;
     }
-
+.nombrelocal {
+    font-size: small;
+    font-weight: 100;
+    word-wrap: break-word;
+    vertical-align: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
 #slogan {
     font-size: small;
     font-weight: 100;
-    color:dimgray;
-    padding: 2px 2px 1px 5px;
+    color: dimgray;
+    padding: 5px 2px 1px 5px;
+    margin:0px 0px 0px 0px;
+    height:40px;
+    word-wrap:break-word;
+    vertical-align:auto;
+    line-height:15px;
 }
+
 .nombrelocal {
     font-size: large;
     font-weight: 700;
@@ -612,17 +695,16 @@ background-color:lightyellow;
 }
 
 #Centro {
-    height:100%;
+    height: 100%;
 }
 
 .navbar-default {
     background-color: #e51c23;
-  
 }
+
 .container {
     background-color: whitesmoke;
     padding: 0px 0px 0px 0px;
-
 }
 /*---------------------------Carrito de compra -----------------------------------------------------------**/
 .CarritoAd {
@@ -637,46 +719,54 @@ background-color:lightyellow;
     background-repeat: no-repeat;
     background-position: center;
 }
+    .CarritoAd:hover {
+        -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
+        box-shadow: 2px 2px 2px 2px #C2C0B4;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-delay: 2s;
+        -webkit-animation-iteration-count: infinite;
+}
 #carrito-articulos {
     font-size: x-large;
-    font-weight:700;
+    font-weight: 700;
     color: yellow;
 }
+
 #carrito-monto {
     line-height: 80px;
     margin-top: 200px;
     font-size: small;
     color: whitesmoke;
 }
+
 #carritoarticulos {
     font-size: large;
     font-weight: 700;
     color: #F61D04;
 }
 
-#carritomonto,#totalmonto {
+#carritomonto, #totalmonto {
     font-size: x-large;
     color: #F61D04;
     font-weight: 700;
-    vertical-align:top;
+    vertical-align: top;
 }
- .CarritoAd:hover {
-    -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
-    box-shadow: 2px 2px 2px 2px #C2C0B4;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-delay: 2s;
-    -webkit-animation-iteration-count: infinite;
-}
+
+
+
 .headcart {
-    font-size:small;
-    font-weight:600;
-    color:gray;
+    font-size: small;
+    font-weight: 600;
+    color: gray;
+    display:block;
 }
+
 #Carritoimg {
     height: 70px;
     width: 95px;
     margin-left: 40px;
 }
+
 #vacio {
     margin-left: 50px;
     padding: 20px 100px 10px 30px;
@@ -697,22 +787,22 @@ background-color:lightyellow;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
     z-index: 3;
-    display:none;
+    display: none;
 }
 
-#ok .img{
-    border-radius: 100px;
-    /* bring your own prefixes */
-    transform: translate(-100%, -100%);
-    z-index: 2;
-    background-image: url("Images/checkwhite.png");
-    background-position: center;
-    margin-top:7px;
-}
+    #ok .img {
+        border-radius: 100px;
+        /* bring your own prefixes */
+        transform: translate(-100%, -100%);
+        z-index: 2;
+        background-image: url("Images/checkwhite.png");
+        background-position: center;
+        margin-top: 7px;
+    }
 
 /*-(fade elements :fade all screen each time cart is filled,overlay div is in layout.chtml)-----------------------*/
 #overlay {
-    position:fixed;
+    position: fixed;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -722,8 +812,8 @@ background-color:lightyellow;
     transition: opacity .25s;
     -moz-transition: opacity .25s;
     -webkit-transition: opacity .25s;
-    z-index:3;
-    display:none;
+    z-index: 3;
+    display: none;
 }
 
 .backdrop {
@@ -769,33 +859,35 @@ background-color:lightyellow;
 
 
 #toprow {
-    
-    text-align-last:center;
+    text-align-last: center;
     height: 45px;
-
     color: darkgray;
     vertical-align: central;
     padding-top: 10px;
     padding-left: 10px;
 }
-#howmanylikes ,#prodhowmanylikes {
-    font-size:smaller;
+
+#howmanylikes, #prodhowmanylikes {
+    font-size: smaller;
     color: red;
 }
+
 [id^='howmanylikes'], div[id*=' howmanylikes'], [id^='prodhowmanylikes'], div[id*=' prodhowmanylikes'] {
     color: darkgray;
     vertical-align: central;
     font-size: small;
     font-family: Arial;
 }
+
 [id^='choosestar'], div[id*='choosestar'], [id^='prodchoosestar'], div[id*='prodchoosestar'] {
     display: inline-block;
 }
+
 .choosestar {
     width: 95px;
     text-decoration: none;
     direction: rtl;
-    background-color:lightgray;
+    background-color: lightgray;
     border-radius: 10px;
     padding-left: 0px;
     padding-right: 6px;
@@ -804,51 +896,54 @@ background-color:lightyellow;
     -webkit-animation-delay: 4s;
     -webkit-animation-iteration-count: 1;
     color: white;
-     display: none;
-         visibility: hidden;
+    display: none;
+    visibility: hidden;
 }
 
 
 span:hover ~ span { /* On hover target it's "previous";) elements */
     color: orangered;
 }
+
 .choosestar span:hover ~ span, .choosestar :hover {
     color: gold;
     animation: pulse;
 }
 
 [id^='star']:hover, div[id*=' star'] :hover ~ a {
-    color:gold;
+    color: gold;
     background-color: orangered;
-    border-radius:6px;
-    animation:bounce;
+    border-radius: 6px;
+    animation: bounce;
     -webkit-animation-duration: 2s;
     -webkit-animation-delay: 1s;
     -webkit-animation-iteration-count: 3;
 }
 
 #star :hover {
-    color:red;
+    color: red;
     -webkit-animation-duration: 3s;
     -webkit-animation-delay: 2s;
     -webkit-animation-iteration-count: infinite;
 }
 
 #areadevotos {
-    height:28px;
-    
-       }
+    height: 28px;
+}
+
 #areadevotos1 {
     height: 40px;
 }
+
 [id^='ranking'], [id^='prodranking'] {
     background-color: #EEEEEE;
-    border-radius: 10px;
+    border-radius: 20px;
     padding-left: 15px;
-    width: 50px;
+    width: 60px;
     color: #F61D04;
     border: 1px solid #9E9E9E;
 }
+
     [id^='ranking']:hover, [id^='prodranking']:hover {
         -webkit-box-shadow: 1px 1px 1px 1px #C2C0B4;
         box-shadow: 1px 1px 1px 1px #C2C0B4;
@@ -858,6 +953,7 @@ span:hover ~ span { /* On hover target it's "previous";) elements */
     pointer-events: none; /**<-----------*/
     opacity: 0.2;
 }
+
 .enabled {
     pointer-events: auto; /**<-----------*/
     opacity: 1;
@@ -881,26 +977,28 @@ span:hover ~ span { /* On hover target it's "previous";) elements */
     margin-bottom: 15px;
     line-height: 30px;
 }
+
 #lineModalLabel1 {
     color: darkorange;
     font-size: large;
     padding-top: 15px;
     padding-left: 15px;
     line-height: 10px;
-    font-weight:600;
+    font-weight: 600;
 }
-.modal .close{
-padding-bottom:25px;
+
+.modal .close {
+    padding-bottom: 25px;
 }
+
 #imagencarrito {
     width: 100px;
     height: 100px;
     border-radius: 10px;
     border-color: white;
     border: 3px solid white;
-    
-    
 }
+
 [id^='cartcant'], div[id*=' cartcant'] {
     border-radius: 6px;
     width: 20px;
@@ -910,34 +1008,48 @@ padding-bottom:25px;
     font-weight: 500;
     font-size: medium;
 }
+
 #razoncart {
-font:x-small;
-color:darkorange;
+    font: x-small;
+    color: darkorange;
+}
+
+#cartname {
+    color: orangered;
+    font-weight: 600;
+    font-size:large;
+}
+
+hr {
+    margin-top: 6px;
+    margin-bottom: 5px;
+}
+.carritoview {
+    color: gray;
+      display:inline-block;
+}
+    .carritoview [class*="row"] {
+    color: gray;
+        padding:0px;
+    margin:0px;
 
 }
-#cartname {
-     color: orangered;
-     font-weight:600;
-}
-.carritoview{
-    color: gray;
-    
-}
+   
 a.buttondel {
     background: url(../Images/del.png) no-repeat top left;
-    display:block;
+    display: block;
     width: 20px;
     height: 20px;
     text-indent: -9999px; /* hides the link text */
 }
+
 #checkout:hover {
-        -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
-        box-shadow: 2px 2px 2px 2px #C2C0B4;
-        -webkit-animation-duration: 3s;
-        -webkit-animation-delay: 2s;
-        -webkit-animation-iteration-count: infinite;
-      
- }
+    -webkit-box-shadow: 2px 2px 2px 2px #C2C0B4;
+    box-shadow: 2px 2px 2px 2px #C2C0B4;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
 
 /**<---------Animation Carrosel text--*/
 
@@ -968,7 +1080,8 @@ a.buttondel {
 .carousel .icon-container {
     background-color: #F61D04;
 }
- .carousel-caption h3,
+
+.carousel-caption h3,
 .carousel-caption button {
 }
 
@@ -1003,7 +1116,7 @@ a.buttondel {
     top: -200px;
     right: 90%;
     position: absolute;
-    transition:all 2s;
+    transition: all 2s;
 }
 
 h1 {
@@ -1015,9 +1128,114 @@ h1 {
 
 .p {
     padding-top: 125px;
-    text-align:center;
+    text-align: center;
 }
 
     .p a {
         text-decoration: underline;
     }
+
+#comousar {
+    background-color: #FF5733;
+    align-content: center;
+    padding-bottom: 0px;
+}
+
+.media-object {
+    line-height:18px;
+    height: 100px;
+    text-align:center;
+}
+
+#comousar img {
+    width: 167px;
+    height: 167px;
+    max-height:167px;
+    align-self: center;
+    padding-top: 10px;
+    
+}
+
+#titulocomousar {
+   text-align:center;
+   background-color:crimson;
+   font-size:20px;
+   font-weight:600;
+   color:orange;
+   
+}
+
+
+
+
+
+
+
+.inputline {
+vertical-align:middle;
+height:45px;
+}
+    .inputline [id*="clasesel"] {
+        margin-top: 3px;
+
+
+    }
+#clases {
+    background-color: white;
+    margin-left: 10px;
+    width: 100%;
+    color: darkorange;
+    display: block;
+    border: 0px solid black;
+    padding: 0px;
+    margin: 0px;
+}
+    #clases [class*="col-"]{
+        width: 33.33%;
+        display: inline-block;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        border: 0px none;
+       
+    }
+
+    #clases [class*="row"] {
+        
+        width: 33.33%;
+        display: inline-block;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+    
+    
+}
+.stepcaption {
+    height: 25%;
+    width: 100%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+h7 {
+    color: white;
+    font-weight: 600;
+    font-size: medium;
+    text-align: center;
+    line-height:35px;
+    vertical-align:middle;
+
+
+}
+h5 {
+    line-height: 10px;
+    padding: 0px;
+    margin: 0px;
+    height:10px;
+}
+ 
+.col-md-12:first-child {
+    padding-left: 0px;
+    margin-left:0px;
+}
+
+ 

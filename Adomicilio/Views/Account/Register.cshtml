@@ -164,6 +164,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">Referencia</label> 
                                                     <div class="col-md-8">
+                                                        @Html.HiddenFor(model => model.direccioninicial.Alias, "Domicilio")
                                                         @Html.EditorFor(model => model.direccioninicial.referencia, new { htmlAttributes = new { @class = "form-control" } })
                                                         @Html.ValidationMessageFor(model => model.direccioninicial.referencia, "", new { @class = "text-danger" })
                                                     </div>
@@ -316,7 +317,9 @@
                             }
                         });
 
-                        $('#aceptaterminosdeuso').click(function () { document.getElementById("atuspan").innerText = "" });
+                        $('#aceptaterminosdeuso').click(function () {
+                           document.getElementById("atuspan").innerText = ""
+                        });
                         
                        
                     });

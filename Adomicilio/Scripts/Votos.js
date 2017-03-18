@@ -49,16 +49,19 @@ function megusta(pid, tipo) {
     
 
 
-function release(id) {
-
-    var aux1 = "choosestar" + id;
+function release(id, tipo) {
+     var letra = "";
+    if (tipo == 2)
+        letra = "prod";
+    var aux1 = letra+"choosestar"+ id;
     document.getElementById(aux1).style.display = "none";
     document.getElementById(aux1).style.visibility = "hidden";
 
-    var aux2 = "ranking" + id
+    var aux2 = letra +"ranking" +  id;
     document.getElementById(aux2).style.display = "block";
     document.getElementById(aux2).style.visibility = "visible";
-
+    var aux3 = "#wrapchoosestar" + id;
+    $(aux3).addClass("hidden");
 
  }
  function valora(id, num) {
@@ -74,16 +77,19 @@ function release(id) {
 
 
    }
-   function activavalor(id) {
+ function activavalor(id) {
+   
+    var aux1 = "ranking" + id;
+     var aux2 = "choosestar" + id;
        var existe = localStorage.getItem("vota" +id.toString());
        if (existe == "" || existe == null) {
-           var aux1 = "ranking" + id
+           
            document.getElementById(aux1).style.display = "none";
            document.getElementById(aux1).style.visibility = "hidden";
-           var aux2 = "choosestar" + id
+           
            document.getElementById(aux2).style.display = "block";
            document.getElementById(aux2).style.visibility = "visible";
-           setTimeout("release(" + id + ")", 9000);
+           setTimeout("release(" + id + ",1)", 6000);
        }
      }
 
@@ -122,16 +128,15 @@ function release(id) {
 
     function activavalorp(id) {
         
+        var aux1 = "prodranking" + id; var aux2 = "prodchoosestar" + id;
         var existe = localStorage.getItem("votap" + id.toString());
-    
         if (existe == "" || existe == null) {
-            var aux1 = "prodranking" + id
+            $("#wrapchoosestar" + id).removeClass("hidden");
             document.getElementById(aux1).style.display = "none";
             document.getElementById(aux1).style.visibility = "hidden";
-            var aux2 = "prodchoosestar" + id
             document.getElementById(aux2).style.display = "block";
             document.getElementById(aux2).style.visibility = "visible";
-            setTimeout("release(" + id + ")", 9000);
+            setTimeout("release(" + id + ",2)", 6000);
         }
     }
 

@@ -37,12 +37,13 @@
 <div class="row">
     <div class="col-md-6">
         <ol class="breadcrumb">
-            <li><a href="#">Inicio</a></li>
+            <li><a href="/">Inicio</a></li>
             <li><a href="#"><b>Carrito de Compra</b></a></li>
-            
+
         </ol>
     </div>
-</div>@if (@Model.ToList().Count == 0)
+</div>
+@if (@Model.ToList().Count == 0)
 {
     <div id="vacio" name="vacio">
         <b class="active"> Su carrito esta vacio.</b><p>El proposito de su carrito de compras es el servicio, Llenelo con deliciosos platos de sus sitios de comidas o bebidas favoritos.Si ya tienes una cuenta, ingrese haciendo Login.continue comprando en la tienda que prefiera y haga click en el boton del Carrito para regresar aqui.
@@ -51,144 +52,124 @@
 }
 else
 {
-<div id="Centro" name="Centro col-md-9">
-
-    <div class="row  col-md-9">
-            <div class="form-inline  col-md-9">
-                <div class="headcart">
-                    <div class="form-group col-md-3">
-
-                    </div>
-                    <div class="form-group col-md-4">
+    <div id="Centro" name="Centro" class="col-sm-9 col-md-9">
+        <div class="wrapcarritodecompras ">
+            <div class="row ">
+                <div class="row headcart">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
                         <span>Producto</span>
                     </div>
 
-                    <div class="form-group col-md-offset-1  hidden-xs  hidden-sm">
+                    <div class="col-xs-3 col-sm-3  col-md-3 ">
                         <span>Monto</span>
                     </div>
-                    <div class="form-group col-md-offset-2 hidden-xs hidden-sm">
-
+                    <div class="col-xs-2 col-sm-2   col-md-2">
                         <span>Cantidad</span>
-
                     </div>
                 </div>
-                </div>
-            <hr />
-            <div class="carritoview">
-              
 
+                <hr />
+                <div class="carritoview col-sm-12 col-md-12 col-lg-12" >
                     @foreach (var item in Model)
                     {
                         var i = 0;
                         var tag = "cartcant" + @item.id;
                         var tag2 = "cartcantcopy" + @item.id;
                         var preciovar = "precio" + @item.id;
-                        <div class="row">
-                            <div class="form-group col-md-2">
-                                <img src="@item.imagenstr" id="imagencarrito" name="imagencarrito" />
+                       
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="@item.imagenstr" id="imagencarrito" name="imagencarrito" />
+                        </div>
+                        <div class="form-group col-lg-4 col-sm-4 col-sx-4  col-md-4">
+                            <div class="row">
+                                <span id="cartname" name="cartname">@item.Nombre</span>
                             </div>
-
-
-
-
-                            <div class="form-group col-md-4">
-                                <div class="row">
-                                    <span id="cartname" name="cartname">@item.Nombre</span>
-                                </div>
-                                <div class="row">
-                                    <span id="razoncart" name="razoncart">@Helpers.Titlecase(@item.RazonSocial)</span>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group ">
-                                        @Html.DisplayFor(modelItem => item.ingredientes)
-                                        @if (item.Extra != null)
+                            <div class="row">
+                                <span id="razoncart" name="razoncart">@Helpers.Titlecase(@item.RazonSocial)</span>
+                            </div>
+                            <div class="row">
+                                <div class="form-group ">
+                                    @Html.DisplayFor(modelItem => item.ingredientes)
+                                    @if (item.Extra != null)
                                         { <p><b>Adicional</b>:@Html.DisplayFor(modelItem => item.Extra)</p>
 
                                         }
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    @Html.DisplayFor(modelItem => item.Mensaje)
-                                </div>
-                                <div class="row">
-                                    <a href="#" onclick="Deletecart(@item.id)">Borrar</a>
                                 </div>
                             </div>
-                            <div class="form-group col-md-2">
-                                <span id="@preciovar" name="@preciovar">@Helpers.Getvalue(@item.Precio)</span>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => item.Mensaje)
                             </div>
-                            <div class="form-group col-md-2">
-
-                                <input type="number" class="form-control" id="@tag" name="@tag"  minvalue="1" maxvalue="99" value="@item.Cant" onchange="edit(@item.id)" />
-
-                                <input type="hidden" class="form-control" id="@tag2" name="@tag2" minvalue="1" maxvalue="99"  value="@item.Cant" />
+                            <div class="row">
+                                <a href="#" onclick="Deletecart(@item.id)">Borrar</a>
                             </div>
-
-
-                        
                         </div>
-                        <hr />
+                        <div class="form-group col-sm-3 col-md-3">
+                            <span id="@preciovar" name="@preciovar">@Helpers.Getvalue(@item.Precio)</span>
+                        </div>
+                        <div class="form-group col-sm-3 col-md-2">
+
+                            <input type="number" class="form-control" id="@tag" name="@tag" minvalue="1" maxvalue="99" value="@item.Cant" onchange="edit(@item.id)" />
+
+                        </div>
+
+                        <input type="hidden" id="@tag2" name="@tag2" minvalue="1" maxvalue="99" value="@item.Cant" />
+
+
+                    </div>
+                    <hr />
 
                     }
-                
-              
-       
-                <div class="row">
-                    <div class="form-group col-md-2">
-
-                    </div>
 
 
 
-                    <div class="form-group col-md-3">
-                        <div class="row">
-                            <span><b class="active">Monto Total</b> </span>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+
                         </div>
 
+
+
+                        <div class="form-group col-md-3">
+                            <div class="row">
+                                <span><b class="active">Monto Total</b> </span>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-2">
+                            <span id="carritomonto" name="carritomonto">Bs. 0</span>
+                        </div>
                     </div>
-                    <div class="form-group col-md-2">
-                        <span id="carritomonto" name="carritomonto">Bs. 0</span>
-                    </div>
-                    <div class="form-group col-md-2">
-                        
 
-
-                    </div>
-
-                    <div class="form-group col-md-2">
-
-                    </div>
-
-                    <div class="form-group col-md-2">
-
-
-                    </div>
                 </div>
-             
             </div>
+
+
+
         </div>
     </div>
-    }
-    <div id="Derecha" name="Derecha" class="col-md-3">
+}
+
+<div id="Derecha" name="Derecha" class="col-md-3 col-lg-3 ">
     @if (@Model.ToList().Count > 0)
     {
-        <div class="well well-md">
+        <div class="well well-md ">
             <center><span id="carritoarticulos" name="carritoarticulos">0</span></center>
             <center><span id="totalmonto" name="totalmonto">0</span></center>
             <center> <button type="button" class="btn btn-primary">Comprar</button></center>
 
-       </div>
+        </div>
      }
-    </div>
-     <!-- <- -->
-    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+</div>
+<!-- <- -->
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 <script src="~/Scripts/cart.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @section Scripts {
+@Scripts.Render("~/bundles/jquery")
+@section Scripts {
 
 
-        <script>
+    <script>
              updatecart('@sessionidstr','@varuserid','carritoarticulos','carritomonto','totalmonto');
              function Deletecart(pid)
              {
@@ -233,7 +214,7 @@ else
                      var amount2 = (pucost* cant);
                        var currentv = currencyFormatES(amount2);
 
-                   
+
                  $.ajax({
                      url: "/CarritodeCompras/Editcant",
                      data: { id: pid,n:cant,precio:amount2 },
@@ -243,14 +224,15 @@ else
                          document.getElementById("cartcantcopy" + pid).value = cant;
                          console.log(result);
                          console.log("sucess");
+                         updatecart('@sessionidstr', '@varuserid', 'carritoarticulos', 'carritomonto', 'totalmonto');
                      }
                  });
 
-                 
+
              }
 
 
 
-        </script>
+    </script>
 
-    }
+}
