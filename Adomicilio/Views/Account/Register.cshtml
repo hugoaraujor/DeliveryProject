@@ -141,42 +141,35 @@
                                             <h3> Paso 3</h3>
                                             <p>Tu dirección de domicilio. Luego podrás agregar otras direcciones adicionales</p>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.Calle, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    @Html.LabelFor(model => model.Calle, htmlAttributes: new { @class = "control-label col-md-4" })
                                                     <div class="col-md-8">
-                                                        @Html.EditorFor(model => model.direccioninicial.Calle, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.direccioninicial.Calle, "", new { @class = "text-danger" })
+                                                        @Html.EditorFor(model => model.Calle, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Calle, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">Casa/Apto Nro.</label> 
                                                     <div class="col-md-8">
-                                                        @Html.EditorFor(model => model.direccioninicial.CasaNro, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.direccioninicial.CasaNro, "", new { @class = "text-danger" })
+                                                        @Html.EditorFor(model => model.CasaNro, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.CasaNro, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.Urbanizacion, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    @Html.LabelFor(model => model.Urbanizacion, htmlAttributes: new { @class = "control-label col-md-4" })
                                                     <div class="col-md-8">
-                                                        @Html.EditorFor(model => model.direccioninicial.Urbanizacion, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.direccioninicial.Urbanizacion, "", new { @class = "text-danger" })
+                                                        @Html.EditorFor(model => model.Urbanizacion, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Urbanizacion, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">Referencia</label> 
                                                     <div class="col-md-8">
-                                                        @Html.HiddenFor(model => model.direccioninicial.Alias, "Domicilio")
-                                                        @Html.EditorFor(model => model.direccioninicial.referencia, new { htmlAttributes = new { @class = "form-control" } })
-                                                        @Html.ValidationMessageFor(model => model.direccioninicial.referencia, "", new { @class = "text-danger" })
+                                                        @Html.HiddenFor(model => model.Alias, "Domicilio")
+                                                        @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.direccioninicial.Sector, htmlAttributes: new { @class = "control-label col-md-4" })
-                                                    @Html.ValidationMessageFor(model => model.direccioninicial.Sector, "", new { @class = "text-danger" })
-                                                    <div class="col-md-8">
-                                                        @Html.EditorFor(model => model.direccioninicial.Sector, new { htmlAttributes = new { @class = "form-control" } })
-                                                
-                                                    </div>
-                                                </div>
+                                               
                                             <div class="form-group">
                                                 <label class="control-label col-md-10">Acepta el envio de avisos y alertas de este sitio web.</label> 
                                                 @Html.ValidationMessageFor(m => m.aceptapublicidad, "", new { @class = "text-danger" })

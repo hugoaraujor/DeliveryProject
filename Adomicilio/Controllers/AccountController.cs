@@ -112,9 +112,8 @@ namespace Adomicilio.Controllers
                                            }
                     return View(model);
                 case SignInStatus.Success:
-                 
-
-                    return RedirectToLocal(returnUrl);
+                    Session["LoggedIn"] = "true";
+                    return RedirectToLocal(returnUrl + "&xuserid=" + CurrentUser.Id.ToString());
                // case SignInStatus.LockedOut:
                  //   return View("Lockout");
               //  case SignInStatus.RequiresVerification:
@@ -198,6 +197,18 @@ namespace Adomicilio.Controllers
             return View(rvm);
         }
         //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register(string returnurl)
+        {
+
+
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.Pais = 1;
+             
+            return View(rvm);
+        }
+        //
         // Get: /Account/FillCity
         [HttpGet]
         [AllowAnonymous]
@@ -237,8 +248,6 @@ namespace Adomicilio.Controllers
            
                 if (ModelState.IsValid)
                 {
-
-
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
@@ -256,18 +265,29 @@ namespace Adomicilio.Controllers
                        
                     };
 
+             
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
-                    {
-                            var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                {
+                    var direccion = new Direccion();
+                    direccion.Alias = model.Alias;
+                    direccion.Calle = model.Calle;
+                    direccion.CasaNro = model.CasaNro;
+                    direccion.IdUser = user.Id;
+                    direccion.referencia = model.Referencia;
+                    direccion.Urbanizacion = model.Urbanizacion;
+                    DireccionesController dc = new DireccionesController();
+                    dc.Add(direccion);
+
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                             var n = "Confirme su cuenta haciendo click en el link provisto: <a  href='" + callbackUrl + "'\">link</a></p>";
                             var html = n;
                             var destino = new MailAddress(user.Email);
                             System.Net.Mail.MailMessage _Msg = new System.Net.Mail.MailMessage
                             {
-                                Sender = new MailAddress("araujoh@gmail.com"),
-                                Subject = "Confirm your account",
+                                Sender = new MailAddress("ojedaexpressdelivery@gmail.com"),
+                                Subject = "Confirme su cuenta",
                                 Body = html,
 
                             };

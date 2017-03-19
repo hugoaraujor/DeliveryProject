@@ -1,0 +1,98 @@
+﻿@model  IEnumerable <Adomicilio.Models.Direccion>
+
+@{
+    ViewBag.Title = "Donde deseas el envio?";
+
+    var aux = HttpContext.Current.User.Identity.Name;
+    var userid = 0;
+}
+<div class="headermessage">
+    <h2>Envio</h2>
+    <h3>Seleccione la direccion donde desea el envio.</h3>
+    <h4>Haga click enel boton de envio de acuerdo a la eleccion de su direccion.</h4>
+    <h4>Puede agregar una nueva direccion, si asi lo desea.</h4>
+</div>
+@Html.AntiForgeryToken()
+
+
+<div class="conta2">
+    <div id="direccionlista" name="direccionlista" class="col-md-12">
+      
+            @foreach (var mod in Model)
+            {  
+                userid = mod.IdUser;
+                <div id="ladireccion" name="ladireccion" class="col-md-5"><a href="/Direcciones/DeleteConfirmed/@mod.IdDireccion" >
+    <span class="glyphicon glyphicon-remove" style="color:lightgray;"></span></a>
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            <label id="direccionlabelalias" name="direccionlabelalias">Alias:</label>
+        </dt>
+
+        <dd>
+            <label id="direccionlabelalias" name="direccionlabelalias">@mod.Alias.ToUpper()</label>
+
+        </dd>
+        <dt>
+            <label id="direccionlabel" name="direccionlabel">Calle:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => mod.Calle)
+        </dd>
+
+        <dt>
+            <label id="direccionlabel" name="direccionlabel">Casa Nro.:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => mod.CasaNro)
+        </dd>
+
+        <dt>
+            <label id="direccionlabel" name="direccionlabel">Urbanización/Sector:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => mod.Urbanizacion)
+        </dd>
+
+
+        <dt>
+            <label id="direccionlabel" name="direccionlabel">Punto de Referencia:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => mod.referencia)
+        </dd>
+        <dt>
+            <a href="/Direcciones/Edit/@mod.IdDireccion"><span class="glyphicon glyphicon-edit" style="color:lightgray;"></span></a>
+        </dt>
+        <dd>
+
+            <button type="button" class="btn btn-primary col-md-12">Enviar a esta dirección</button>
+        </dd>
+    </dl>
+
+</div>
+            }
+                
+    </div>
+  @if (Model.Count() < 4)
+  {
+    <div>
+        <h4 style="margin-left:50px">Nueva Direccion</h4>
+        @Html.Partial("~/Views/Shared/PartialDireccion.cshtml", new Adomicilio.Models.Direccion() { IdUser = userid });
+
+    </div>
+  }
+  else
+  { <p style="margin-left:50px;" class="col-md-12"> Ya ha superado el numero de direcciones permitidosi desea agregar una mas debe borrar/Editar alguna de las anteriores</p>}
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+    
+

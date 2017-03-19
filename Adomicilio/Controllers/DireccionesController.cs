@@ -19,6 +19,34 @@ namespace Adomicilio.Controllers
         {
             return View(db.Direccion.ToList());
         }
+        
+        
+        // GET: Direcciones
+        public ActionResult Manage(int id)
+        {
+
+            Direccion nuevadireccion= new Direccion();
+            nuevadireccion.IdUser = id;
+            return View(db.Direccion.Where(x=>x.IdUser==id).ToList());
+        }
+
+        // POST: Direcciones
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Manage(Direccion addr)
+        {if (ModelState.IsValid)
+            {
+                if (addr.IdDireccion == 0)
+                {
+                    DireccionesController dc = new DireccionesController();
+                    dc.Add(addr);
+                    var id = addr.IdUser;
+                    ModelState.Clear();
+                    return RedirectToAction("Manage", new { id = addr.IdUser });
+                }
+            }
+            return RedirectToAction("Manage", addr.IdUser);
+        }
 
         // GET: Direcciones/Details/5
         public ActionResult Details(int? id)
@@ -46,7 +74,7 @@ namespace Adomicilio.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDireccion,Id,Calle,CasaNro,Urbanizacion,referencia,Sector,Alias")] Direccion direccion)
+        public ActionResult Create([Bind(Include = "IdDireccion,IdUser,Calle,CasaNro,Urbanizacion,referencia,Alias")] Direccion direccion)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +85,17 @@ namespace Adomicilio.Controllers
 
             return View(direccion);
         }
-
+       
+        public bool Add( Direccion direccion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Direccion.Add(direccion);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
         // GET: Direcciones/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -78,15 +116,17 @@ namespace Adomicilio.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdDireccion,Id,Calle,CasaNro,Urbanizacion,referencia,Sector,Alias")] Direccion direccion)
+        public ActionResult Edit([Bind(Include = "IdDireccion,IdUser,Calle,CasaNro,Urbanizacion,referencia,Alias")] Direccion direccion)
         {
+            Uri myReferrer = Request.UrlReferrer;
+            string actual = myReferrer.ToString();
             if (ModelState.IsValid)
             {
                 db.Entry(direccion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Manage",new { id=direccion.IdUser});
             }
-            return View(direccion);
+            return RedirectToAction("Manage", new { id = direccion.IdUser });
         }
 
         // GET: Direcciones/Delete/5
@@ -105,14 +145,26 @@ namespace Adomicilio.Controllers
         }
 
         // POST: Direcciones/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Direccion direccion = db.Direccion.Find(id);
-            db.Direccion.Remove(direccion);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Uri myReferrer = Request.UrlReferrer;
+            string actual = myReferrer.ToString();
+            Console.WriteLine(myReferrer);
+            Console.WriteLine(actual);
+            var varuid = 0;
+             if (Session["LoggedIn"] !=null)
+            {
+                Direccion direccion = db.Direccion.Find(id);
+
+                if (direccion.Alias != "Domicilio"&&direccion!=null)
+                {
+                   varuid = direccion.IdUser;
+                    db.Direccion.Remove(direccion); 
+                db.SaveChanges();
+                }
+
+            }
+            return Redirect(actual);
         }
 
         protected override void Dispose(bool disposing)

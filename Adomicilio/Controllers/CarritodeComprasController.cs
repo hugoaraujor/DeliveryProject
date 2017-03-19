@@ -32,7 +32,7 @@ namespace Adomicilio
         }
 
         // GET: CarritodeCompras
-        public async Task<ActionResult> VerCarrito(string sessionid,int xuserid)
+        public async Task<ActionResult> VerCarrito(string sessionid,int xuserid=0)
         {
             var query = (from a in db.CarritodeCompras
                          join m in db.Menu on a.IdProducto equals m.IdProducto

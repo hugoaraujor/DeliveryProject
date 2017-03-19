@@ -13,7 +13,7 @@ namespace Adomicilio.Models
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDireccion { get; set; }
-        public int Id { get; set; }
+        public int IdUser { get; set; }
         [Required]
         public string Calle { get; set; }
         [Required]
@@ -21,7 +21,6 @@ namespace Adomicilio.Models
         [Required]
         public string Urbanizacion { get; set; }
         public string referencia { get; set; }
-        public string Sector { get; set; }
         public string Alias { get; set; }
     }
 
@@ -39,7 +38,7 @@ namespace Adomicilio.Models
         public static List<Direccion> GetDirecciones(int usuarioId)
         {
             List<Direccion> direcciones = new List<Direccion>();
-            direcciones.Find(x => x.Id == usuarioId);
+            direcciones.Find(x => x.IdUser == usuarioId);
             return direcciones;
         }
         public static List<Pais> GetPaises()

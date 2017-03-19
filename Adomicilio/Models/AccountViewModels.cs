@@ -107,13 +107,21 @@ namespace Adomicilio.Models
 //        [Range(typeof(bool), "true", "true", ErrorMessage = "Debe aceptar los terminos del sitio web")]
         public bool aceptaterminosdeuso { get; set; }
         public bool notificaraltelefonomovil { get; set; }
-        public List<Estado> _estados { get;  }
-        public List<Sector> _sectores { get; }
-        public List<Direccion> _direcciones { get; }
-        public Direccion direccioninicial { get; }
-        public static object Estados { get; private set; }
 
-       
+        public int IdUser { get; set; }
+        [Required]
+    
+        public string Calle { get; set; }
+        [Required]
+        [Display(Name = "Casa Nro.")]
+        public string CasaNro { get; set; }
+        [Required]
+        public string Urbanizacion { get; set; }
+        public string Referencia { get; set; }
+        public string Alias { get; set; }
+
+
+
     }
 
     public class ResetPasswordViewModel

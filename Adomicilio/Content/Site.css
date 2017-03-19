@@ -9,6 +9,12 @@ padding-left:0px;
 [class*="col"] {
     padding: 3px;
 }
+#direccionlabel{
+text-align:left;
+font-weight:600;
+display:block;
+
+}
 .wrapcarritodecompras {
   
   
@@ -59,6 +65,7 @@ conta2 {
     /*  margin-top: 80px;*/
     min-height: calc(100vh - 150px);
     background-color: #079AAD;
+
 }
 
 #city {
@@ -67,7 +74,35 @@ conta2 {
     top: 0;
     left: 0;
 }
+#direccionlista {
+    margin-left:50px;
+}
+#direccionlabelalias {
+    color:orangered;
 
+}
+.headermessage {
+    padding-left:50px;
+}
+#ladireccion {
+    padding-left: 25px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 15px;
+}
+    #ladireccion button {
+        margin-top: 3px;
+        margin-bottom: 3px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-right: 30px;
+  
+    }
 #motito {
     top: 110px;
     left: 1800px;
@@ -231,6 +266,7 @@ textarea {
     border: 1px 1px 1px 1px double solid gray;
     background-color: whitesmoke;
     width: 95%;
+  
     /* POnerlo al 100% para que ocupe toda a panatalla*/
 }
 
@@ -245,6 +281,7 @@ textarea {
 
 #wrap {
     height: 100%;
+    padding-top: 50px;
 }
 
 #titulogrupo {

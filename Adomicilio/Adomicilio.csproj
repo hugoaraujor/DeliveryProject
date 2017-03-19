@@ -205,7 +205,6 @@
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
-    <Compile Include="DireccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -275,6 +274,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\Votos.js" />
     <Content Include="Views\CarritodeCompras\Index.cshtml" />
+    <Content Include="Views\Direcciones\Details.cshtml" />
     <Content Include="Views\Empresas\empresasDetail.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
@@ -347,7 +347,6 @@
     <Content Include="Views\MenuIngredients\Index.cshtml" />
     <Content Include="Views\Direcciones\Create.cshtml" />
     <Content Include="Views\Direcciones\Delete.cshtml" />
-    <Content Include="Views\Direcciones\Details.cshtml" />
     <Content Include="Views\Direcciones\Edit.cshtml" />
     <Content Include="Views\Direcciones\Index.cshtml" />
     <Content Include="Views\CarritodeCompras\Create.cshtml" />
@@ -356,6 +355,8 @@
     <Content Include="Views\CarritodeCompras\Edit.cshtml" />
     <Content Include="Views\CarritodeCompras\VerCarrito.cshtml" />
     <Content Include="Views\Direcciones\Crear.cshtml" />
+    <Content Include="Views\Shared\PartialDireccion.cshtml" />
+    <Content Include="Views\Direcciones\Manage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -85,10 +85,7 @@ namespace Adomicilio.Models
         public bool aceptapublicidad { get; set; }
         public bool aceptaterminosdeuso { get; set; }
         public bool notificaraltelefonomovil { get; set; }
-        public virtual Estadistica estadistica { get; set; }
-        public virtual List<Direccion> Direcciones { get; set; }
-        public virtual List<Amigo> Amigos { get; set; }
-
+     
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser, int> manager)
         {
             // Tenga en cuenta que el valor de authenticationType debe coincidir con el definido en CookieAuthenticationOptions.AuthenticationType
