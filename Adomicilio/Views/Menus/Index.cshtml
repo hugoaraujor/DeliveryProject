@@ -8,89 +8,91 @@
     var catg = new GruposMenusController();
   
 }
+<div class="admincontainer">
+    <div id="adminwrap" name="adminwrap">
+        <ol class="breadcrumb">
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Empresas">Empresas</a></li>
+            <li><a href="#" class="active">@ViewBag.Empresa</a></li>
 
-<div id="adminwrap" name="adminwrap">
-<ol class="breadcrumb">
-    <li><a href="/Admin">Admin</a></li>
-    <li><a href="/Admin">Empresas</a></li>
-    <li><a href="#" class="active">@ViewBag.Empresa</a></li>
+        </ol>
+    <div>
+            <h2><strong>@ViewBag.Empresa.ToUpper()</strong></h2>
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class=""><a href="@Url.Action("Details", "Menus", routeValues: new { Id = ViewBag.Number, status = 1 })">Detalles</a></li>
+                    <li role="presentation" class=""><a href="@Url.Action("Index", "Gruposmenus", routeValues: new { Id = ViewBag.Number, Idempresa = ViewBag.Number, status = 2 })">Categorias</a></li>
+                    <li role="presentation" class="active"><a href="@Url.Action("Details", "Empresas", routeValues: new { Idempresa = ViewBag.Number, status = 3 })">Productos</a></li>
+                    <li role="presentation" class=""><a href="@Url.Action("Index", "Horarios",routeValues: new { Id =  ViewBag.Number})">Horarios</a></li>
+                </ul>
+            </div>
 
-</ol>
 
-<div> <h2><strong>@ViewBag.Empresa.ToUpper()</strong></h2>
+        </div>
+        <br />
 
-    <div class="row">
-          <ul class="nav nav-tabs">
-            <li role="presentation" class=""><a href="@Url.Action("Details", "Menus", routeValues: new { Id = ViewBag.Number, status = 1 })">Detalles</a></li>
-            <li role="presentation" class=""><a href="@Url.Action("Index", "Gruposmenus", routeValues: new { Id = ViewBag.Number, status = 2 })">Categorias</a></li>
-            <li role="presentation" class="active"><a href="@Url.Action("Details", "Empresas", routeValues: new { Idempresa = ViewBag.Number, status = 3 })">Productos</a></li>
-        </ul>
+        <table class="table-striped" name="tabla" id="tabla">
+            <tr>
+                <th style="border-top:0px;">
+                    @Html.DisplayNameFor(model => model.Single().IdGrupoMenu)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Single().IdCategory)
+
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Single().Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Single().Descripcion)
+                </th>
+
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Single().Precio1)
+                </th>
+
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @(catg.getgrupos(item.IdEmpresa).Find(x => x.Id == item.IdGrupoMenu).GrupoMenuDesc)
+                    </td>
+                    <td>
+                        @(cat2.Find(x => x.IdCategory == item.IdCategory).CategoryName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio1)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edita", "Edit", new { id = item.IdProducto }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdProducto }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.IdProducto })
+                    </td>
+                </tr>
+            }
+            <p>
+                @Html.ActionLink("Nuevo", "Create", routeValues: new { idempresa = ViewBag.Number })
+            </p>
+        </table>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
     </div>
-
-
-</div>
-<br />
-
-<table class="table-striped" name="tabla" id="tabla">
-    <tr >
-        <th style="border-top:0px;">
-            @Html.DisplayNameFor(model => model.Single().IdGrupoMenu)
-        </th>
-        <th >
-            @Html.DisplayNameFor(model => model.Single().IdCategory)
-           
-        </th>
-    
-        <th>
-            @Html.DisplayNameFor(model => model.Single().Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Single().Descripcion)
-        </th>
-      
-      
-     
-        <th>
-            @Html.DisplayNameFor(model => model.Single().Precio1)
-        </th>
-      
-        
-        
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-       <td>
-            
-           @(catg.getgrupos(item.IdEmpresa).Find(x => x.Id == item.IdGrupoMenu).GrupoMenuDesc)
-        </td>
-        <td>
-         @(cat2.Find(x => x.IdCategory == item.IdCategory).CategoryName)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-   
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio1)
-        </td>
-         
-        <td>
-            @Html.ActionLink("Edita", "Edit", new {  id=item.IdProducto }) |
-            @Html.ActionLink("Detalles", "Details", new { id= item.IdProducto }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.IdProducto })
-        </td>
-    </tr>
-}
-    <p>
-        @Html.ActionLink("Nuevo", "Create", routeValues: new { idempresa = ViewBag.Number })
-    </p>
-</table>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 </div>

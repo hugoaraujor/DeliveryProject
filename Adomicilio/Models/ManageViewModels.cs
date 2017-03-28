@@ -5,14 +5,15 @@ using Microsoft.Owin.Security;
 using Adomicilio.Models;
 using PagedList;
 using System.Web;
+using System;
 
 namespace Adomicilio.Models
 {
     
     public class IndexViewModel
     {
-
-       public IndexViewModel()
+       
+        public IndexViewModel()
             {
             ListaEspecialidades = new List<Especialidad>();
             utiles = new UtilesViews();
@@ -42,7 +43,9 @@ namespace Adomicilio.Models
         public Empresa CurrentEmpresa { get; set; }
         public int primergrupo { get; set; }
 
-}
+
+    }
+   
     public class Searchlocation
     {
         public string ip { get; set; }

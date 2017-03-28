@@ -6,27 +6,29 @@
   
 }
 
-
-<ol class="breadcrumb">
-    <li><a href="/Admin">Admin</a></li>
-    <li><a href="/Admin">Empresas</a></li>
-    <li><a href="#" class="active">@Html.DisplayFor(model => model.RazonSocial)</a></li>
-</ol>
-<h2>@Html.DisplayFor(model => model.RazonSocial)</h2>
-<div><div class="col-md-3"><br></div> 
-    <div class="col-md-3"><br></div>
-          <div class="row">
+<div class="admincontainer">
+    <ol class="breadcrumb">
+        <li><a href="/Admin">Admin</a></li>
+        <li><a href="/Admin">Empresas</a></li>
+        <li><a href="#" class="active">@Html.DisplayFor(model => model.RazonSocial)</a></li>
+    </ol>
+    <h2>@Html.DisplayFor(model => model.RazonSocial)</h2>
+    <div>
+        <div class="col-md-3"><br></div>
+        <div class="col-md-3"><br></div>
+        <div class="row">
             <p>&nbsp</p>
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active"  ><a  href="@Url.Action("Details", "Empresas",routeValues: new {  Id =  ViewBag.Number})">Detalles</a></li>
-                <li role="presentation" class="" ><a    href="@Url.Action("Index","GruposMenus",routeValues: new { Id =  ViewBag.Number})">Categorias</a></li>
-                <li role="presentation" class="" ><a   href="@Url.Action("Index", "Menus",routeValues: new { Idempresa =  ViewBag.Number})">Productos</a></li>
+                <li role="presentation" class="active"><a href="@Url.Action("Details", "Empresas",routeValues: new {  Id =  ViewBag.Number})">Detalles</a></li>
+                <li role="presentation" class=""><a href="@Url.Action("Index","GruposMenus",routeValues: new { Id =  ViewBag.Number})">Categorias</a></li>
+                <li role="presentation" class=""><a href="@Url.Action("Index", "Menus",routeValues: new { Idempresa =  ViewBag.Number})">Productos</a></li>
+                <li role="presentation" class=""><a href="@Url.Action("Index", "Horarios",routeValues: new { Id =  ViewBag.Number})">Horarios</a></li>
             </ul>
-              <p>&nbsp</p>
+            <p>&nbsp</p>
         </div>
-       <div class="col-md-11">
-           @Html.Partial("empresasDetail")
-       </div>
-</div >
-
+        <div class="col-md-11">
+            @Html.Partial("empresasDetail")
+        </div>
+    </div>
+</div>
 

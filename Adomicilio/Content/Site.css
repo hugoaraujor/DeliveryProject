@@ -15,15 +15,49 @@ font-weight:600;
 display:block;
 
 }
+#clockopen {
+    color: limegreen;
+    font-size: x-small;
+  
+    margin: 5px 2px 2px 2px;
+    padding: 2px 3px 2px 3px;
+    line-height: 10px;
+   
+    border-radius: 2px;
+    margin-top: 3px;
+    position: absolute;
+}
+#clockclose {
+    border-radius: 2px;
+    margin-top: 3px;
+    position: absolute;
+    color: crimson;
+    font-size: x-small;
+    
+    margin: 2px 2px 2px 2px;
+    padding: 2px 3px 2px 3px;
+    line-height: 10px;
+   
+    border-radius: 2px;
+}
+#StartHour,#EndtHour { min-width:150px;
+}
+#clock {
+    padding: 0px 5px 0px 20px;
+    color:orangered;
+}
 .wrapcarritodecompras {
-  
-  
 }
     .wrapcarritodecompras [id*="precio"] {
        font-size:medium;
       
     }
-   
+.admincontainer {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}  
 footer ul {
     text-decoration: none;
     list-style: none;
@@ -658,7 +692,7 @@ padding-left:20px;
 }
 
 .thumbnail {
-    line-height: 50%;
+    line-height: 60%;
     margin: 1px 1px 10px 1px;
     padding: 1px 1px 1px 1px;
     border-radius: 0px;
@@ -1274,5 +1308,48 @@ h5 {
     padding-left: 0px;
     margin-left:0px;
 }
+.instructionbox {
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid orange;
+    padding: 20px;  
+}
+    .instructionbox img {
+        text-align: right;
+        width: 50px;
+      
+        padding-left: 10px;
+    }
 
- 
+.instructions {
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display:inline-block;
+  
+  
+}
+form input [type="radio"] {
+   padding-left:20px;
+   
+}
+label {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+   color: #F61D04;
+   font-size:14px;
+}
+.myinput  label {
+    margin-left: 90px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color:darkorange;
+}
+
+
+
+

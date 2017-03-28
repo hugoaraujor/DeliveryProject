@@ -20,7 +20,7 @@
         <p>&nbsp</p>
         <ul class="nav nav-tabs">
             <li role="presentation" class=""><a href="@Url.Action("Details", "Menus",routeValues: new { Id = ViewBag.idproducto,status=1})">Detalles</a></li>
-            <li role="presentation" ><a href="@Url.Action("Index", "MenuIngredients",routeValues: new {Id = ViewBag.idproducto})">Ingredientes</a></li>
+            <li role="presentation" ><a href="@Url.Action("Index", "MenuIngredients",routeValues: new {Id = ViewBag.idproducto,idempresa=1})">Ingredientes</a></li>
             <li role="presentation" class="active"><a href="@Url.Action("Index", "Extras",routeValues: new { Id =  ViewBag.idproducto})">Extras</a></li>
 
         </ul>

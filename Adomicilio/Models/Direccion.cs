@@ -154,6 +154,8 @@ namespace Adomicilio.Models
         public virtual  ApplicationUser  Buyer { get; set; }
         public virtual decimal monto { get; set; }
         public virtual bool pagoconfirmado{ get; set; }
+        public string session { get; set; }
+        public int via { get; set; }
     }
    
     [Table("EmpresaSector")]
@@ -371,6 +373,5 @@ namespace Adomicilio.Models
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
     }
-
 
 }

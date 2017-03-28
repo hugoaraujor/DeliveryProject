@@ -14,6 +14,12 @@
     <div class="col-sm-6 col-md-4 col-xs-12">
 
         <div class="thumbnail pulse">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                @if (rest.GetOpenOrClose(@rest.IdEmpresa))
+                {<span id="clockopen" name="clockopen">OPEN</span>}
+                else
+                {<span id="clockclose" name="clockclose">CLOSE</span>}
+            </div>
             <a href="../Home/Detail/@tag2?idg=0">
                 <div class="logorestaurante">
                     <img src="@Model.utiles.bytestoimage(rest.logo)" alt="...">
@@ -21,11 +27,13 @@
                 <div class="caption">
                     <p class="nombrelocal">@rest.RazonSocial</p>
                     <p name="slogan" id="slogan">@rest.Slogan</p>
-                </div>
+                   
+                    </div>
             </a>
         </div>
         <div>
             <div class="row">
+               
                 <div class="col-xs-4 col-sm-4 col-md-4" id="areadevotos" name="areadevotos">
                     <span id="@tag3" name="@tag3" class="glyphicon glyphicon-thumbs-up" onclick="megusta(@rest.IdEmpresa,1);" style="" data-toggle="tooltip" data-placement="top" title="Me gusta">
                         <span id="@tag" name="@tag">
@@ -46,7 +54,9 @@
                         <span id="star1" name="star1" class="glyphicon glyphicon-star" onclick="valora(@tag2,1);"></span>
                     </div>
                 </div>
-            </div>
+              
+               
+                </div>
         </div>
     </div>
                 <script type="text/javascript">

@@ -55,6 +55,8 @@ namespace Adomicilio.Models
         public DbSet<GruposMenu> GruposMenu { get; set; }
         public DbSet<Especialidad> Especialidad { get; set; }
         public DbSet<MenuIngredients> MenuIngredients { get; set; }
+
+        public DbSet<Horarios> Horarios { get; set; }
         // public System.Data.Entity.DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Contacto> Contactoes { get; set; }
 

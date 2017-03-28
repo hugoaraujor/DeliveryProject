@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Adomicilio.Models
 {
-
+   
 
     [Table("Empresa")]
     public class Empresa
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public Empresa()
         {
             Activa = true;
@@ -100,7 +102,28 @@ namespace Adomicilio.Models
         public virtual List<Menu> menus { get; set; }
         [ForeignKey("IdEmpresa")]
         public virtual List<Valoracion> valoraciones { get; set; }
+        public virtual bool abierto { get; set; }
 
+        public bool GetOpenOrClose(int idempresa)
+        {
+            var _localDate = DateTime.SpecifyKind(DateTime.Now.ToLocalTime(), DateTimeKind.Utc);
+            int daynumber = (int)System.DateTime.Now.DayOfWeek;
+            Console.WriteLine(idempresa);
+            DateTime fin = new DateTime();
+            if (this != null)
+            {
+                var query = from a in db.Horarios where (a.IdEmpresa == idempresa && ((int)a.dia) == daynumber) select a;
+
+                fin = DateTime.Now;
+                if (query.Count>0)
+                    fin = query.DefaultIfEmpty().Single().EndtHour;
+                                Console.WriteLine(fin);
+            }
+            if (fin == null)
+                return false;
+            else
+                return (_localDate < fin);
+        }
     }
 
     [Table("TipoEmpresa")]

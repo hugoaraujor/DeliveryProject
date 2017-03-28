@@ -34,13 +34,18 @@ namespace Adomicilio.Controllers
             int? page = ivm.page;
             int pageSize = 10;
             int pageNumber = (page ?? 1);
+
+            var _localDate = DateTime.SpecifyKind(DateTime.Now.ToLocalTime(), DateTimeKind.Utc);
+            int daynumber = (int) System.DateTime.Now.DayOfWeek;
+
+
+
             ivm.ListaEspecialidades = db.Especialidad.OrderBy(x => x.EspecialidadDesc).ToList();
             if (ivm.menuopcion==0)
-            ivm.restaurante = db.Empresa.Where(r => r.Activa == true&r.idCiudad==ivm.ciudad).OrderBy(r => r.RazonSocial).ToPagedList(pageNumber, pageSize);
+            ivm.restaurante =  (db.Empresa.Where(r => r.Activa==true&&r.idCiudad==ivm.ciudad).OrderBy(r => r.RazonSocial)).ToPagedList(pageNumber, pageSize);
             else
-                ivm.restaurante = db.Empresa.Where(r => r.Activa == true && r.idCiudad == ivm.ciudad&r.TipodeComida==ivm.menuopcion).OrderBy(r => r.RazonSocial).ToPagedList(pageNumber, pageSize);
-
-           
+            ivm.restaurante =  (db.Empresa.Where(r => r.Activa == true && r.idCiudad == ivm.ciudad&r.TipodeComida==ivm.menuopcion).OrderBy(r => r.RazonSocial)).ToPagedList(pageNumber, pageSize);
+            
             return View(ivm);
         }
         [HttpGet]
@@ -49,6 +54,7 @@ namespace Adomicilio.Controllers
         
             return View("Contacto",null);
         }
+
         [HttpPost]
         public ActionResult Contacto(Contacto contact )
         {

@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ChoosePayments";
+}
+
+@{
+    ViewBag.Title = "Selecciona el tipo de Pago?";
+    var aux = HttpContext.Current.User.Identity.Name;
+    var direccion = ViewBag.Direccion;
+}
+<div class="headermessage">
+    <h2>Pago</h2>
+    <h3>En que forma haras el pago.</h3>
+    <h4>Seleccione su forma de pago son aceptadas efectivo en puerta, Tranferencia o pago en linea con tarjeta de credito.</h4>
+</div>
+@Html.AntiForgeryToken()
+<div class="conta2">
+    <div id="direccionlista" name="direccionlista" class="col-md-12">
+        <form>
+           <div class="instructionbox  col-md-10">
+                <input name="r" id="r" type="radio" value="1" checked class="myinput">
+                <img src="~/Images/tarjeta.png" class="animated bounce" />
+                <label>Tarjeta de Crédito.</label>
+                <div id="TC" class='instructions col-md-10'>
+                    Pagas en línea con tu tarjeta de Crédito Visa o Master Card a través de nuestro portal de Pago
+                </div>
+            </div>
+            <br>
+            <div class="instructionbox col-md-10">
+                <input name="r" id="r" type="radio" value="2" class="myinput">
+                <img src="~/Images/deposito.png" class="animated bounce"/>
+                <label>Transferencia Bancaria.</label>
+                <div id="TE" class='instructions'>
+                    Pagas con transferencia electrónica de tu banco a la cuenta provista a tu correo. Luego confirmas tu numero de tranferencia.
+                    Nos tomaremos el tiempo para verificar tu transferencia.
+                </div>
+            </div>
+            <div class="instructionbox  col-md-10">
+                <input name="r" id="r" type="radio" value="3" class="myinput">
+                <img src="~/Images/billete.png" class="animated bounce"/>
+                <label>Efectivo en Puerta.</label>
+                <div id="PE" class='instructions'>Pagas en efectivo al recibir tu Pedido en casa</div>
+            </div>
+            <div class="col-md-12">
+                <h4>Continue haciendo click en el siguiente boton.</h4>
+                <div class="form-group col-md-2">
+                    <button type="submit" class="form-control btn-primary col-md-2" >Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br />
+    <br />
+</div>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@section Scripts {
+    <script>
+
+
+    </script>
+}
+

@@ -14,6 +14,16 @@ namespace Adomicilio
 {
     public class CarritodeComprasController : Controller
     {
+        public async Task<ActionResult> ConfirmBuy()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> ChoosePayments(int iddireccion)
+        {
+            return View();
+        }
+      
         [System.Web.Mvc.HttpGet]
         public JsonResult GetCartData(string sessionid, int userid)
         {

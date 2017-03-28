@@ -71,7 +71,7 @@
         </dt>
         <dd>
 
-            <button type="button" class="btn btn-primary col-md-12">Enviar a esta dirección</button>
+            <button type="button" class="btn btn-primary col-md-12" onclick="GoPaymenttype(@mod.IdDireccion)">Enviar a esta dirección</button>
         </dd>
     </dl>
 
@@ -94,5 +94,11 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>
-    
+    <script>
+        function GoPaymenttype(iddir)
+        {
+            window.location.href = "Home/CarritodeCompras/ChoosePayments/" + iddir
+           
+        }
+    </script>
 
